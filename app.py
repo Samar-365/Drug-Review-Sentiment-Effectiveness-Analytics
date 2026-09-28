@@ -1,162 +1,293 @@
+# -*- coding: utf-8 -*-
+"""
+Drug Review Sentiment & Clinical Effectiveness Analytics Dashboard.
+Supports 3-Class Sentiment Classification, Dataset Analytics, Model Leaderboard,
+and Real-Time Interactive Review Inference.
+"""
+
+import os
+import time
+import logging
 import streamlit as st
 import pandas as pd
 import numpy as np
-import logging
-from ml_pipeline.base import TextPreprocessor
-from ml_pipeline.models import BaseSentimentModel
+import matplotlib.pyplot as plt
+import seaborn as sns
+
+from sklearn.metrics import accuracy_score, f1_score, precision_score, recall_score, confusion_matrix
+from ml_pipeline.base import SentimentDataLoader, TextPreprocessor, map_sentiment_3class, clean_review_text
+from ml_pipeline.models import BaseSentimentModel, save_pipeline, load_pipeline, predict_single_review, SENTIMENT_LABELS, SENTIMENT_COLORS
 from ml_pipeline.utils import get_model, setup_logging
-from ml_pipeline.hf_sentiment import HFSentimentModel
+from config import DATA_TRAIN_PATH, DATA_TEST_PATH, SAMPLE_DATA_PATH, MODEL_SAVE_PATH
 
-from sklearn.metrics import accuracy_score, roc_auc_score, f1_score, confusion_matrix
-
+# Configure Logging & Page
 setup_logging("streamlit_app.log")
+st.set_page_config(
+    page_title="Drug Review Sentiment Analytics",
+    page_icon="💊",
+    layout="wide",
+    initial_sidebar_state="expanded"
+)
 
-st.set_page_config(page_title="Drug Sentiment Dashboard", layout="wide")
-st.title("💊 Drug Review Sentiment Analysis Dashboard")
+# Custom Styling
+st.markdown("""
+<style>
+    .reportview-container { background-color: #0e1117; }
+    .metric-card {
+        background-color: #1e293b;
+        border-radius: 8px;
+        padding: 16px;
+        border: 1px solid #334155;
+    }
+    .badge-demo {
+        background-color: #0284c7;
+        color: white;
+        padding: 4px 10px;
+        border-radius: 6px;
+        font-weight: 600;
+        font-size: 0.85rem;
+    }
+    .badge-live {
+        background-color: #059669;
+        color: white;
+        padding: 4px 10px;
+        border-radius: 6px;
+        font-weight: 600;
+        font-size: 0.85rem;
+    }
+</style>
+""", unsafe_allow_html=True)
 
-# Sidebar
-with st.sidebar:
-    st.header("Upload Data")
-    train_file = st.file_uploader("Training Data CSV", type="csv")
-    test_file = st.file_uploader("Test Data CSV", type="csv")
-    threshold = st.slider("Decision Threshold", 0.0, 1.0, 0.5, 0.01)
-
-if train_file and test_file:
-    df_train = pd.read_csv(train_file)
-    df_test = pd.read_csv(test_file)
-
-    # --- Condition Filter ---
-    all_conditions = sorted(set(df_train['condition'].dropna().unique()) | set(df_test['condition'].dropna().unique()))
-    condition = st.sidebar.selectbox("Filter by Condition", ["All"] + all_conditions)
-    if condition != "All":
-        df_train = df_train[df_train['condition'] == condition]
-        df_test = df_test[df_test['condition'] == condition]
-
-    # --- Key Metrics ---
-    col1, col2, col3 = st.columns(3)
-    col1.metric("Training Reviews", len(df_train))
-    col2.metric("Test Reviews", len(df_test))
-    if condition != "All" and not df_train.empty:
-        top_drug = df_train['drugName'].value_counts().idxmax()
-        col3.metric("Top Drug (Train)", top_drug)
+# ---------------------------------------------------------
+# Cached Resource & Data Loaders
+# ---------------------------------------------------------
+@st.cache_data(show_spinner=False)
+def load_cached_data(train_upload=None, test_upload=None):
+    """Loads dataset from upload or local default paths with Demo Mode fallback."""
+    if train_upload and test_upload:
+        df_train = pd.read_csv(train_upload)
+        df_test = pd.read_csv(test_upload)
+        mode = "User Uploaded Full Data"
+    elif os.path.exists(DATA_TRAIN_PATH) and os.path.exists(DATA_TEST_PATH):
+        df_train = pd.read_csv(DATA_TRAIN_PATH)
+        df_test = pd.read_csv(DATA_TEST_PATH)
+        mode = "Full Benchmark Datasets"
+    elif os.path.exists(SAMPLE_DATA_PATH):
+        df_sample = pd.read_csv(SAMPLE_DATA_PATH)
+        # 80/20 split for demo mode
+        split_idx = int(len(df_sample) * 0.8)
+        df_train = df_sample.iloc[:split_idx].copy()
+        df_test = df_sample.iloc[split_idx:].copy()
+        mode = "Demo Mode (Curated Sample)"
     else:
-        col3.metric("Top Drug (Train)", "-")
+        return None, None, "No Data Available"
 
+    for df in [df_train, df_test]:
+        if 'rating' in df.columns and 'sentiment' not in df.columns:
+            df['sentiment'] = df['rating'].apply(map_sentiment_3class)
+        if 'review' in df.columns:
+            df['review'] = df['review'].fillna('').apply(clean_review_text)
+        if 'condition' in df.columns:
+            df['condition'] = df['condition'].fillna('Unknown').astype(str).str.replace(r"<.*?>", "", regex=True).str.strip()
+
+    return df_train, df_test, mode
+
+@st.cache_resource(show_spinner=False)
+def get_cached_pipeline():
+    """Loads pre-trained sentiment pipeline or creates a fast default pipeline."""
+    model_path = os.path.join(MODEL_SAVE_PATH, "sentiment_pipeline.joblib")
+    if os.path.exists(model_path):
+        return load_pipeline(model_path)
+    
+    # Fallback fit on sample dataset if pipeline artifact not yet saved
+    if os.path.exists(SAMPLE_DATA_PATH):
+        df = pd.read_csv(SAMPLE_DATA_PATH)
+        df['clean_review'] = df['review'].apply(clean_review_text)
+        df['sentiment'] = df['rating'].apply(map_sentiment_3class)
+        
+        from sklearn.feature_extraction.text import TfidfVectorizer
+        from sklearn.linear_model import LogisticRegression
+        
+        vec = TfidfVectorizer(max_features=2500, stop_words="english", ngram_range=(1, 2))
+        X = vec.fit_transform(df['clean_review'])
+        clf = LogisticRegression(max_iter=500, class_weight="balanced", random_state=42)
+        clf.fit(X, df['sentiment'])
+        
+        os.makedirs(MODEL_SAVE_PATH, exist_ok=True)
+        save_pipeline(vec, clf, model_path)
+        return {"vectorizer": vec, "model": clf, "labels": SENTIMENT_LABELS, "num_classes": 3}
+    return None
+
+# ---------------------------------------------------------
+# Sidebar Configuration
+# ---------------------------------------------------------
+with st.sidebar:
+    st.image("https://img.icons8.com/fluency/96/pill.png", width=64)
+    st.title("Settings & Data")
+    
+    st.markdown("### 📂 Data Source")
+    train_file = st.file_uploader("Upload Training CSV", type="csv")
+    test_file = st.file_uploader("Upload Test CSV", type="csv")
+    
     st.markdown("---")
+    st.markdown("### ⚙️ Evaluation Tuning")
+    model_select = st.multiselect(
+        "Select Models to Benchmark",
+        ["logistic", "naive_bayes", "random_forest", "gbt"],
+        default=["logistic", "naive_bayes", "random_forest", "gbt"]
+    )
 
-    # --- Model Comparison ---
-    st.subheader("Model Comparison")
-    preprocessor = TextPreprocessor()
-    X_train, X_test = preprocessor.fit_transform(df_train['review'], df_test['review'])
-    y_train = (df_train['rating'] > 5).astype(int).values
-    y_test = (df_test['rating'] > 5).astype(int).values
+# ---------------------------------------------------------
+# Main App Header & Mode Status
+# ---------------------------------------------------------
+df_train, df_test, current_mode = load_cached_data(train_file, test_file)
 
-    model_names = ["gbt", "logistic", "naive_bayes", "random_forest", "svm", "hf_transformer"]
-    results = []
-    predictions = {}
+col_title, col_badge = st.columns([4, 1])
+with col_title:
+    st.title("💊 Drug Review Sentiment & Effectiveness Analytics")
+    st.markdown("*3-Class Patient Sentiment Intelligence, Clinical Imbalance Audits & Real-Time Inference*")
 
-    for name in model_names:
-        if name == "hf_transformer":
-            sentiment_model = HFSentimentModel()
-            y_pred = sentiment_model.predict(df_test['review'])
-            y_proba = None  # Not available for this pipeline
+with col_badge:
+    st.markdown("<br>", unsafe_allow_html=True)
+    if "Demo" in current_mode:
+        st.markdown(f'<span class="badge-demo">🚀 {current_mode}</span>', unsafe_allow_html=True)
+    else:
+        st.markdown(f'<span class="badge-live">⚡ {current_mode}</span>', unsafe_allow_html=True)
+
+st.markdown("---")
+
+# ---------------------------------------------------------
+# Navigation Tabs
+# ---------------------------------------------------------
+tab_analytics, tab_live = st.tabs([
+    "📊 Dataset Analytics & Benchmark Leaderboard",
+    "🔬 Live Interactive Review Analyzer"
+])
+
+# =========================================================
+# TAB 1: DATASET ANALYTICS & BENCHMARK LEADERBOARD
+# =========================================================
+with tab_analytics:
+    if df_train is None or df_train.empty:
+        st.warning("⚠️ No dataset found. Please upload data or ensure sample data exists in `data/sample/`.")
+    else:
+        # Top-level Metric Cards
+        c1, c2, c3, c4 = st.columns(4)
+        c1.metric("Training Records", f"{len(df_train):,}")
+        c2.metric("Test Records", f"{len(df_test):,}")
+        c3.metric("Unique Conditions", f"{df_train['condition'].nunique():,}")
+        c4.metric("Unique Drugs", f"{df_train['drugName'].nunique():,}")
+
+        st.markdown("### 🔍 Condition Filter")
+        all_conditions = ["All"] + sorted([str(c) for c in df_train['condition'].unique() if pd.notna(c)])
+        selected_condition = st.selectbox("Filter dataset visualizations by clinical condition:", all_conditions)
+        
+        filtered_train = df_train if selected_condition == "All" else df_train[df_train['condition'] == selected_condition]
+        filtered_test = df_test if selected_condition == "All" else df_test[df_test['condition'] == selected_condition]
+
+        # Analytics Visualizations
+        col_chart1, col_chart2 = st.columns(2)
+        with col_chart1:
+            st.subheader("Sentiment Class Distribution")
+            sentiment_counts = filtered_train['sentiment'].value_counts().sort_index().rename(SENTIMENT_LABELS)
+            st.bar_chart(sentiment_counts)
+
+        with col_chart2:
+            st.subheader("Top Conditions / Medications")
+            top_drugs = filtered_train['drugName'].value_counts().head(8)
+            st.bar_chart(top_drugs)
+
+        st.markdown("---")
+        st.subheader("🏆 Multi-Model 3-Class Benchmark Leaderboard")
+
+        if st.button("▶ Run Full Benchmark Evaluation", key="run_benchmark_btn"):
+            with st.spinner("Training and evaluating selected models across 3 classes..."):
+                start_time = time.time()
+                preprocessor = TextPreprocessor(max_features=2500)
+                X_tr, X_te = preprocessor.fit_transform(filtered_train['review'], filtered_test['review'])
+                y_tr = filtered_train['sentiment'].values
+                y_te = filtered_test['sentiment'].values
+
+                benchmark_results = []
+                for m_name in model_select:
+                    raw_model = get_model(m_name)
+                    model_wrapper = BaseSentimentModel(raw_model, num_classes=3)
+                    model_wrapper.train(X_tr, y_tr)
+                    metrics = model_wrapper.evaluate(X_te, y_te)
+                    
+                    benchmark_results.append({
+                        "Model": m_name.replace("_", " ").title(),
+                        "Accuracy": f"{metrics['accuracy']*100:.2f}%",
+                        "Macro F1": round(metrics['macro_f1'], 4),
+                        "Weighted F1": round(metrics['weighted_f1'], 4),
+                        "Macro Precision": round(metrics['macro_precision'], 4),
+                        "Macro Recall": round(metrics['macro_recall'], 4)
+                    })
+
+                bench_df = pd.DataFrame(benchmark_results).sort_values("Macro F1", ascending=False)
+                st.dataframe(bench_df, use_container_width=True)
+                st.success(f" Benchmark completed in {time.time() - start_time:.2f} seconds!")
+
+# =========================================================
+# TAB 2: LIVE INTERACTIVE REVIEW ANALYZER
+# =========================================================
+with tab_live:
+    st.subheader("🔬 Real-Time Clinical Sentiment & Nuance Prediction")
+    st.markdown("Enter patient review text below or click a sample preset to test clinical edge-case classifications.")
+
+    preset_samples = {
+        "Custom Input": "",
+        "Positive (High Efficacy)": "This medication has truly given me my life back! Within four weeks all depressive symptoms and fatigue lifted completely.",
+        "Neutral / Mixed (Moderate with Side Effect)": "Cured my intense migraines within 30 minutes, but gave me noticeable nausea and mild dizziness all afternoon.",
+        "Negative (Severe Adverse Reaction)": "Ended up in the ER with severe hives, swelling, and extreme chest tightness after taking only one dose.",
+        "Delayed Onset (Nuanced Positive)": "Did not feel any improvement for the first three weeks, then suddenly my anxiety symptoms improved dramatically."
+    }
+
+    selected_preset = st.selectbox("💡 Load Sample Patient Review Preset:", list(preset_samples.keys()))
+    default_text = preset_samples[selected_preset]
+
+    review_input = st.text_area(
+        "Patient Review Text:",
+        value=default_text,
+        height=140,
+        placeholder="Type or paste a patient review here (e.g. 'Helped with my symptoms, but caused mild headaches...')"
+    )
+
+    if st.button("🚀 Analyze Sentiment & Probabilities", type="primary"):
+        if not review_input.strip():
+            st.warning("Please enter some review text before analyzing.")
         else:
-            model = get_model(name)
-            sentiment_model = BaseSentimentModel(model)
-            sample_weight = None
-            if name == "gbt":
-                class_counts = np.bincount(y_train)
-                class_weights = {i: sum(class_counts) / (2 * c) for i, c in enumerate(class_counts)}
-                sample_weight = np.array([class_weights[y] for y in y_train])
-            sentiment_model.train(X_train, y_train, sample_weight=sample_weight)
-            y_pred, y_proba = sentiment_model.evaluate(X_test, y_test, threshold=threshold)
-        acc = accuracy_score(y_test, y_pred)
-        roc = roc_auc_score(y_test, y_proba) if y_proba is not None else None
-        f1 = f1_score(y_test, y_pred)
-        results.append({
-            "Model": name,
-            "Accuracy": acc,
-            "ROC-AUC": roc,
-            "F1-score": f1
-        })
-        predictions[name] = (y_pred, y_proba)
+            pipeline = get_cached_pipeline()
+            if pipeline is None:
+                st.error("No sentiment pipeline artifact found. Please run the benchmark first.")
+            else:
+                inference_res = predict_single_review(review_input, pipeline)
+                
+                # Results Card Layout
+                res_col1, res_col2 = st.columns([1, 2])
+                with res_col1:
+                    st.markdown("### 🏷️ Predicted Sentiment")
+                    pred_label = inference_res["sentiment_label"]
+                    confidence = inference_res["confidence"]
+                    
+                    if pred_label == "Positive":
+                        st.success(f"### 😊 {pred_label}")
+                    elif pred_label == "Neutral":
+                        st.warning(f"### 😐 {pred_label}")
+                    else:
+                        st.error(f"### 😡 {pred_label}")
+                    
+                    st.metric("Model Confidence", f"{confidence * 100:.1f}%")
 
-    results_df = pd.DataFrame(results)
-    colA, colB = st.columns([2, 1])
-    with colA:
-        st.dataframe(results_df, use_container_width=True)
-    with colB:
-        best_model_row = results_df.sort_values("F1-score", ascending=False).iloc[0]
-        st.success(f"Best Model: {best_model_row['Model']}\nF1-score: {best_model_row['F1-score']:.3f}")
+                with res_col2:
+                    st.markdown("### 📊 Class Probability Breakdown")
+                    proba_series = pd.Series(inference_res["probabilities"])
+                    st.bar_chart(proba_series)
 
-    best_model_name = best_model_row['Model']
-    y_pred, y_proba = predictions[best_model_name]
-
-    st.markdown("---")
-
-    # --- Insights Section ---
-    st.subheader("Insights")
-
-    col1, col2 = st.columns(2)
-
-    with col1:
-        st.markdown("**Class Distribution (Test Data)**")
-        st.bar_chart(pd.Series(y_test).value_counts().sort_index().rename({0: "Negative/Neutral", 1: "Positive"}))
-
-        st.markdown("**Top Drugs for This Condition (Train Data)**")
-        if condition != "All" and not df_train.empty:
-            st.write(df_train['drugName'].value_counts().head(5))
-        else:
-            st.write("N/A")
-
-    with col2:
-        st.markdown("**Confusion Matrix**")
-        from sklearn.metrics import confusion_matrix
-        import matplotlib.pyplot as plt
-        import seaborn as sns
-
-        cm = confusion_matrix(y_test, y_pred)
-        fig, ax = plt.subplots()
-        sns.heatmap(cm, annot=True, fmt="d", cmap="Blues", ax=ax)
-        ax.set_xlabel("Predicted")
-        ax.set_ylabel("Actual")
-        st.pyplot(fig)
-
-    st.markdown("---")
-
-    # --- Trends Section ---
-    st.subheader("Trends & Business Insights")
-    col3, col4 = st.columns(2)
-
-    with col3:
-        if not df_test.empty and 'date' in df_test.columns:
-            df_test['date'] = pd.to_datetime(df_test['date'], errors='coerce')
-            df_test['predicted_sentiment'] = y_pred
-            trend = df_test.groupby(df_test['date'].dt.to_period('M'))['predicted_sentiment'].mean()
-            st.markdown("**Positive Sentiment Trend Over Time (Test Data)**")
-            st.line_chart(trend)
-        else:
-            st.info("No date column available for trend analysis.")
-
-    with col4:
-        if not df_test.empty:
-            avg_rating = df_test.groupby('drugName')['rating'].mean().sort_values(ascending=False).head(10)
-            st.markdown("**Top 10 Drugs by Average Rating (Test Data)**")
-            st.bar_chart(avg_rating)
-        else:
-            st.info("No test data for average rating.")
-
-    st.markdown("---")
-
-    # --- Download predictions ---
-    st.subheader("Download")
-    df_test["predicted_sentiment"] = y_pred
-    st.download_button("Download Predictions", df_test.to_csv(index=False), "predictions.csv")
-
-    # --- Logs and Details ---
-    with st.expander("Show Pipeline Logs"):
-        with open("streamlit_app.log") as f:
-            st.text(f.read())
-
-else:
-    st.info("Please upload both training and test CSV files to begin.")
+                with st.expander("🔍 Cleaned Tokens & Technical Details"):
+                    st.json({
+                        "original_input": inference_res["text"],
+                        "normalized_input": inference_res["cleaned_text"],
+                        "predicted_class_id": inference_res["predicted_class"],
+                        "probability_vector": inference_res["probabilities"]
+                    })
