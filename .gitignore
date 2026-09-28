@@ -18,6 +18,7 @@ venv/
 
 # Data & Models
 *.csv
+!data/sample/*.csv
 *.tsv
 *.xlsx
 *.h5
