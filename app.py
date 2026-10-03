@@ -1,747 +1,3196 @@
 import logging
 import os
 import time
-from io import BytesIO
 
 import numpy as np
 import pandas as pd
 import streamlit as st
+
 from sklearn.metrics import (
     accuracy_score,
-    classification_report,
     confusion_matrix,
     f1_score,
     roc_auc_score,
 )
 
+from ml_pipeline.base import TextPreprocessor
 from ml_pipeline.models import (
+    BaseSentimentModel,
     load_pipeline,
     predict_single_review,
 )
-from ml_pipeline.utils import setup_logging
+from ml_pipeline.utils import (
+    get_model,
+    setup_logging,
+)
 
+
+# ============================================================
+# CONFIGURATION
+# ============================================================
 
 setup_logging("streamlit_app.log")
 
 st.set_page_config(
-    page_title="Drug Review Sentiment Analysis",
+    page_title="Drug Review Sentiment & Effectiveness Analytics",
     page_icon="💊",
     layout="wide",
 )
 
-MODEL_PATH = "models/logistic_pipeline.joblib"
 
+# ============================================================
+# PERSISTED MODEL PATHS
+# ============================================================
+
+MODEL_PATHS = {
+    "Logistic Regression": "models/logistic_pipeline.joblib",
+    "Random Forest": "models/random_forest_pipeline.joblib",
+    "SVM": "models/svm_pipeline.joblib",
+    "Naive Bayes": "models/naive_bayes_pipeline.joblib",
+    "Gradient Boosting": "models/gbt_pipeline.joblib",
+}
+
+
+# ============================================================
+# PERSISTED MODEL LOADING
+# ============================================================
 
 @st.cache_resource(show_spinner=False)
 def load_cached_pipeline(path):
     return load_pipeline(path)
 
 
-@st.cache_data(show_spinner=False)
-def load_csv(file_bytes):
-    return pd.read_csv(
-        BytesIO(file_bytes)
-    )
+loaded_pipelines = {}
+model_load_times = {}
 
+for model_name, model_path in MODEL_PATHS.items():
 
-@st.cache_data(show_spinner=False)
-def clean_dataset(df):
-    df = df.copy()
+    if os.path.exists(model_path):
 
-    required_columns = [
-        "drugName",
-        "condition",
-        "review",
-        "rating",
-    ]
+        try:
+            load_start = time.perf_counter()
 
-    for column in required_columns:
-        if column not in df.columns:
-            raise ValueError(
-                f"Required column '{column}' is missing."
+            loaded_pipelines[model_name] = (
+                load_cached_pipeline(
+                    model_path
+                )
             )
 
-    df["review"] = (
-        df["review"]
-        .fillna("")
-        .astype(str)
-    )
-
-    df["drugName"] = (
-        df["drugName"]
-        .fillna("Unknown")
-        .astype(str)
-    )
-
-    df["condition"] = (
-        df["condition"]
-        .fillna("")
-        .astype(str)
-    )
-
-    invalid_condition = (
-        df["condition"].str.contains(
-            r"</?span|users found this comment",
-            case=False,
-            regex=True,
-            na=False,
-        )
-        |
-        (
-            df["condition"]
-            .str.strip()
-            == ""
-        )
-    )
-
-    df = df.loc[
-        ~invalid_condition
-    ].copy()
-
-    numeric_rating = pd.to_numeric(
-        df["rating"],
-        errors="coerce",
-    )
-
-    df = df.loc[
-        numeric_rating.notna()
-    ].copy()
-
-    df["rating"] = pd.to_numeric(
-        df["rating"],
-        errors="coerce",
-    )
-
-    df["sentiment"] = (
-        df["rating"] > 5
-    ).astype(int)
-
-    return df
-
-
-def evaluate_pipeline(
-    df,
-    pipeline,
-    threshold,
-):
-    model = pipeline["model"]
-    vectorizer = pipeline["vectorizer"]
-
-    X_test = vectorizer.transform(
-        df["review"].tolist()
-    )
-
-    y_test = (
-        df["sentiment"]
-        .values
-    )
-
-    if hasattr(
-        model,
-        "predict_proba",
-    ):
-        y_proba = (
-            model
-            .predict_proba(X_test)[:, 1]
-        )
-
-        y_pred = (
-            y_proba >= threshold
-        ).astype(int)
-
-        if len(
-            np.unique(y_test)
-        ) > 1:
-            roc_auc = roc_auc_score(
-                y_test,
-                y_proba,
+            model_load_times[model_name] = (
+                time.perf_counter()
+                - load_start
             )
-        else:
-            roc_auc = None
+
+            logging.info(
+                "Persisted %s pipeline loaded/accessed "
+                "in %.4f seconds",
+                model_name,
+                model_load_times[model_name],
+            )
+
+        except Exception:
+            logging.exception(
+                "Failed to load persisted pipeline "
+                "for %s",
+                model_name,
+            )
 
     else:
-        y_pred = model.predict(
-            X_test
+        logging.warning(
+            "Persisted pipeline not found for %s: %s",
+            model_name,
+            model_path,
         )
 
-        y_proba = None
-        roc_auc = None
 
-    accuracy = accuracy_score(
-        y_test,
-        y_pred,
-    )
+# ============================================================
+# CUSTOM CSS
+# ============================================================
 
-    f1 = f1_score(
-        y_test,
-        y_pred,
-        zero_division=0,
-    )
+st.markdown(
+    """
+    <style>
 
-    return {
-        "y_test": y_test,
-        "y_pred": y_pred,
-        "y_proba": y_proba,
-        "accuracy": accuracy,
-        "f1": f1,
-        "roc_auc": roc_auc,
+    .main-title {
+        font-size: 2.2rem;
+        font-weight: 700;
+        margin-bottom: 4px;
     }
 
+    .subtitle {
+        color: #6b7280;
+        font-size: 1rem;
+        margin-bottom: 20px;
+    }
 
-st.title(
-    "💊 Drug Review Sentiment Analysis Dashboard"
+    .demo-banner {
+        padding: 15px 18px;
+        border-radius: 10px;
+        background-color: #eff6ff;
+        border: 1px solid #93c5fd;
+        margin-bottom: 20px;
+    }
+
+    .analyzer-card {
+        padding: 20px;
+        border-radius: 12px;
+        border: 1px solid #e5e7eb;
+        background-color: #f8fafc;
+        min-height: 120px;
+    }
+
+    .card-title {
+        font-size: 1.1rem;
+        font-weight: 600;
+    }
+
+    .card-text {
+        color: #6b7280;
+        margin-top: 8px;
+    }
+
+    </style>
+    """,
+    unsafe_allow_html=True,
 )
 
-if not os.path.exists(
-    MODEL_PATH
-):
-    st.error(
-        f"Saved model was not found at: "
-        f"{MODEL_PATH}"
-    )
 
-    st.code(
-        "python scripts\\train_and_save.py "
-        "--model logistic"
-    )
+# ============================================================
+# PAGE HEADER
+# ============================================================
 
-    st.stop()
-
-
-load_start = time.perf_counter()
-
-try:
-    pipeline = load_cached_pipeline(
-        MODEL_PATH
-    )
-
-except Exception as error:
-    logging.exception(
-        "Failed to load saved model pipeline."
-    )
-
-    st.error(
-        f"Could not load the saved model: "
-        f"{error}"
-    )
-
-    st.stop()
-
-
-load_time = (
-    time.perf_counter()
-    - load_start
+st.markdown(
+    '<div class="main-title">'
+    '💊 Drug Review Sentiment & Effectiveness Analytics'
+    '</div>',
+    unsafe_allow_html=True,
 )
 
-logging.info(
-    "Cached model pipeline loaded/accessed "
-    "in %.4f seconds",
-    load_time,
+st.markdown(
+    """
+    <div class="subtitle">
+        Analyze drug reviews, compare sentiment models,
+        and explore review-based insights.
+    </div>
+    """,
+    unsafe_allow_html=True,
 )
 
+
+# ============================================================
+# SIDEBAR
+# ============================================================
 
 with st.sidebar:
+
     st.header(
+        "⚙️ Dashboard Settings"
+    )
+
+    st.subheader(
         "Upload Data"
     )
 
     train_file = st.file_uploader(
         "Training Data CSV",
         type=["csv"],
-        key="train_file",
+        help="Upload the training dataset.",
     )
 
     test_file = st.file_uploader(
         "Test Data CSV",
         type=["csv"],
-        key="test_file",
+        help="Upload the test dataset.",
     )
+
+    st.markdown("---")
 
     threshold = st.slider(
         "Decision Threshold",
         min_value=0.0,
         max_value=1.0,
-        value=0.50,
+        value=0.5,
         step=0.01,
+        help=(
+            "Threshold used for binary "
+            "sentiment prediction."
+        ),
     )
 
+    st.markdown("---")
+
+    st.subheader(
+        "💾 Persisted Models"
+    )
+
+    for model_name in MODEL_PATHS:
+
+        if model_name in loaded_pipelines:
+
+            st.success(
+                f"{model_name} loaded"
+            )
+
+            st.caption(
+                "Cached access: "
+                f"{model_load_times[model_name]:.4f} sec"
+            )
+
+        else:
+
+            st.warning(
+                f"{model_name} not available"
+            )
+
+
+# ============================================================
+# DATASET LOADING
+# ============================================================
+
+sample_csv_path = os.path.join(
+    "data",
+    "sample",
+    "sample_drug_reviews.csv",
+)
+
+df_train = None
+df_test = None
+demo_mode = False
+
+
+# ------------------------------------------------------------
+# CUSTOM DATASET
+# ------------------------------------------------------------
 
 if (
     train_file is not None
     and test_file is not None
 ):
+
     try:
-        train_df = load_csv(
-            train_file.getvalue()
+        df_train = pd.read_csv(
+            train_file
         )
 
-        test_df = load_csv(
-            test_file.getvalue()
+        df_test = pd.read_csv(
+            test_file
         )
 
-        train_df = clean_dataset(
-            train_df
+    except Exception as exc:
+        logging.exception(
+            "Unable to read uploaded datasets."
         )
 
-        test_df = clean_dataset(
-            test_df
-        )
-
-    except Exception as error:
         st.error(
-            "Could not process uploaded "
-            f"datasets: {error}"
+            "Unable to read uploaded CSV files: "
+            f"{exc}"
         )
 
-        st.stop()
 
-    conditions = sorted(
-        set(
-            train_df[
-                "condition"
-            ]
-            .dropna()
-            .unique()
-        )
-        |
-        set(
-            test_df[
-                "condition"
-            ]
-            .dropna()
-            .unique()
-        )
-    )
+# ------------------------------------------------------------
+# DEMO MODE
+# ------------------------------------------------------------
 
-    condition = st.sidebar.selectbox(
-        "Filter by Condition",
-        ["All"] + conditions,
-    )
-
-    if condition == "All":
-        filtered_train = (
-            train_df.copy()
-        )
-
-        filtered_test = (
-            test_df.copy()
-        )
-
-    else:
-        filtered_train = train_df[
-            train_df[
-                "condition"
-            ]
-            == condition
-        ].copy()
-
-        filtered_test = test_df[
-            test_df[
-                "condition"
-            ]
-            == condition
-        ].copy()
-
-    metric1, metric2, metric3 = (
-        st.columns(3)
-    )
-
-    metric1.metric(
-        "Training Reviews",
-        f"{len(filtered_train):,}",
-    )
-
-    metric2.metric(
-        "Test Reviews",
-        f"{len(filtered_test):,}",
-    )
-
-    if not filtered_train.empty:
-        top_drug_series = (
-            filtered_train[
-                "drugName"
-            ]
-            .replace(
-                "",
-                np.nan,
-            )
-            .dropna()
-            .value_counts()
-        )
-
-        if not top_drug_series.empty:
-            top_drug = (
-                top_drug_series
-                .index[0]
-            )
-        else:
-            top_drug = "-"
-
-    else:
-        top_drug = "-"
-
-    metric3.metric(
-        "Top Drug (Train)",
-        top_drug,
-    )
-
-    st.divider()
-
-    st.subheader(
-        "Saved Model Performance"
-    )
-
-    if filtered_test.empty:
-        st.warning(
-            "No test reviews are available "
-            "for the selected condition."
-        )
-
-    else:
-        evaluation_start = (
-            time.perf_counter()
-        )
-
-        try:
-            evaluation = (
-                evaluate_pipeline(
-                    filtered_test,
-                    pipeline,
-                    threshold,
-                )
-            )
-
-        except Exception as error:
-            logging.exception(
-                "Model evaluation failed."
-            )
-
-            st.error(
-                "Model evaluation failed: "
-                f"{error}"
-            )
-
-            st.stop()
-
-        evaluation_time = (
-            time.perf_counter()
-            - evaluation_start
-        )
-
-        result1, result2, result3 = (
-            st.columns(3)
-        )
-
-        result1.metric(
-            "Accuracy",
-            f"{evaluation['accuracy']:.3f}",
-        )
-
-        result2.metric(
-            "F1 Score",
-            f"{evaluation['f1']:.3f}",
-        )
-
-        if (
-            evaluation["roc_auc"]
-            is not None
-        ):
-            result3.metric(
-                "ROC-AUC",
-                f"{evaluation['roc_auc']:.3f}",
-            )
-
-        else:
-            result3.metric(
-                "ROC-AUC",
-                "N/A",
-            )
-
-        st.caption(
-            "Evaluation completed in "
-            f"{evaluation_time:.3f} seconds."
-        )
-
-        st.divider()
-
-        st.subheader(
-            "Confusion Matrix"
-        )
-
-        cm = confusion_matrix(
-            evaluation["y_test"],
-            evaluation["y_pred"],
-            labels=[0, 1],
-        )
-
-        cm_df = pd.DataFrame(
-            cm,
-            index=[
-                "Actual Negative",
-                "Actual Positive",
-            ],
-            columns=[
-                "Predicted Negative",
-                "Predicted Positive",
-            ],
-        )
-
-        st.dataframe(
-            cm_df,
-            width="stretch",
-        )
-
-        with st.expander(
-            "Classification Report"
-        ):
-            report = (
-                classification_report(
-                    evaluation[
-                        "y_test"
-                    ],
-                    evaluation[
-                        "y_pred"
-                    ],
-                    labels=[0, 1],
-                    output_dict=True,
-                    zero_division=0,
-                )
-            )
-
-            report_df = (
-                pd.DataFrame(
-                    report
-                )
-                .transpose()
-            )
-
-            st.dataframe(
-                report_df,
-                width="stretch",
-            )
-
-        st.divider()
-
-        st.subheader(
-            "Dataset Insights"
-        )
-
-        insight1, insight2 = (
-            st.columns(2)
-        )
-
-        with insight1:
-            st.markdown(
-                "#### Sentiment Distribution"
-            )
-
-            sentiment_counts = (
-                filtered_test[
-                    "sentiment"
-                ]
-                .map(
-                    {
-                        0: "Negative",
-                        1: "Positive",
-                    }
-                )
-                .value_counts()
-            )
-
-            st.bar_chart(
-                sentiment_counts
-            )
-
-        with insight2:
-            st.markdown(
-                "#### Top Drugs"
-            )
-
-            top_drugs = (
-                filtered_train[
-                    "drugName"
-                ]
-                .value_counts()
-                .head(10)
-            )
-
-            st.bar_chart(
-                top_drugs
-            )
-
-        st.divider()
-
-        st.subheader(
-            "Prediction Download"
-        )
-
-        prediction_df = (
-            filtered_test.copy()
-        )
-
-        prediction_df[
-            "predicted_sentiment"
-        ] = np.where(
-            evaluation[
-                "y_pred"
-            ]
-            == 1,
-            "Positive",
-            "Negative",
-        )
-
-        if (
-            evaluation["y_proba"]
-            is not None
-        ):
-            prediction_df[
-                "positive_probability"
-            ] = evaluation[
-                "y_proba"
-            ]
-
-        prediction_csv = (
-            prediction_df.to_csv(
-                index=False
-            )
-        )
-
-        st.download_button(
-            "Download Predictions CSV",
-            data=prediction_csv,
-            file_name=(
-                "drug_sentiment_predictions.csv"
-            ),
-            mime="text/csv",
-        )
-
-else:
-    st.info(
-        "Upload both training and test CSV "
-        "files to view dataset analytics."
-    )
-
-
-st.divider()
-
-st.subheader(
-    "Single Review Prediction"
-)
-
-review_text = st.text_area(
-    "Enter a drug review",
-    placeholder=(
-        "Example: This medicine worked "
-        "very well and improved my condition."
-    ),
-    height=120,
-)
-
-if st.button(
-    "Predict Sentiment",
-    type="primary",
+elif os.path.exists(
+    sample_csv_path
 ):
+
     try:
-        prediction_start = (
-            time.perf_counter()
+        demo_mode = True
+
+        sample_df = pd.read_csv(
+            sample_csv_path
         )
 
-        result = (
-            predict_single_review(
-                review_text,
-                pipeline,
-                threshold,
-            )
-        )
+        if len(sample_df) >= 2:
 
-        prediction_time = (
-            time.perf_counter()
-            - prediction_start
-        )
-
-        if (
-            result["sentiment"]
-            == "Positive"
-        ):
-            st.success(
-                "Sentiment: "
-                f"{result['sentiment']}"
+            split_index = int(
+                len(sample_df) * 0.8
             )
 
-        else:
-            st.error(
-                "Sentiment: "
-                f"{result['sentiment']}"
-            )
-
-        if (
-            result["confidence"]
-            is not None
-        ):
-            st.metric(
-                "Confidence",
-                (
-                    f"{result['confidence'] * 100:.2f}%"
+            split_index = max(
+                1,
+                min(
+                    split_index,
+                    len(sample_df) - 1,
                 ),
             )
 
-            probability_df = (
-                pd.DataFrame(
-                    {
-                        "Sentiment": [
-                            "Negative",
-                            "Positive",
-                        ],
-                        "Probability": [
-                            result[
-                                "probabilities"
-                            ][
-                                "negative"
-                            ],
-                            result[
-                                "probabilities"
-                            ][
-                                "positive"
-                            ],
-                        ],
-                    }
-                )
+            df_train = (
+                sample_df.iloc[
+                    :split_index
+                ]
+                .copy()
             )
 
-            st.dataframe(
-                probability_df,
-                width="stretch",
-                hide_index=True,
+            df_test = (
+                sample_df.iloc[
+                    split_index:
+                ]
+                .copy()
             )
 
-        st.caption(
-            "Prediction completed in "
-            f"{prediction_time:.4f} seconds."
-        )
-
-    except (
-        ValueError,
-        TypeError,
-    ) as error:
-        st.warning(
-            str(error)
-        )
-
-    except Exception as error:
+    except Exception as exc:
         logging.exception(
-            "Single-review prediction failed."
+            "Unable to load sample dataset."
         )
 
         st.error(
-            "Prediction failed: "
-            f"{error}"
+            "Unable to load sample dataset: "
+            f"{exc}"
         )
 
 
-with st.sidebar:
-    st.divider()
+# ============================================================
+# DEMO MODE BANNER
+# ============================================================
+
+if demo_mode:
+
+    st.markdown(
+        """
+        <div class="demo-banner">
+            ℹ️ <strong>Demo Mode Active</strong><br>
+            The dashboard is currently using the bundled
+            sample dataset.
+            Upload your own Training and Test CSV files
+            from the sidebar to analyze custom data.
+        </div>
+        """,
+        unsafe_allow_html=True,
+    )
+
+
+# ============================================================
+# TWO-TAB LAYOUT
+# ============================================================
+
+tab1, tab2 = st.tabs(
+    [
+        "📊 Dataset Analytics & Model Leaderboard",
+        "🔬 Live Review Analyzer",
+    ]
+)
+
+
+# ============================================================
+# TAB 1
+# DATASET ANALYTICS & MODEL LEADERBOARD
+# ============================================================
+
+with tab1:
+
+    st.header(
+        "📊 Dataset Analytics & Model Leaderboard"
+    )
+
+    # --------------------------------------------------------
+    # NO DATASET
+    # --------------------------------------------------------
+
+    if (
+        df_train is None
+        or df_test is None
+    ):
+
+        st.info(
+            "📂 No dataset loaded yet."
+        )
+
+        st.markdown(
+            """
+            ### Get Started
+
+            Upload both files from the sidebar:
+
+            - Training Data CSV
+            - Test Data CSV
+
+            You can also use the bundled sample dataset
+            if it is available.
+            """
+        )
+
+        st.markdown("---")
+
+        st.subheader(
+            "🚀 Dashboard Features"
+        )
+
+        col1, col2, col3 = st.columns(3)
+
+        with col1:
+            st.markdown(
+                """
+                ### 📊 Dataset Analytics
+
+                View review counts, drug statistics,
+                sentiment distribution, trends,
+                and model performance.
+                """
+            )
+
+        with col2:
+            st.markdown(
+                """
+                ### 🤖 Model Leaderboard
+
+                Compare sentiment models using
+                Accuracy, ROC-AUC, and F1-score.
+                """
+            )
+
+        with col3:
+            st.markdown(
+                """
+                ### 🔬 Live Review Analyzer
+
+                Enter a review, select a persisted model,
+                and analyze the review.
+                """
+            )
+
+    # --------------------------------------------------------
+    # DATASET AVAILABLE
+    # --------------------------------------------------------
+
+    else:
+
+        required_columns = [
+            "review",
+            "rating",
+        ]
+
+        missing_train = [
+            column
+            for column in required_columns
+            if column not in df_train.columns
+        ]
+
+        missing_test = [
+            column
+            for column in required_columns
+            if column not in df_test.columns
+        ]
+
+        if missing_train:
+
+            st.error(
+                "Training CSV is missing: "
+                + ", ".join(
+                    missing_train
+                )
+            )
+
+        elif missing_test:
+
+            st.error(
+                "Test CSV is missing: "
+                + ", ".join(
+                    missing_test
+                )
+            )
+
+        else:
+
+            # ------------------------------------------------
+            # CONDITION FILTER
+            # ------------------------------------------------
+
+            condition = "All"
+
+            if (
+                "condition" in df_train.columns
+                and "condition" in df_test.columns
+            ):
+
+                conditions = sorted(
+                    set(
+                        df_train[
+                            "condition"
+                        ]
+                        .dropna()
+                        .astype(str)
+                        .unique()
+                    )
+                    |
+                    set(
+                        df_test[
+                            "condition"
+                        ]
+                        .dropna()
+                        .astype(str)
+                        .unique()
+                    )
+                )
+
+                condition = (
+                    st.sidebar.selectbox(
+                        "Filter by Condition",
+                        ["All"] + conditions,
+                    )
+                )
+
+                if condition != "All":
+
+                    df_train = (
+                        df_train[
+                            df_train[
+                                "condition"
+                            ]
+                            .astype(str)
+                            == condition
+                        ]
+                        .copy()
+                    )
+
+                    df_test = (
+                        df_test[
+                            df_test[
+                                "condition"
+                            ]
+                            .astype(str)
+                            == condition
+                        ]
+                        .copy()
+                    )
+
+            # ------------------------------------------------
+            # DATASET METRICS
+            # ------------------------------------------------
+
+            st.subheader(
+                "📌 Dataset Overview"
+            )
+
+            col1, col2, col3, col4 = (
+                st.columns(4)
+            )
+
+            col1.metric(
+                "Training Reviews",
+                f"{len(df_train):,}",
+            )
+
+            col2.metric(
+                "Test Reviews",
+                f"{len(df_test):,}",
+            )
+
+            if (
+                "drugName"
+                in df_train.columns
+            ):
+
+                drug_counts = (
+                    df_train[
+                        "drugName"
+                    ]
+                    .dropna()
+                    .astype(str)
+                    .value_counts()
+                )
+
+                top_drug = (
+                    drug_counts.index[0]
+                    if not drug_counts.empty
+                    else "N/A"
+                )
+
+            else:
+                top_drug = "N/A"
+
+            col3.metric(
+                "Top Drug",
+                top_drug,
+            )
+
+            col4.metric(
+                "Condition",
+                condition,
+            )
+
+            st.markdown("---")
+
+            # ------------------------------------------------
+            # MODEL LEADERBOARD
+            # ------------------------------------------------
+
+            st.subheader(
+                "🤖 Model Performance Leaderboard"
+            )
+
+            st.caption(
+                "Model comparison is optional because "
+                "training multiple models may take "
+                "several minutes on large datasets."
+            )
+
+            run_evaluation = st.button(
+                "▶ Run Model Comparison",
+                key="run_model_comparison",
+            )
+
+            include_hf = st.checkbox(
+                "Include Hugging Face Transformer (slow)",
+                value=False,
+            )
+
+            if not run_evaluation:
+
+                st.info(
+                    "Click 'Run Model Comparison' "
+                    "to train and compare the models."
+                )
+
+            else:
+
+                try:
+
+                    preprocessor = (
+                        TextPreprocessor()
+                    )
+
+                    X_train, X_test = (
+                        preprocessor.fit_transform(
+                            df_train[
+                                "review"
+                            ]
+                            .fillna(""),
+                            df_test[
+                                "review"
+                            ]
+                            .fillna(""),
+                        )
+                    )
+
+                    y_train = (
+                        (
+                            pd.to_numeric(
+                                df_train[
+                                    "rating"
+                                ],
+                                errors="coerce",
+                            )
+                            > 5
+                        )
+                        .astype(int)
+                        .values
+                    )
+
+                    y_test = (
+                        (
+                            pd.to_numeric(
+                                df_test[
+                                    "rating"
+                                ],
+                                errors="coerce",
+                            )
+                            > 5
+                        )
+                        .astype(int)
+                        .values
+                    )
+
+                    model_names = [
+                        "gbt",
+                        "logistic",
+                        "naive_bayes",
+                        "random_forest",
+                        "svm",
+                    ]
+
+                    if include_hf:
+
+                        model_names.append(
+                            "hf_transformer"
+                        )
+
+                    results = []
+                    predictions = {}
+
+                    with st.spinner(
+                        "Evaluating sentiment models..."
+                    ):
+
+                        for name in model_names:
+
+                            try:
+
+                                # ----------------------------
+                                # HUGGING FACE
+                                # ----------------------------
+
+                                if (
+                                    name
+                                    == "hf_transformer"
+                                ):
+
+                                    try:
+                                        from ml_pipeline.hf_sentiment import (
+                                            HFSentimentModel,
+                                        )
+
+                                    except ImportError as error:
+
+                                        st.warning(
+                                            "Hugging Face model "
+                                            "is unavailable: "
+                                            f"{error}"
+                                        )
+
+                                        continue
+
+                                    sentiment_model = (
+                                        HFSentimentModel()
+                                    )
+
+                                    y_pred = (
+                                        sentiment_model.predict(
+                                            df_test[
+                                                "review"
+                                            ]
+                                            .fillna("")
+                                        )
+                                    )
+
+                                    y_proba = None
+
+                                # ----------------------------
+                                # CLASSICAL MODELS
+                                # ----------------------------
+
+                                else:
+
+                                    model = (
+                                        get_model(
+                                            name
+                                        )
+                                    )
+
+                                    sentiment_model = (
+                                        BaseSentimentModel(
+                                            model
+                                        )
+                                    )
+
+                                    sample_weight = None
+
+                                    if name == "gbt":
+
+                                        class_counts = (
+                                            np.bincount(
+                                                y_train
+                                            )
+                                        )
+
+                                        if (
+                                            len(
+                                                class_counts
+                                            )
+                                            == 2
+                                        ):
+
+                                            total = (
+                                                len(
+                                                    y_train
+                                                )
+                                            )
+
+                                            class_weights = {
+                                                0: (
+                                                    total
+                                                    /
+                                                    (
+                                                        2
+                                                        * class_counts[
+                                                            0
+                                                        ]
+                                                    )
+                                                )
+                                                if (
+                                                    class_counts[
+                                                        0
+                                                    ]
+                                                    > 0
+                                                )
+                                                else 1.0,
+
+                                                1: (
+                                                    total
+                                                    /
+                                                    (
+                                                        2
+                                                        * class_counts[
+                                                            1
+                                                        ]
+                                                    )
+                                                )
+                                                if (
+                                                    class_counts[
+                                                        1
+                                                    ]
+                                                    > 0
+                                                )
+                                                else 1.0,
+                                            }
+
+                                            sample_weight = (
+                                                np.array(
+                                                    [
+                                                        class_weights.get(
+                                                            y,
+                                                            1.0,
+                                                        )
+                                                        for y
+                                                        in y_train
+                                                    ]
+                                                )
+                                            )
+
+                                    sentiment_model.train(
+                                        X_train,
+                                        y_train,
+                                        sample_weight=(
+                                            sample_weight
+                                        ),
+                                    )
+
+                                    (
+                                        y_pred,
+                                        y_proba,
+                                    ) = (
+                                        sentiment_model.evaluate(
+                                            X_test,
+                                            y_test,
+                                            threshold=(
+                                                threshold
+                                            ),
+                                        )
+                                    )
+
+                                # ----------------------------
+                                # METRICS
+                                # ----------------------------
+
+                                accuracy = (
+                                    accuracy_score(
+                                        y_test,
+                                        y_pred,
+                                    )
+                                )
+
+                                if (
+                                    y_proba is not None
+                                    and len(
+                                        np.unique(
+                                            y_test
+                                        )
+                                    )
+                                    > 1
+                                ):
+
+                                    roc_auc = (
+                                        roc_auc_score(
+                                            y_test,
+                                            y_proba,
+                                        )
+                                    )
+
+                                else:
+                                    roc_auc = None
+
+                                f1 = f1_score(
+                                    y_test,
+                                    y_pred,
+                                    zero_division=0,
+                                )
+
+                                results.append(
+                                    {
+                                        "Model": name.upper(),
+                                        "Accuracy": accuracy,
+                                        "ROC-AUC": roc_auc,
+                                        "F1-score": f1,
+                                    }
+                                )
+
+                                predictions[
+                                    name
+                                ] = (
+                                    y_pred,
+                                    y_proba,
+                                )
+
+                            except Exception:
+
+                                logging.exception(
+                                    "%s failed",
+                                    name,
+                                )
+
+                                st.warning(
+                                    f"{name.upper()} "
+                                    "could not be evaluated."
+                                )
+
+                    # ----------------------------------------
+                    # RESULTS
+                    # ----------------------------------------
+
+                    if results:
+
+                        results_df = (
+                            pd.DataFrame(
+                                results
+                            )
+                        )
+
+                        display_df = (
+                            results_df.copy()
+                        )
+
+                        display_df[
+                            "Accuracy"
+                        ] = (
+                            display_df[
+                                "Accuracy"
+                            ]
+                            .map(
+                                lambda x:
+                                f"{x:.2%}"
+                            )
+                        )
+
+                        display_df[
+                            "ROC-AUC"
+                        ] = (
+                            display_df[
+                                "ROC-AUC"
+                            ]
+                            .map(
+                                lambda x:
+                                "N/A"
+                                if pd.isna(x)
+                                else f"{x:.3f}"
+                            )
+                        )
+
+                        display_df[
+                            "F1-score"
+                        ] = (
+                            display_df[
+                                "F1-score"
+                            ]
+                            .map(
+                                lambda x:
+                                f"{x:.3f}"
+                            )
+                        )
+
+                        st.dataframe(
+                            display_df,
+                            width="stretch",
+                            hide_index=True,
+                        )
+
+                        best_row = (
+                            results_df
+                            .sort_values(
+                                "F1-score",
+                                ascending=False,
+                            )
+                            .iloc[0]
+                        )
+
+                        st.success(
+                            "🏆 Best Performing Model: "
+                            f"**{best_row['Model']}**"
+                        )
+
+                        # ------------------------------------
+                        # INSIGHTS
+                        # ------------------------------------
+
+                        st.markdown("---")
+
+                        st.subheader(
+                            "📈 Dataset Insights"
+                        )
+
+                        (
+                            insight1,
+                            insight2,
+                        ) = st.columns(2)
+
+                        with insight1:
+
+                            st.markdown(
+                                "**Sentiment Distribution**"
+                            )
+
+                            distribution = (
+                                pd.Series(
+                                    y_test
+                                )
+                                .value_counts()
+                                .sort_index()
+                            )
+
+                            distribution.index = [
+                                (
+                                    "Negative"
+                                    if x == 0
+                                    else "Positive"
+                                )
+                                for x
+                                in distribution.index
+                            ]
+
+                            st.bar_chart(
+                                distribution
+                            )
+
+                        with insight2:
+
+                            st.markdown(
+                                "**Top Drugs by Review Volume**"
+                            )
+
+                            if (
+                                "drugName"
+                                in df_train.columns
+                            ):
+
+                                top_drugs = (
+                                    df_train[
+                                        "drugName"
+                                    ]
+                                    .dropna()
+                                    .astype(str)
+                                    .value_counts()
+                                    .head(10)
+                                )
+
+                                st.dataframe(
+                                    top_drugs.rename(
+                                        "Review Count"
+                                    ),
+                                    width="stretch",
+                                )
+
+                            else:
+
+                                st.info(
+                                    "drugName column "
+                                    "is not available."
+                                )
+
+                        # ------------------------------------
+                        # CONFUSION MATRIX
+                        # ------------------------------------
+
+                        st.markdown("---")
+
+                        best_model_key = (
+                            best_row[
+                                "Model"
+                            ]
+                            .lower()
+                        )
+
+                        best_y_pred = (
+                            predictions[
+                                best_model_key
+                            ][0]
+                        )
+
+                        st.subheader(
+                            "🔲 Confusion Matrix"
+                        )
+
+                        cm = confusion_matrix(
+                            y_test,
+                            best_y_pred,
+                            labels=[
+                                0,
+                                1,
+                            ],
+                        )
+
+                        cm_df = (
+                            pd.DataFrame(
+                                cm,
+                                index=[
+                                    "Actual Negative",
+                                    "Actual Positive",
+                                ],
+                                columns=[
+                                    "Predicted Negative",
+                                    "Predicted Positive",
+                                ],
+                            )
+                        )
+
+                        st.dataframe(
+                            cm_df,
+                            width="stretch",
+                        )
+
+                        # ------------------------------------
+                        # TOP RATED DRUGS
+                        # ------------------------------------
+
+                        if (
+                            "drugName"
+                            in df_test.columns
+                            and "rating"
+                            in df_test.columns
+                        ):
+
+                            st.markdown("---")
+
+                            st.subheader(
+                                "⭐ Top-Rated Drugs"
+                            )
+
+                            rating_data = (
+                                df_test.copy()
+                            )
+
+                            rating_data[
+                                "rating"
+                            ] = (
+                                pd.to_numeric(
+                                    rating_data[
+                                        "rating"
+                                    ],
+                                    errors="coerce",
+                                )
+                            )
+
+                            top_rated = (
+                                rating_data
+                                .dropna(
+                                    subset=[
+                                        "drugName",
+                                        "rating",
+                                    ]
+                                )
+                                .groupby(
+                                    "drugName"
+                                )[
+                                    "rating"
+                                ]
+                                .mean()
+                                .sort_values(
+                                    ascending=False
+                                )
+                                .head(10)
+                            )
+
+                            st.bar_chart(
+                                top_rated
+                            )
+
+                    else:
+
+                        st.warning(
+                            "No models were "
+                            "successfully evaluated."
+                        )
+
+                except Exception as exc:
+
+                    logging.exception(
+                        "Unable to evaluate models."
+                    )
+
+                    st.error(
+                        "Unable to evaluate models: "
+                        f"{exc}"
+                    )
+
+
+# ============================================================
+# TAB 2
+# LIVE REVIEW ANALYZER
+# ============================================================
+
+with tab2:
+
+    st.header(
+        "🔬 Live Review Analyzer"
+    )
 
     st.caption(
-        "Cached model access: "
-        f"{load_time:.4f} sec"
+        "Enter a drug review and select a persisted "
+        "sentiment model for interactive analysis."
     )
+
+    st.markdown("---")
+
+    # --------------------------------------------------------
+    # REVIEW INPUT
+    # --------------------------------------------------------
+
+    review_text = st.text_area(
+        "📝 Enter Drug Review",
+        placeholder=(
+            "Example: This medicine worked very well for me "
+            "and I experienced significant improvement."
+        ),
+        height=180,
+        help=(
+            "Enter the drug review "
+            "you want to analyze."
+        ),
+    )
+
+    # --------------------------------------------------------
+    # MODEL SELECTION
+    # --------------------------------------------------------
+
+    selected_model = st.selectbox(
+        "🤖 Select Sentiment Model",
+        list(
+            MODEL_PATHS.keys()
+        ),
+        help=(
+            "Select a persisted classical "
+            "sentiment model."
+        ),
+    )
+
+    # --------------------------------------------------------
+    # MODEL AVAILABILITY
+    # --------------------------------------------------------
+
+    if (
+        selected_model
+        in loaded_pipelines
+    ):
+
+        st.caption(
+            f"✅ {selected_model} persisted pipeline is ready."
+        )
+
+    else:
+
+        st.warning(
+            f"{selected_model} has not been persisted yet. "
+            "Train and save it before using live inference."
+        )
+
+    # --------------------------------------------------------
+    # ANALYZE BUTTON
+    # --------------------------------------------------------
+
+    analyze_clicked = st.button(
+        "🔍 Analyze Sentiment",
+        type="primary",
+        width="stretch",
+    )
+
+    # --------------------------------------------------------
+    # LIVE ANALYSIS
+    # --------------------------------------------------------
+
+    if analyze_clicked:
+
+        if not review_text.strip():
+
+            st.warning(
+                "⚠️ Please enter a review "
+                "before analyzing."
+            )
+
+        elif (
+            selected_model
+            not in loaded_pipelines
+        ):
+
+            model_key_map = {
+                "Logistic Regression": "logistic",
+                "Random Forest": "random_forest",
+                "SVM": "svm",
+                "Naive Bayes": "naive_bayes",
+                "Gradient Boosting": "gbt",
+            }
+
+            model_key = (
+                model_key_map[
+                    selected_model
+                ]
+            )
+
+            st.error(
+                f"{selected_model} persisted "
+                "pipeline is not available."
+            )
+
+            st.code(
+                "python scripts\\train_and_save.py "
+                f"--model {model_key}"
+            )
+
+        else:
+
+            try:
+
+                selected_pipeline = (
+                    loaded_pipelines[
+                        selected_model
+                    ]
+                )
+
+                prediction_start = (
+                    time.perf_counter()
+                )
+
+                result = (
+                    predict_single_review(
+                        review_text,
+                        selected_pipeline,
+                        threshold,
+                    )
+                )
+
+                prediction_time = (
+                    time.perf_counter()
+                    - prediction_start
+                )
+
+                st.markdown(
+                    "### 📊 Analysis Result"
+                )
+
+                (
+                    result1,
+                    result2,
+                    result3,
+                ) = st.columns(3)
+
+                # --------------------------------------------
+                # SENTIMENT
+                # --------------------------------------------
+
+                with result1:
+
+                    if (
+                        result[
+                            "sentiment"
+                        ]
+                        == "Positive"
+                    ):
+
+                        st.success(
+                            "😊 Sentiment\n\n"
+                            f"### "
+                            f"{result['sentiment']}"
+                        )
+
+                    else:
+
+                        st.error(
+                            "😞 Sentiment\n\n"
+                            f"### "
+                            f"{result['sentiment']}"
+                        )
+
+                # --------------------------------------------
+                # CONFIDENCE
+                # --------------------------------------------
+
+                with result2:
+
+                    confidence = (
+                        result.get(
+                            "confidence"
+                        )
+                    )
+
+                    if (
+                        confidence
+                        is not None
+                    ):
+
+                        st.metric(
+                            "🎯 Confidence",
+                            (
+                                f"{confidence * 100:.2f}%"
+                            ),
+                        )
+
+                    else:
+
+                        st.metric(
+                            "🎯 Confidence",
+                            "N/A",
+                        )
+
+                # --------------------------------------------
+                # SELECTED MODEL
+                # --------------------------------------------
+
+                with result3:
+
+                    st.metric(
+                        "🤖 Selected Model",
+                        selected_model,
+                    )
+
+                # --------------------------------------------
+                # PROBABILITIES
+                # --------------------------------------------
+
+                probabilities = (
+                    result.get(
+                        "probabilities"
+                    )
+                )
+
+                if probabilities:
+
+                    st.markdown(
+                        "### 📊 Class Probabilities"
+                    )
+
+                    probability_df = (
+                        pd.DataFrame(
+                            {
+                                "Sentiment": [
+                                    "Negative",
+                                    "Positive",
+                                ],
+                                "Probability": [
+                                    probabilities[
+                                        "negative"
+                                    ],
+                                    probabilities[
+                                        "positive"
+                                    ],
+                                ],
+                            }
+                        )
+                    )
+
+                    (
+                        probability_col1,
+                        probability_col2,
+                    ) = st.columns(2)
+
+                    with probability_col1:
+
+                        st.dataframe(
+                            probability_df,
+                            width="stretch",
+                            hide_index=True,
+                        )
+
+                    with probability_col2:
+
+                        st.bar_chart(
+                            probability_df
+                            .set_index(
+                                "Sentiment"
+                            )[
+                                "Probability"
+                            ]
+                        )
+
+                else:
+
+                    st.info(
+                        "This model does not provide "
+                        "class probabilities. "
+                        "The predicted class is shown above."
+                    )
+
+                st.caption(
+                    "Prediction completed in "
+                    f"{prediction_time:.4f} seconds."
+                )
+
+            except (
+                ValueError,
+                TypeError,
+            ) as error:
+
+                st.warning(
+                    str(error)
+                )
+
+            except Exception as error:
+
+                logging.exception(
+                    "Single-review "
+                    "prediction failed."
+                )
+
+                st.error(
+                    "Prediction failed: "
+                    f"{error}"
+                )
+
+    else:
+
+        # ----------------------------------------------------
+        # INITIAL CARDS
+        # ----------------------------------------------------
+
+        st.markdown(
+            "### 📋 Analysis Preview"
+        )
+
+        (
+            preview1,
+            preview2,
+            preview3,
+        ) = st.columns(3)
+
+        with preview1:
+
+            st.markdown(
+                """
+                <div class="analyzer-card">
+                    <div class="card-title">
+                        😊 Sentiment
+                    </div>
+                    <div class="card-text">
+                        Sentiment result
+                    </div>
+                </div>
+                """,
+                unsafe_allow_html=True,
+            )
+
+        with preview2:
+
+            st.markdown(
+                """
+                <div class="analyzer-card">
+                    <div class="card-title">
+                        🎯 Confidence
+                    </div>
+                    <div class="card-text">
+                        Confidence score
+                    </div>
+                </div>
+                """,
+                unsafe_allow_html=True,
+            )
+
+        with preview3:
+
+            st.markdown(
+                """
+                <div class="analyzer-card">
+                    <div class="card-title">
+                        📊 Class Probabilities
+                    </div>
+                    <div class="card-text">
+                        Prediction probabilities
+                    </div>
+                </div>
+                """,
+                unsafe_allow_html=True,
+            )
+import logging
+import os
+import time
+
+import numpy as np
+import pandas as pd
+import streamlit as st
+
+from sklearn.metrics import (
+    accuracy_score,
+    confusion_matrix,
+    f1_score,
+    roc_auc_score,
+)
+
+from ml_pipeline.base import TextPreprocessor
+from ml_pipeline.models import (
+    BaseSentimentModel,
+    load_pipeline,
+    predict_single_review,
+)
+from ml_pipeline.utils import (
+    get_model,
+    setup_logging,
+)
+
+
+# ============================================================
+# CONFIGURATION
+# ============================================================
+
+setup_logging("streamlit_app.log")
+
+st.set_page_config(
+    page_title="Drug Review Sentiment & Effectiveness Analytics",
+    page_icon="💊",
+    layout="wide",
+)
+
+
+# ============================================================
+# PERSISTED MODEL PATHS
+# ============================================================
+
+MODEL_PATHS = {
+    "Logistic Regression": "models/logistic_pipeline.joblib",
+    "Random Forest": "models/random_forest_pipeline.joblib",
+    "SVM": "models/svm_pipeline.joblib",
+    "Naive Bayes": "models/naive_bayes_pipeline.joblib",
+    "Gradient Boosting": "models/gbt_pipeline.joblib",
+}
+
+
+# ============================================================
+# PERSISTED MODEL LOADING
+# ============================================================
+
+@st.cache_resource(show_spinner=False)
+def load_cached_pipeline(path):
+    return load_pipeline(path)
+
+
+loaded_pipelines = {}
+model_load_times = {}
+
+for model_name, model_path in MODEL_PATHS.items():
+
+    if os.path.exists(model_path):
+
+        try:
+            load_start = time.perf_counter()
+
+            loaded_pipelines[model_name] = (
+                load_cached_pipeline(
+                    model_path
+                )
+            )
+
+            model_load_times[model_name] = (
+                time.perf_counter()
+                - load_start
+            )
+
+            logging.info(
+                "Persisted %s pipeline loaded/accessed "
+                "in %.4f seconds",
+                model_name,
+                model_load_times[model_name],
+            )
+
+        except Exception:
+            logging.exception(
+                "Failed to load persisted pipeline "
+                "for %s",
+                model_name,
+            )
+
+    else:
+        logging.warning(
+            "Persisted pipeline not found for %s: %s",
+            model_name,
+            model_path,
+        )
+
+
+# ============================================================
+# CUSTOM CSS
+# ============================================================
+
+st.markdown(
+    """
+    <style>
+
+    .main-title {
+        font-size: 2.2rem;
+        font-weight: 700;
+        margin-bottom: 4px;
+    }
+
+    .subtitle {
+        color: #6b7280;
+        font-size: 1rem;
+        margin-bottom: 20px;
+    }
+
+    .demo-banner {
+        padding: 15px 18px;
+        border-radius: 10px;
+        background-color: #eff6ff;
+        border: 1px solid #93c5fd;
+        margin-bottom: 20px;
+    }
+
+    .analyzer-card {
+        padding: 20px;
+        border-radius: 12px;
+        border: 1px solid #e5e7eb;
+        background-color: #f8fafc;
+        min-height: 120px;
+    }
+
+    .card-title {
+        font-size: 1.1rem;
+        font-weight: 600;
+    }
+
+    .card-text {
+        color: #6b7280;
+        margin-top: 8px;
+    }
+
+    </style>
+    """,
+    unsafe_allow_html=True,
+)
+
+
+# ============================================================
+# PAGE HEADER
+# ============================================================
+
+st.markdown(
+    '<div class="main-title">'
+    '💊 Drug Review Sentiment & Effectiveness Analytics'
+    '</div>',
+    unsafe_allow_html=True,
+)
+
+st.markdown(
+    """
+    <div class="subtitle">
+        Analyze drug reviews, compare sentiment models,
+        and explore review-based insights.
+    </div>
+    """,
+    unsafe_allow_html=True,
+)
+
+
+# ============================================================
+# SIDEBAR
+# ============================================================
+
+with st.sidebar:
+
+    st.header(
+        "⚙️ Dashboard Settings"
+    )
+
+    st.subheader(
+        "Upload Data"
+    )
+
+    train_file = st.file_uploader(
+        "Training Data CSV",
+        type=["csv"],
+        help="Upload the training dataset.",
+    )
+
+    test_file = st.file_uploader(
+        "Test Data CSV",
+        type=["csv"],
+        help="Upload the test dataset.",
+    )
+
+    st.markdown("---")
+
+    threshold = st.slider(
+        "Decision Threshold",
+        min_value=0.0,
+        max_value=1.0,
+        value=0.5,
+        step=0.01,
+        help=(
+            "Threshold used for binary "
+            "sentiment prediction."
+        ),
+    )
+
+    st.markdown("---")
+
+    st.subheader(
+        "💾 Persisted Models"
+    )
+
+    for model_name in MODEL_PATHS:
+
+        if model_name in loaded_pipelines:
+
+            st.success(
+                f"{model_name} loaded"
+            )
+
+            st.caption(
+                "Cached access: "
+                f"{model_load_times[model_name]:.4f} sec"
+            )
+
+        else:
+
+            st.warning(
+                f"{model_name} not available"
+            )
+
+
+# ============================================================
+# DATASET LOADING
+# ============================================================
+
+sample_csv_path = os.path.join(
+    "data",
+    "sample",
+    "sample_drug_reviews.csv",
+)
+
+df_train = None
+df_test = None
+demo_mode = False
+
+
+# ------------------------------------------------------------
+# CUSTOM DATASET
+# ------------------------------------------------------------
+
+if (
+    train_file is not None
+    and test_file is not None
+):
+
+    try:
+        df_train = pd.read_csv(
+            train_file
+        )
+
+        df_test = pd.read_csv(
+            test_file
+        )
+
+    except Exception as exc:
+        logging.exception(
+            "Unable to read uploaded datasets."
+        )
+
+        st.error(
+            "Unable to read uploaded CSV files: "
+            f"{exc}"
+        )
+
+
+# ------------------------------------------------------------
+# DEMO MODE
+# ------------------------------------------------------------
+
+elif os.path.exists(
+    sample_csv_path
+):
+
+    try:
+        demo_mode = True
+
+        sample_df = pd.read_csv(
+            sample_csv_path
+        )
+
+        if len(sample_df) >= 2:
+
+            split_index = int(
+                len(sample_df) * 0.8
+            )
+
+            split_index = max(
+                1,
+                min(
+                    split_index,
+                    len(sample_df) - 1,
+                ),
+            )
+
+            df_train = (
+                sample_df.iloc[
+                    :split_index
+                ]
+                .copy()
+            )
+
+            df_test = (
+                sample_df.iloc[
+                    split_index:
+                ]
+                .copy()
+            )
+
+    except Exception as exc:
+        logging.exception(
+            "Unable to load sample dataset."
+        )
+
+        st.error(
+            "Unable to load sample dataset: "
+            f"{exc}"
+        )
+
+
+# ============================================================
+# DEMO MODE BANNER
+# ============================================================
+
+if demo_mode:
+
+    st.markdown(
+        """
+        <div class="demo-banner">
+            ℹ️ <strong>Demo Mode Active</strong><br>
+            The dashboard is currently using the bundled
+            sample dataset.
+            Upload your own Training and Test CSV files
+            from the sidebar to analyze custom data.
+        </div>
+        """,
+        unsafe_allow_html=True,
+    )
+
+
+# ============================================================
+# TWO-TAB LAYOUT
+# ============================================================
+
+tab1, tab2 = st.tabs(
+    [
+        "📊 Dataset Analytics & Model Leaderboard",
+        "🔬 Live Review Analyzer",
+    ]
+)
+
+
+# ============================================================
+# TAB 1
+# DATASET ANALYTICS & MODEL LEADERBOARD
+# ============================================================
+
+with tab1:
+
+    st.header(
+        "📊 Dataset Analytics & Model Leaderboard"
+    )
+
+    # --------------------------------------------------------
+    # NO DATASET
+    # --------------------------------------------------------
+
+    if (
+        df_train is None
+        or df_test is None
+    ):
+
+        st.info(
+            "📂 No dataset loaded yet."
+        )
+
+        st.markdown(
+            """
+            ### Get Started
+
+            Upload both files from the sidebar:
+
+            - Training Data CSV
+            - Test Data CSV
+
+            You can also use the bundled sample dataset
+            if it is available.
+            """
+        )
+
+        st.markdown("---")
+
+        st.subheader(
+            "🚀 Dashboard Features"
+        )
+
+        col1, col2, col3 = st.columns(3)
+
+        with col1:
+            st.markdown(
+                """
+                ### 📊 Dataset Analytics
+
+                View review counts, drug statistics,
+                sentiment distribution, trends,
+                and model performance.
+                """
+            )
+
+        with col2:
+            st.markdown(
+                """
+                ### 🤖 Model Leaderboard
+
+                Compare sentiment models using
+                Accuracy, ROC-AUC, and F1-score.
+                """
+            )
+
+        with col3:
+            st.markdown(
+                """
+                ### 🔬 Live Review Analyzer
+
+                Enter a review, select a persisted model,
+                and analyze the review.
+                """
+            )
+
+    # --------------------------------------------------------
+    # DATASET AVAILABLE
+    # --------------------------------------------------------
+
+    else:
+
+        required_columns = [
+            "review",
+            "rating",
+        ]
+
+        missing_train = [
+            column
+            for column in required_columns
+            if column not in df_train.columns
+        ]
+
+        missing_test = [
+            column
+            for column in required_columns
+            if column not in df_test.columns
+        ]
+
+        if missing_train:
+
+            st.error(
+                "Training CSV is missing: "
+                + ", ".join(
+                    missing_train
+                )
+            )
+
+        elif missing_test:
+
+            st.error(
+                "Test CSV is missing: "
+                + ", ".join(
+                    missing_test
+                )
+            )
+
+        else:
+
+            # ------------------------------------------------
+            # CONDITION FILTER
+            # ------------------------------------------------
+
+            condition = "All"
+
+            if (
+                "condition" in df_train.columns
+                and "condition" in df_test.columns
+            ):
+
+                conditions = sorted(
+                    set(
+                        df_train[
+                            "condition"
+                        ]
+                        .dropna()
+                        .astype(str)
+                        .unique()
+                    )
+                    |
+                    set(
+                        df_test[
+                            "condition"
+                        ]
+                        .dropna()
+                        .astype(str)
+                        .unique()
+                    )
+                )
+
+                condition = (
+                    st.sidebar.selectbox(
+                        "Filter by Condition",
+                        ["All"] + conditions,
+                    )
+                )
+
+                if condition != "All":
+
+                    df_train = (
+                        df_train[
+                            df_train[
+                                "condition"
+                            ]
+                            .astype(str)
+                            == condition
+                        ]
+                        .copy()
+                    )
+
+                    df_test = (
+                        df_test[
+                            df_test[
+                                "condition"
+                            ]
+                            .astype(str)
+                            == condition
+                        ]
+                        .copy()
+                    )
+
+            # ------------------------------------------------
+            # DATASET METRICS
+            # ------------------------------------------------
+
+            st.subheader(
+                "📌 Dataset Overview"
+            )
+
+            col1, col2, col3, col4 = (
+                st.columns(4)
+            )
+
+            col1.metric(
+                "Training Reviews",
+                f"{len(df_train):,}",
+            )
+
+            col2.metric(
+                "Test Reviews",
+                f"{len(df_test):,}",
+            )
+
+            if (
+                "drugName"
+                in df_train.columns
+            ):
+
+                drug_counts = (
+                    df_train[
+                        "drugName"
+                    ]
+                    .dropna()
+                    .astype(str)
+                    .value_counts()
+                )
+
+                top_drug = (
+                    drug_counts.index[0]
+                    if not drug_counts.empty
+                    else "N/A"
+                )
+
+            else:
+                top_drug = "N/A"
+
+            col3.metric(
+                "Top Drug",
+                top_drug,
+            )
+
+            col4.metric(
+                "Condition",
+                condition,
+            )
+
+            st.markdown("---")
+
+            # ------------------------------------------------
+            # MODEL LEADERBOARD
+            # ------------------------------------------------
+
+            st.subheader(
+                "🤖 Model Performance Leaderboard"
+            )
+
+            st.caption(
+                "Model comparison is optional because "
+                "training multiple models may take "
+                "several minutes on large datasets."
+            )
+
+            run_evaluation = st.button(
+                "▶ Run Model Comparison",
+                key="run_model_comparison",
+            )
+
+            include_hf = st.checkbox(
+                "Include Hugging Face Transformer (slow)",
+                value=False,
+            )
+
+            if not run_evaluation:
+
+                st.info(
+                    "Click 'Run Model Comparison' "
+                    "to train and compare the models."
+                )
+
+            else:
+
+                try:
+
+                    preprocessor = (
+                        TextPreprocessor()
+                    )
+
+                    X_train, X_test = (
+                        preprocessor.fit_transform(
+                            df_train[
+                                "review"
+                            ]
+                            .fillna(""),
+                            df_test[
+                                "review"
+                            ]
+                            .fillna(""),
+                        )
+                    )
+
+                    y_train = (
+                        (
+                            pd.to_numeric(
+                                df_train[
+                                    "rating"
+                                ],
+                                errors="coerce",
+                            )
+                            > 5
+                        )
+                        .astype(int)
+                        .values
+                    )
+
+                    y_test = (
+                        (
+                            pd.to_numeric(
+                                df_test[
+                                    "rating"
+                                ],
+                                errors="coerce",
+                            )
+                            > 5
+                        )
+                        .astype(int)
+                        .values
+                    )
+
+                    model_names = [
+                        "gbt",
+                        "logistic",
+                        "naive_bayes",
+                        "random_forest",
+                        "svm",
+                    ]
+
+                    if include_hf:
+
+                        model_names.append(
+                            "hf_transformer"
+                        )
+
+                    results = []
+                    predictions = {}
+
+                    with st.spinner(
+                        "Evaluating sentiment models..."
+                    ):
+
+                        for name in model_names:
+
+                            try:
+
+                                # ----------------------------
+                                # HUGGING FACE
+                                # ----------------------------
+
+                                if (
+                                    name
+                                    == "hf_transformer"
+                                ):
+
+                                    try:
+                                        from ml_pipeline.hf_sentiment import (
+                                            HFSentimentModel,
+                                        )
+
+                                    except ImportError as error:
+
+                                        st.warning(
+                                            "Hugging Face model "
+                                            "is unavailable: "
+                                            f"{error}"
+                                        )
+
+                                        continue
+
+                                    sentiment_model = (
+                                        HFSentimentModel()
+                                    )
+
+                                    y_pred = (
+                                        sentiment_model.predict(
+                                            df_test[
+                                                "review"
+                                            ]
+                                            .fillna("")
+                                        )
+                                    )
+
+                                    y_proba = None
+
+                                # ----------------------------
+                                # CLASSICAL MODELS
+                                # ----------------------------
+
+                                else:
+
+                                    model = (
+                                        get_model(
+                                            name
+                                        )
+                                    )
+
+                                    sentiment_model = (
+                                        BaseSentimentModel(
+                                            model
+                                        )
+                                    )
+
+                                    sample_weight = None
+
+                                    if name == "gbt":
+
+                                        class_counts = (
+                                            np.bincount(
+                                                y_train
+                                            )
+                                        )
+
+                                        if (
+                                            len(
+                                                class_counts
+                                            )
+                                            == 2
+                                        ):
+
+                                            total = (
+                                                len(
+                                                    y_train
+                                                )
+                                            )
+
+                                            class_weights = {
+                                                0: (
+                                                    total
+                                                    /
+                                                    (
+                                                        2
+                                                        * class_counts[
+                                                            0
+                                                        ]
+                                                    )
+                                                )
+                                                if (
+                                                    class_counts[
+                                                        0
+                                                    ]
+                                                    > 0
+                                                )
+                                                else 1.0,
+
+                                                1: (
+                                                    total
+                                                    /
+                                                    (
+                                                        2
+                                                        * class_counts[
+                                                            1
+                                                        ]
+                                                    )
+                                                )
+                                                if (
+                                                    class_counts[
+                                                        1
+                                                    ]
+                                                    > 0
+                                                )
+                                                else 1.0,
+                                            }
+
+                                            sample_weight = (
+                                                np.array(
+                                                    [
+                                                        class_weights.get(
+                                                            y,
+                                                            1.0,
+                                                        )
+                                                        for y
+                                                        in y_train
+                                                    ]
+                                                )
+                                            )
+
+                                    sentiment_model.train(
+                                        X_train,
+                                        y_train,
+                                        sample_weight=(
+                                            sample_weight
+                                        ),
+                                    )
+
+                                    (
+                                        y_pred,
+                                        y_proba,
+                                    ) = (
+                                        sentiment_model.evaluate(
+                                            X_test,
+                                            y_test,
+                                            threshold=(
+                                                threshold
+                                            ),
+                                        )
+                                    )
+
+                                # ----------------------------
+                                # METRICS
+                                # ----------------------------
+
+                                accuracy = (
+                                    accuracy_score(
+                                        y_test,
+                                        y_pred,
+                                    )
+                                )
+
+                                if (
+                                    y_proba is not None
+                                    and len(
+                                        np.unique(
+                                            y_test
+                                        )
+                                    )
+                                    > 1
+                                ):
+
+                                    roc_auc = (
+                                        roc_auc_score(
+                                            y_test,
+                                            y_proba,
+                                        )
+                                    )
+
+                                else:
+                                    roc_auc = None
+
+                                f1 = f1_score(
+                                    y_test,
+                                    y_pred,
+                                    zero_division=0,
+                                )
+
+                                results.append(
+                                    {
+                                        "Model": name.upper(),
+                                        "Accuracy": accuracy,
+                                        "ROC-AUC": roc_auc,
+                                        "F1-score": f1,
+                                    }
+                                )
+
+                                predictions[
+                                    name
+                                ] = (
+                                    y_pred,
+                                    y_proba,
+                                )
+
+                            except Exception:
+
+                                logging.exception(
+                                    "%s failed",
+                                    name,
+                                )
+
+                                st.warning(
+                                    f"{name.upper()} "
+                                    "could not be evaluated."
+                                )
+
+                    # ----------------------------------------
+                    # RESULTS
+                    # ----------------------------------------
+
+                    if results:
+
+                        results_df = (
+                            pd.DataFrame(
+                                results
+                            )
+                        )
+
+                        display_df = (
+                            results_df.copy()
+                        )
+
+                        display_df[
+                            "Accuracy"
+                        ] = (
+                            display_df[
+                                "Accuracy"
+                            ]
+                            .map(
+                                lambda x:
+                                f"{x:.2%}"
+                            )
+                        )
+
+                        display_df[
+                            "ROC-AUC"
+                        ] = (
+                            display_df[
+                                "ROC-AUC"
+                            ]
+                            .map(
+                                lambda x:
+                                "N/A"
+                                if pd.isna(x)
+                                else f"{x:.3f}"
+                            )
+                        )
+
+                        display_df[
+                            "F1-score"
+                        ] = (
+                            display_df[
+                                "F1-score"
+                            ]
+                            .map(
+                                lambda x:
+                                f"{x:.3f}"
+                            )
+                        )
+
+                        st.dataframe(
+                            display_df,
+                            width="stretch",
+                            hide_index=True,
+                        )
+
+                        best_row = (
+                            results_df
+                            .sort_values(
+                                "F1-score",
+                                ascending=False,
+                            )
+                            .iloc[0]
+                        )
+
+                        st.success(
+                            "🏆 Best Performing Model: "
+                            f"**{best_row['Model']}**"
+                        )
+
+                        # ------------------------------------
+                        # INSIGHTS
+                        # ------------------------------------
+
+                        st.markdown("---")
+
+                        st.subheader(
+                            "📈 Dataset Insights"
+                        )
+
+                        (
+                            insight1,
+                            insight2,
+                        ) = st.columns(2)
+
+                        with insight1:
+
+                            st.markdown(
+                                "**Sentiment Distribution**"
+                            )
+
+                            distribution = (
+                                pd.Series(
+                                    y_test
+                                )
+                                .value_counts()
+                                .sort_index()
+                            )
+
+                            distribution.index = [
+                                (
+                                    "Negative"
+                                    if x == 0
+                                    else "Positive"
+                                )
+                                for x
+                                in distribution.index
+                            ]
+
+                            st.bar_chart(
+                                distribution
+                            )
+
+                        with insight2:
+
+                            st.markdown(
+                                "**Top Drugs by Review Volume**"
+                            )
+
+                            if (
+                                "drugName"
+                                in df_train.columns
+                            ):
+
+                                top_drugs = (
+                                    df_train[
+                                        "drugName"
+                                    ]
+                                    .dropna()
+                                    .astype(str)
+                                    .value_counts()
+                                    .head(10)
+                                )
+
+                                st.dataframe(
+                                    top_drugs.rename(
+                                        "Review Count"
+                                    ),
+                                    width="stretch",
+                                )
+
+                            else:
+
+                                st.info(
+                                    "drugName column "
+                                    "is not available."
+                                )
+
+                        # ------------------------------------
+                        # CONFUSION MATRIX
+                        # ------------------------------------
+
+                        st.markdown("---")
+
+                        best_model_key = (
+                            best_row[
+                                "Model"
+                            ]
+                            .lower()
+                        )
+
+                        best_y_pred = (
+                            predictions[
+                                best_model_key
+                            ][0]
+                        )
+
+                        st.subheader(
+                            "🔲 Confusion Matrix"
+                        )
+
+                        cm = confusion_matrix(
+                            y_test,
+                            best_y_pred,
+                            labels=[
+                                0,
+                                1,
+                            ],
+                        )
+
+                        cm_df = (
+                            pd.DataFrame(
+                                cm,
+                                index=[
+                                    "Actual Negative",
+                                    "Actual Positive",
+                                ],
+                                columns=[
+                                    "Predicted Negative",
+                                    "Predicted Positive",
+                                ],
+                            )
+                        )
+
+                        st.dataframe(
+                            cm_df,
+                            width="stretch",
+                        )
+
+                        # ------------------------------------
+                        # TOP RATED DRUGS
+                        # ------------------------------------
+
+                        if (
+                            "drugName"
+                            in df_test.columns
+                            and "rating"
+                            in df_test.columns
+                        ):
+
+                            st.markdown("---")
+
+                            st.subheader(
+                                "⭐ Top-Rated Drugs"
+                            )
+
+                            rating_data = (
+                                df_test.copy()
+                            )
+
+                            rating_data[
+                                "rating"
+                            ] = (
+                                pd.to_numeric(
+                                    rating_data[
+                                        "rating"
+                                    ],
+                                    errors="coerce",
+                                )
+                            )
+
+                            top_rated = (
+                                rating_data
+                                .dropna(
+                                    subset=[
+                                        "drugName",
+                                        "rating",
+                                    ]
+                                )
+                                .groupby(
+                                    "drugName"
+                                )[
+                                    "rating"
+                                ]
+                                .mean()
+                                .sort_values(
+                                    ascending=False
+                                )
+                                .head(10)
+                            )
+
+                            st.bar_chart(
+                                top_rated
+                            )
+
+                    else:
+
+                        st.warning(
+                            "No models were "
+                            "successfully evaluated."
+                        )
+
+                except Exception as exc:
+
+                    logging.exception(
+                        "Unable to evaluate models."
+                    )
+
+                    st.error(
+                        "Unable to evaluate models: "
+                        f"{exc}"
+                    )
+
+
+# ============================================================
+# TAB 2
+# LIVE REVIEW ANALYZER
+# ============================================================
+
+with tab2:
+
+    st.header(
+        "🔬 Live Review Analyzer"
+    )
+
+    st.caption(
+        "Enter a drug review and select a persisted "
+        "sentiment model for interactive analysis."
+    )
+
+    st.markdown("---")
+
+    # --------------------------------------------------------
+    # REVIEW INPUT
+    # --------------------------------------------------------
+
+    review_text = st.text_area(
+        "📝 Enter Drug Review",
+        placeholder=(
+            "Example: This medicine worked very well for me "
+            "and I experienced significant improvement."
+        ),
+        height=180,
+        help=(
+            "Enter the drug review "
+            "you want to analyze."
+        ),
+    )
+
+    # --------------------------------------------------------
+    # MODEL SELECTION
+    # --------------------------------------------------------
+
+    selected_model = st.selectbox(
+        "🤖 Select Sentiment Model",
+        list(
+            MODEL_PATHS.keys()
+        ),
+        help=(
+            "Select a persisted classical "
+            "sentiment model."
+        ),
+    )
+
+    # --------------------------------------------------------
+    # MODEL AVAILABILITY
+    # --------------------------------------------------------
+
+    if (
+        selected_model
+        in loaded_pipelines
+    ):
+
+        st.caption(
+            f"✅ {selected_model} persisted pipeline is ready."
+        )
+
+    else:
+
+        st.warning(
+            f"{selected_model} has not been persisted yet. "
+            "Train and save it before using live inference."
+        )
+
+    # --------------------------------------------------------
+    # ANALYZE BUTTON
+    # --------------------------------------------------------
+
+    analyze_clicked = st.button(
+        "🔍 Analyze Sentiment",
+        type="primary",
+        width="stretch",
+    )
+
+    # --------------------------------------------------------
+    # LIVE ANALYSIS
+    # --------------------------------------------------------
+
+    if analyze_clicked:
+
+        if not review_text.strip():
+
+            st.warning(
+                "⚠️ Please enter a review "
+                "before analyzing."
+            )
+
+        elif (
+            selected_model
+            not in loaded_pipelines
+        ):
+
+            model_key_map = {
+                "Logistic Regression": "logistic",
+                "Random Forest": "random_forest",
+                "SVM": "svm",
+                "Naive Bayes": "naive_bayes",
+                "Gradient Boosting": "gbt",
+            }
+
+            model_key = (
+                model_key_map[
+                    selected_model
+                ]
+            )
+
+            st.error(
+                f"{selected_model} persisted "
+                "pipeline is not available."
+            )
+
+            st.code(
+                "python scripts\\train_and_save.py "
+                f"--model {model_key}"
+            )
+
+        else:
+
+            try:
+
+                selected_pipeline = (
+                    loaded_pipelines[
+                        selected_model
+                    ]
+                )
+
+                prediction_start = (
+                    time.perf_counter()
+                )
+
+                result = (
+                    predict_single_review(
+                        review_text,
+                        selected_pipeline,
+                        threshold,
+                    )
+                )
+
+                prediction_time = (
+                    time.perf_counter()
+                    - prediction_start
+                )
+
+                st.markdown(
+                    "### 📊 Analysis Result"
+                )
+
+                (
+                    result1,
+                    result2,
+                    result3,
+                ) = st.columns(3)
+
+                # --------------------------------------------
+                # SENTIMENT
+                # --------------------------------------------
+
+                with result1:
+
+                    if (
+                        result[
+                            "sentiment"
+                        ]
+                        == "Positive"
+                    ):
+
+                        st.success(
+                            "😊 Sentiment\n\n"
+                            f"### "
+                            f"{result['sentiment']}"
+                        )
+
+                    else:
+
+                        st.error(
+                            "😞 Sentiment\n\n"
+                            f"### "
+                            f"{result['sentiment']}"
+                        )
+
+                # --------------------------------------------
+                # CONFIDENCE
+                # --------------------------------------------
+
+                with result2:
+
+                    confidence = (
+                        result.get(
+                            "confidence"
+                        )
+                    )
+
+                    if (
+                        confidence
+                        is not None
+                    ):
+
+                        st.metric(
+                            "🎯 Confidence",
+                            (
+                                f"{confidence * 100:.2f}%"
+                            ),
+                        )
+
+                    else:
+
+                        st.metric(
+                            "🎯 Confidence",
+                            "N/A",
+                        )
+
+                # --------------------------------------------
+                # SELECTED MODEL
+                # --------------------------------------------
+
+                with result3:
+
+                    st.metric(
+                        "🤖 Selected Model",
+                        selected_model,
+                    )
+
+                # --------------------------------------------
+                # PROBABILITIES
+                # --------------------------------------------
+
+                probabilities = (
+                    result.get(
+                        "probabilities"
+                    )
+                )
+
+                if probabilities:
+
+                    st.markdown(
+                        "### 📊 Class Probabilities"
+                    )
+
+                    probability_df = (
+                        pd.DataFrame(
+                            {
+                                "Sentiment": [
+                                    "Negative",
+                                    "Positive",
+                                ],
+                                "Probability": [
+                                    probabilities[
+                                        "negative"
+                                    ],
+                                    probabilities[
+                                        "positive"
+                                    ],
+                                ],
+                            }
+                        )
+                    )
+
+                    (
+                        probability_col1,
+                        probability_col2,
+                    ) = st.columns(2)
+
+                    with probability_col1:
+
+                        st.dataframe(
+                            probability_df,
+                            width="stretch",
+                            hide_index=True,
+                        )
+
+                    with probability_col2:
+
+                        st.bar_chart(
+                            probability_df
+                            .set_index(
+                                "Sentiment"
+                            )[
+                                "Probability"
+                            ]
+                        )
+
+                else:
+
+                    st.info(
+                        "This model does not provide "
+                        "class probabilities. "
+                        "The predicted class is shown above."
+                    )
+
+                st.caption(
+                    "Prediction completed in "
+                    f"{prediction_time:.4f} seconds."
+                )
+
+            except (
+                ValueError,
+                TypeError,
+            ) as error:
+
+                st.warning(
+                    str(error)
+                )
+
+            except Exception as error:
+
+                logging.exception(
+                    "Single-review "
+                    "prediction failed."
+                )
+
+                st.error(
+                    "Prediction failed: "
+                    f"{error}"
+                )
+
+    else:
+
+        # ----------------------------------------------------
+        # INITIAL CARDS
+        # ----------------------------------------------------
+
+        st.markdown(
+            "### 📋 Analysis Preview"
+        )
+
+        (
+            preview1,
+            preview2,
+            preview3,
+        ) = st.columns(3)
+
+        with preview1:
+
+            st.markdown(
+                """
+                <div class="analyzer-card">
+                    <div class="card-title">
+                        😊 Sentiment
+                    </div>
+                    <div class="card-text">
+                        Sentiment result
+                    </div>
+                </div>
+                """,
+                unsafe_allow_html=True,
+            )
+
+        with preview2:
+
+            st.markdown(
+                """
+                <div class="analyzer-card">
+                    <div class="card-title">
+                        🎯 Confidence
+                    </div>
+                    <div class="card-text">
+                        Confidence score
+                    </div>
+                </div>
+                """,
+                unsafe_allow_html=True,
+            )
+
+        with preview3:
+
+            st.markdown(
+                """
+                <div class="analyzer-card">
+                    <div class="card-title">
+                        📊 Class Probabilities
+                    </div>
+                    <div class="card-text">
+                        Prediction probabilities
+                    </div>
+                </div>
+                """,
+                unsafe_allow_html=True,
+            )
