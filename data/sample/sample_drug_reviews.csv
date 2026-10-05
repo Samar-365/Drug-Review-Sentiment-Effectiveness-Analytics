@@ -1,0 +1,1001 @@
+uniqueID,drugName,condition,review,rating,date,usefulCount
+100001,Oxycodone,Pain,"""Gabapentin reduced sharp burning diabetic nerve pain from an 8/10 to a manageable 2/10.""",9,"April 05, 2018",11
+100002,Sertraline,Depression,"""Made me emotionally detached and increased my fatigue tenfold. Did not work for my condition at all.""",3,"May 03, 2010",54
+100003,Venlafaxine,Depression,"""Lexapro was a game changer for my severe depressive episodes. Minimal initial nausea, but smooth sailing afterwards. Diagnosed with depression.""",7,"April 15, 2017",31
+100004,Naproxen,Pain,"""Celebrex manages my chronic osteoarthritis flare-ups effectively without upsetting my sensitive stomach.""",10,"July 06, 2018",21
+100005,Ethinyl estradiol / norethindrone,Birth Control,"""Regulated my periods well, but noticed a slight drop in libido and mild water retention before cycles.""",5,"July 25, 2018",1
+100006,Minocycline,Acne,"""Doxycycline cleared up severe inflammatory acne before my wedding. Fast-acting when combined with topical retinoids. Diagnosed with acne.""",7,"December 19, 2012",4
+100007,Etonogestrel,Birth Control,"""Periods became much lighter, though occasional unpredictable breakthrough bleeding occurs mid-pack.""",6,"March 11, 2016",0
+100008,Spironolactone,Acne,"""Noticeable reduction in redness, though skin peeling and sun sensitivity require constant heavy moisturizing. Diagnosed with acne.""",5,"October 12, 2010",20
+100009,Sertraline,Depression,"""Lexapro was a game changer for my severe depressive episodes. Minimal initial nausea, but smooth sailing afterwards.""",9,"April 06, 2014",22
+100010,Doxycycline,Acne,"""Works okay for surface pimples, but does little for hormonal cysts along the chin. Overall rating: 5/10.""",5,"May 08, 2012",12
+100011,Celecoxib,Pain,"""Dulls sharp nerve pain, but leaves me in a mental fog with mild morning headaches. Diagnosed with pain.""",6,"February 13, 2017",0
+100012,Bupropion,Depression,"""Took the sharp edge off my depression, but didn't completely resolve feelings of low energy and brain fog. Overall rating: 4/10.""",4,"March 06, 2017",35
+100013,Ibuprofen,Pain,"""Provided immediate relief following major knee surgery. Allowed me to start physical therapy on schedule.""",9,"May 12, 2010",42
+100014,Ethinyl estradiol / levonorgestrel,Birth Control,"""Sprintec has worked flawlessly for pregnancy prevention and skin clearance with zero adverse effects. Diagnosed with birth control.""",7,"July 12, 2013",5
+100015,Escitalopram,Depression,"""Wellbutrin gave me energy and motivation again without the sexual side effects of typical SSRIs. Very satisfied.""",10,"October 07, 2012",4
+100016,Naproxen,Pain,"""Tramadol managed post-operative pain well enough to allow restorative sleep without excessive sedation. Overall rating: 10/10.""",10,"June 17, 2012",4
+100017,Sumatriptan,Migraine,"""Imitrex aborts acute throbbing migraines within 30 minutes. An indispensable rescue drug.""",10,"September 19, 2011",8
+100018,Naproxen,Pain,"""Severe nausea, vomiting, and dizziness within 30 minutes of taking the first tablet. Unbearable side effects. Overall rating: 2/10.""",2,"April 13, 2014",13
+100019,Escitalopram,Anxiety,"""Xanax stopped my acute panic attacks in their tracks within 15 minutes. A crucial rescue medication when needed. Diagnosed with anxiety.""",9,"January 31, 2018",13
+100020,Citalopram,Depression,"""Zero improvement in depression, but gained 15 pounds in two months and suffered unbearable withdrawal brain zaps.""",2,"April 17, 2013",6
+100021,Escitalopram,Anxiety,"""Buspar taken twice daily significantly lowered my baseline generalized anxiety and physical tension without sedation. Diagnosed with anxiety.""",9,"March 12, 2011",22
+100022,Ethinyl estradiol / levonorgestrel,Birth Control,"""Mirena IUD insertion was mildly uncomfortable for a few seconds, but 4 years of zero periods and no hassle is worth it.""",8,"January 19, 2016",3
+100023,Doxepin,Insomnia,"""Severe next-day sedation, brain fog, and severe headaches. Felt like a zombie all day. Overall rating: 1/10.""",1,"March 21, 2010",6
+100024,Escitalopram,Depression,"""This medication has truly given me my life back. Within four weeks my constant low mood and fatigue started lifting.""",9,"May 12, 2016",10
+100025,Carvedilol,High Blood Pressure,"""Brought my blood pressure down from 160/100 to 120/78 within three weeks. No noticeable side effects. Diagnosed with high blood pressure.""",10,"August 03, 2018",14
+100026,Escitalopram,Depression,"""It works somewhat for sadness, but decreased libido and mild weight gain make me question if I should stay on it. Diagnosed with depression.""",6,"October 20, 2016",15
+100027,Hydroxyzine,Anxiety,"""Propranolol is a lifesaver for performance anxiety and presentation tremors. Keeps the physical racing heart under control. Overall rating: 8/10.""",8,"July 14, 2017",5
+100028,Tramadol,Pain,"""Gabapentin reduced sharp burning diabetic nerve pain from an 8/10 to a manageable 2/10.""",10,"September 20, 2010",17
+100029,Spironolactone,Acne,"""Noticeable reduction in redness, though skin peeling and sun sensitivity require constant heavy moisturizing.""",4,"October 18, 2010",8
+100030,Tramadol,Pain,"""Celebrex manages my chronic osteoarthritis flare-ups effectively without upsetting my sensitive stomach.""",7,"October 07, 2015",1
+100031,Spironolactone,Acne,"""Noticeable reduction in redness, though skin peeling and sun sensitivity require constant heavy moisturizing. Diagnosed with acne.""",4,"May 27, 2016",9
+100032,Propranolol,Anxiety,"""Clonazepam provided stable all-day relief from debilitating agoraphobia and constant catastrophic thinking.""",10,"January 22, 2011",4
+100033,Bupropion,Depression,"""After trying three different antidepressants, Prozac was the only one that stabilized my mood without feeling like a zombie. Diagnosed with depression.""",10,"August 10, 2010",1
+100034,Tramadol,Pain,"""Severe allergic reaction with full-body hives and breathing difficulty. Avoid at all costs. Diagnosed with pain.""",1,"October 21, 2013",53
+100035,Ethinyl estradiol / levonorgestrel,Birth Control,"""Sprintec has worked flawlessly for pregnancy prevention and skin clearance with zero adverse effects. Overall rating: 8/10.""",8,"July 29, 2011",80
+100036,Propranolol,Anxiety,"""Xanax stopped my acute panic attacks in their tracks within 15 minutes. A crucial rescue medication when needed. Overall rating: 8/10.""",8,"March 04, 2016",39
+100037,Citalopram,Depression,"""Helped moderately with depressive symptoms, but the persistent emotional numbness and vivid dreams are frustrating.""",6,"June 14, 2018",3
+100038,Levonorgestrel,Birth Control,"""Yaz completely cleared my hormonal acne, regulated my cycle to exactly 28 days, and eliminated PMS mood swings. Overall rating: 10/10.""",10,"August 29, 2010",2
+100039,Fluoxetine,Depression,"""After trying three different antidepressants, Prozac was the only one that stabilized my mood without feeling like a zombie. Overall rating: 10/10.""",10,"September 29, 2014",27
+100040,Celecoxib,Pain,"""Severe allergic reaction with full-body hives and breathing difficulty. Avoid at all costs.""",3,"February 17, 2012",10
+100041,Clindamycin / benzoyl peroxide,Acne,"""Destroyed my stomach lining with severe acid reflux and didn't even improve my facial cysts. Diagnosed with acne.""",3,"July 08, 2013",2
+100042,Citalopram,Depression,"""Mild improvement in mood after 6 weeks, though daytime lethargy and dry mouth make it hard to stay focused at work.""",6,"September 12, 2015",6
+100043,Duloxetine,Depression,"""Lexapro was a game changer for my severe depressive episodes. Minimal initial nausea, but smooth sailing afterwards. Overall rating: 7/10.""",7,"May 07, 2011",0
+100044,Metoprolol,High Blood Pressure,"""Effective at lowering BP, but causes mild swelling in my ankles and feet by the end of the day. Diagnosed with high blood pressure.""",6,"December 02, 2010",24
+100045,Minocycline,Acne,"""Works okay for surface pimples, but does little for hormonal cysts along the chin.""",6,"July 06, 2017",2
+100046,Oxycodone,Pain,"""Celebrex manages my chronic osteoarthritis flare-ups effectively without upsetting my sensitive stomach. Overall rating: 10/10.""",10,"July 19, 2013",26
+100047,Hydrochlorothiazide,High Blood Pressure,"""Developed the notorious persistent dry hacking cough that kept me awake all night. Had to switch to an ARB.""",1,"January 12, 2016",6
+100048,Sertraline,Depression,"""Lexapro was a game changer for my severe depressive episodes. Minimal initial nausea, but smooth sailing afterwards. Overall rating: 9/10.""",9,"March 13, 2013",17
+100049,Fluoxetine,Depression,"""Caused extreme insomnia, increased suicidal ideation, and severe night sweats. Had to discontinue under doctor supervision after 10 days. Diagnosed with depression.""",3,"March 21, 2016",14
+100050,Minocycline,Acne,"""Kept active breakouts at bay while taking it daily, but acne returned as soon as the antibiotic course finished.""",4,"April 29, 2018",2
+100051,Hydroxyzine,Anxiety,"""Propranolol is a lifesaver for performance anxiety and presentation tremors. Keeps the physical racing heart under control.""",8,"September 16, 2017",83
+100052,Hydrocodone,Pain,"""Provided immediate relief following major knee surgery. Allowed me to start physical therapy on schedule.""",10,"February 11, 2017",35
+100053,Lorazepam,Anxiety,"""Buspar taken twice daily significantly lowered my baseline generalized anxiety and physical tension without sedation. Diagnosed with anxiety.""",7,"December 08, 2012",67
+100054,Venlafaxine,Depression,"""This medication has truly given me my life back. Within four weeks my constant low mood and fatigue started lifting.""",10,"November 05, 2010",54
+100055,Metoprolol,High Blood Pressure,"""Effective at lowering BP, but causes mild swelling in my ankles and feet by the end of the day. Overall rating: 4/10.""",4,"July 13, 2016",9
+100056,Lorazepam,Anxiety,"""Propranolol is a lifesaver for performance anxiety and presentation tremors. Keeps the physical racing heart under control.""",7,"January 05, 2014",61
+100057,Fluoxetine,Depression,"""Zoloft helped lift the dark cloud that hung over me for years. It took about 5 weeks to feel the full therapeutic effect. Overall rating: 7/10.""",7,"December 17, 2016",2
+100058,Ibuprofen,Pain,"""Did not touch my severe sciatica pain at all, but caused extreme constipation and mental confusion.""",1,"August 16, 2014",3
+100059,Citalopram,Depression,"""Made me emotionally detached and increased my fatigue tenfold. Did not work for my condition at all. Diagnosed with depression.""",2,"March 30, 2018",0
+100060,Levonorgestrel,Birth Control,"""Nexplanon implant has been fantastic. No periods, no cramping, and total peace of mind for 3 years. Overall rating: 7/10.""",7,"June 30, 2012",9
+100061,Fluoxetine,Depression,"""Horrible experience. My anxiety skyrocketed, experienced terrible akathisia and couldn't sit still for days.""",2,"April 07, 2010",8
+100062,Ibuprofen,Pain,"""Provided immediate relief following major knee surgery. Allowed me to start physical therapy on schedule. Overall rating: 9/10.""",9,"December 09, 2013",7
+100063,Tramadol,Pain,"""Provided immediate relief following major knee surgery. Allowed me to start physical therapy on schedule. Overall rating: 9/10.""",9,"January 02, 2012",42
+100064,Alprazolam,Anxiety,"""Paradoxical reaction—made my heart race faster and induced severe restless agitation. Overall rating: 1/10.""",1,"March 04, 2018",7
+100065,Levonorgestrel,Birth Control,"""Sprintec has worked flawlessly for pregnancy prevention and skin clearance with zero adverse effects.""",7,"November 09, 2012",7
+100066,Fluoxetine,Depression,"""After trying three different antidepressants, Prozac was the only one that stabilized my mood without feeling like a zombie.""",8,"June 13, 2017",18
+100067,Carvedilol,High Blood Pressure,"""Effective at lowering BP, but causes mild swelling in my ankles and feet by the end of the day. Diagnosed with high blood pressure.""",6,"May 15, 2013",1
+100068,Buspirone,Anxiety,"""Moderate calming effect, though building tolerance quickly requires careful dosage monitoring. Diagnosed with anxiety.""",5,"June 06, 2011",16
+100069,Duloxetine,Depression,"""Mild improvement in mood after 6 weeks, though daytime lethargy and dry mouth make it hard to stay focused at work. Diagnosed with depression.""",5,"May 20, 2016",0
+100070,Minocycline,Acne,"""Doxycycline cleared up severe inflammatory acne before my wedding. Fast-acting when combined with topical retinoids.""",7,"October 27, 2014",104
+100071,Levonorgestrel,Birth Control,"""Periods became much lighter, though occasional unpredictable breakthrough bleeding occurs mid-pack. Overall rating: 5/10.""",5,"July 30, 2017",14
+100072,Duloxetine,Depression,"""This medication has truly given me my life back. Within four weeks my constant low mood and fatigue started lifting. Overall rating: 8/10.""",8,"October 13, 2015",5
+100073,Ibuprofen,Pain,"""Provides about 4 hours of pain relief, but wears off faster than expected and causes mild constipation. Diagnosed with pain.""",4,"June 25, 2013",0
+100074,Isotretinoin,Acne,"""Spironolactone cleared hormonal cystic breakouts along my jawline within three months. Incredible transformation. Overall rating: 7/10.""",7,"November 08, 2016",40
+100075,Medroxyprogesterone,Birth Control,"""Sprintec has worked flawlessly for pregnancy prevention and skin clearance with zero adverse effects.""",10,"January 21, 2018",29
+100076,Oxycodone,Pain,"""Provided immediate relief following major knee surgery. Allowed me to start physical therapy on schedule.""",8,"September 24, 2018",31
+100077,Alprazolam,Anxiety,"""Lexapro smoothed out daily panic spikes and helped me regain control of my daily social interactions.""",10,"May 13, 2011",35
+100078,Escitalopram,Anxiety,"""Did absolutely nothing for my panic disorder and caused intense nausea, dizziness, and heart palpitations. Overall rating: 3/10.""",3,"November 14, 2016",1
+100079,Ethinyl estradiol / norgestimate,Birth Control,"""Completely destroyed my mental health, caused severe mood swings, and killed my energy levels.""",2,"May 05, 2018",7
+100080,Ethinyl estradiol / norgestimate,Birth Control,"""Mirena IUD insertion was mildly uncomfortable for a few seconds, but 4 years of zero periods and no hassle is worth it. Diagnosed with birth control.""",8,"June 08, 2015",2
+100081,Celecoxib,Pain,"""Celebrex manages my chronic osteoarthritis flare-ups effectively without upsetting my sensitive stomach.""",7,"January 17, 2013",47
+100082,Doxycycline,Acne,"""Caused extreme joint pain, cracked bleeding lips, severe dry eyes, and liver enzyme spikes that forced me to stop early.""",1,"April 18, 2014",17
+100083,Gabapentin,Pain,"""Mild to moderate reduction in lower back pain, accompanied by lightheadedness and dry mouth. Overall rating: 4/10.""",4,"February 01, 2016",4
+100084,Buspirone,Anxiety,"""Lexapro smoothed out daily panic spikes and helped me regain control of my daily social interactions. Diagnosed with anxiety.""",10,"March 22, 2010",1
+100085,Levonorgestrel,Birth Control,"""Caused severe depression, uncontrollable crying spells, 20-pound weight gain, and cystic acne within 3 months. Overall rating: 2/10.""",2,"May 08, 2013",6
+100086,Drospirenone / ethinyl estradiol,Birth Control,"""Suffered debilitating daily migraines and blood pressure spikes. My doctor instructed immediate removal. Overall rating: 2/10.""",2,"June 17, 2012",7
+100087,Minocycline,Acne,"""Tretinoin purge lasted 4 weeks, but now at 6 months my skin texture is smoother and free from deep nodules. Diagnosed with acne.""",10,"November 08, 2011",31
+100088,Drospirenone / ethinyl estradiol,Birth Control,"""Caused severe depression, uncontrollable crying spells, 20-pound weight gain, and cystic acne within 3 months. Overall rating: 3/10.""",3,"August 21, 2016",18
+100089,Clonazepam,Anxiety,"""Clonazepam provided stable all-day relief from debilitating agoraphobia and constant catastrophic thinking.""",10,"July 25, 2010",52
+100090,Minocycline,Acne,"""Doxycycline cleared up severe inflammatory acne before my wedding. Fast-acting when combined with topical retinoids. Overall rating: 10/10.""",10,"February 13, 2013",15
+100091,Ethinyl estradiol / norgestimate,Birth Control,"""Caused severe depression, uncontrollable crying spells, 20-pound weight gain, and cystic acne within 3 months. Overall rating: 2/10.""",2,"March 21, 2010",2
+100092,Oxycodone,Pain,"""Provided immediate relief following major knee surgery. Allowed me to start physical therapy on schedule. Diagnosed with pain.""",9,"June 14, 2010",29
+100093,Ethinyl estradiol / norgestimate,Birth Control,"""Caused severe depression, uncontrollable crying spells, 20-pound weight gain, and cystic acne within 3 months. Diagnosed with birth control.""",1,"September 17, 2011",25
+100094,Spironolactone,Acne,"""Spironolactone cleared hormonal cystic breakouts along my jawline within three months. Incredible transformation. Overall rating: 7/10.""",7,"November 05, 2017",19
+100095,Tretinoin,Acne,"""Spironolactone cleared hormonal cystic breakouts along my jawline within three months. Incredible transformation. Overall rating: 7/10.""",7,"March 19, 2011",35
+100096,Hydroxyzine,Anxiety,"""Paradoxical reaction—made my heart race faster and induced severe restless agitation. Overall rating: 3/10.""",3,"January 07, 2018",12
+100097,Escitalopram,Depression,"""Helped moderately with depressive symptoms, but the persistent emotional numbness and vivid dreams are frustrating. Diagnosed with depression.""",6,"August 31, 2018",7
+100098,Tretinoin,Acne,"""Kept active breakouts at bay while taking it daily, but acne returned as soon as the antibiotic course finished. Overall rating: 4/10.""",4,"December 23, 2015",5
+100099,Alprazolam,Anxiety,"""Clonazepam provided stable all-day relief from debilitating agoraphobia and constant catastrophic thinking. Overall rating: 9/10.""",9,"March 09, 2011",0
+100100,Hydroxyzine,Anxiety,"""Buspar taken twice daily significantly lowered my baseline generalized anxiety and physical tension without sedation. Overall rating: 10/10.""",10,"December 23, 2011",2
+100101,Naproxen,Pain,"""Severe allergic reaction with full-body hives and breathing difficulty. Avoid at all costs. Overall rating: 2/10.""",2,"November 20, 2014",0
+100102,Ethinyl estradiol / norgestimate,Birth Control,"""Regulated my periods well, but noticed a slight drop in libido and mild water retention before cycles.""",5,"February 16, 2013",10
+100103,Drospirenone / ethinyl estradiol,Birth Control,"""Sprintec has worked flawlessly for pregnancy prevention and skin clearance with zero adverse effects. Diagnosed with birth control.""",10,"April 02, 2014",9
+100104,Doxycycline,Acne,"""Tretinoin purge lasted 4 weeks, but now at 6 months my skin texture is smoother and free from deep nodules.""",9,"December 24, 2013",17
+100105,Drospirenone / ethinyl estradiol,Birth Control,"""Nexplanon implant has been fantastic. No periods, no cramping, and total peace of mind for 3 years. Diagnosed with birth control.""",9,"February 22, 2012",57
+100106,Venlafaxine,Depression,"""Mild improvement in mood after 6 weeks, though daytime lethargy and dry mouth make it hard to stay focused at work. Diagnosed with depression.""",5,"May 05, 2015",2
+100107,Tramadol,Pain,"""Celebrex manages my chronic osteoarthritis flare-ups effectively without upsetting my sensitive stomach.""",7,"July 15, 2014",12
+100108,Gabapentin,Pain,"""Naproxen 500mg twice daily relieved severe tendonitis inflammation within 48 hours. Diagnosed with pain.""",9,"November 09, 2013",33
+100109,Lorazepam,Anxiety,"""Paradoxical reaction—made my heart race faster and induced severe restless agitation. Overall rating: 2/10.""",2,"June 09, 2013",4
+100110,Minocycline,Acne,"""Accutane completely cured my cystic acne after a 6-month course. Dry lips were tough, but my skin is 100% clear now. Diagnosed with acne.""",8,"January 04, 2016",1
+100111,Trazodone,Insomnia,"""Works for falling asleep, but does not prevent waking up at 4 AM. Overall rating: 4/10.""",4,"February 15, 2018",3
+100112,Lorazepam,Anxiety,"""Developed rapid tolerance and experienced terrible rebound anxiety and withdrawal tremors between doses.""",3,"April 28, 2013",3
+100113,Clindamycin / benzoyl peroxide,Acne,"""Epiduo gel worked wonders on stubborn forehead bumps and prevented new blackheads from forming.""",7,"January 28, 2013",63
+100114,Duloxetine,Depression,"""Lexapro was a game changer for my severe depressive episodes. Minimal initial nausea, but smooth sailing afterwards. Diagnosed with depression.""",9,"June 11, 2018",39
+100115,Lorazepam,Anxiety,"""Paradoxical reaction—made my heart race faster and induced severe restless agitation. Overall rating: 3/10.""",3,"December 10, 2014",18
+100116,Tretinoin,Acne,"""Made my acne flare up worse than ever before with deep painful cysts that left permanent scarring.""",2,"September 25, 2010",36
+100117,Doxycycline,Acne,"""Spironolactone cleared hormonal cystic breakouts along my jawline within three months. Incredible transformation. Diagnosed with acne.""",7,"May 29, 2013",39
+100118,Venlafaxine,Depression,"""Zoloft helped lift the dark cloud that hung over me for years. It took about 5 weeks to feel the full therapeutic effect. Diagnosed with depression.""",10,"July 13, 2012",4
+100119,Ethinyl estradiol / norethindrone,Birth Control,"""Sprintec has worked flawlessly for pregnancy prevention and skin clearance with zero adverse effects. Overall rating: 10/10.""",10,"June 04, 2013",53
+100120,Propranolol,Anxiety,"""Buspar taken twice daily significantly lowered my baseline generalized anxiety and physical tension without sedation. Diagnosed with anxiety.""",7,"May 14, 2012",18
+100121,Doxycycline,Acne,"""Epiduo gel worked wonders on stubborn forehead bumps and prevented new blackheads from forming.""",8,"October 04, 2011",39
+100122,Fluoxetine,Depression,"""This medication has truly given me my life back. Within four weeks my constant low mood and fatigue started lifting.""",10,"March 26, 2013",54
+100123,Tramadol,Pain,"""Provides about 4 hours of pain relief, but wears off faster than expected and causes mild constipation. Overall rating: 5/10.""",5,"November 01, 2018",3
+100124,Levonorgestrel,Birth Control,"""Effective for pregnancy prevention, but experienced irregular spotting and slight breast tenderness for the first 4 months. Diagnosed with birth control.""",4,"July 09, 2012",1
+100125,Tramadol,Pain,"""Severe nausea, vomiting, and dizziness within 30 minutes of taking the first tablet. Unbearable side effects.""",1,"November 21, 2018",4
+100126,Minocycline,Acne,"""Made my acne flare up worse than ever before with deep painful cysts that left permanent scarring.""",3,"April 04, 2015",10
+100127,Naproxen,Pain,"""Mild to moderate reduction in lower back pain, accompanied by lightheadedness and dry mouth. Overall rating: 5/10.""",5,"November 26, 2010",17
+100128,Lorazepam,Anxiety,"""Did absolutely nothing for my panic disorder and caused intense nausea, dizziness, and heart palpitations.""",3,"January 10, 2011",35
+100129,Spironolactone,Acne,"""Kept active breakouts at bay while taking it daily, but acne returned as soon as the antibiotic course finished. Diagnosed with acne.""",6,"January 08, 2013",0
+100130,Buspirone,Anxiety,"""Paradoxical reaction—made my heart race faster and induced severe restless agitation. Overall rating: 1/10.""",1,"January 14, 2012",12
+100131,Sumatriptan,Migraine,"""Maxalt melts in the mouth and stops aura and severe nausea before the headache peaks. Overall rating: 10/10.""",10,"July 31, 2014",12
+100132,Minocycline,Acne,"""Moderately effective, but application causes significant initial stinging and redness that takes hours to subside. Diagnosed with acne.""",4,"July 23, 2015",2
+100133,Isotretinoin,Acne,"""Made my acne flare up worse than ever before with deep painful cysts that left permanent scarring.""",3,"July 12, 2013",2
+100134,Tretinoin,Acne,"""Epiduo gel worked wonders on stubborn forehead bumps and prevented new blackheads from forming.""",10,"May 17, 2017",9
+100135,Ethinyl estradiol / levonorgestrel,Birth Control,"""Sprintec has worked flawlessly for pregnancy prevention and skin clearance with zero adverse effects. Overall rating: 7/10.""",7,"December 25, 2016",68
+100136,Ethinyl estradiol / levonorgestrel,Birth Control,"""Convenient weekly patch, but edges tend to peel slightly and cause minor skin redness at application sites. Diagnosed with birth control.""",4,"June 21, 2011",3
+100137,Lisinopril,High Blood Pressure,"""Brought my blood pressure down from 160/100 to 120/78 within three weeks. No noticeable side effects. Diagnosed with high blood pressure.""",10,"October 29, 2016",17
+100138,Drospirenone / ethinyl estradiol,Birth Control,"""Effective for pregnancy prevention, but experienced irregular spotting and slight breast tenderness for the first 4 months. Diagnosed with birth control.""",5,"July 30, 2014",12
+100139,Bupropion,Depression,"""Caused extreme insomnia, increased suicidal ideation, and severe night sweats. Had to discontinue under doctor supervision after 10 days. Diagnosed with depression.""",1,"September 23, 2011",8
+100140,Hydroxyzine,Anxiety,"""Moderate calming effect, though building tolerance quickly requires careful dosage monitoring. Overall rating: 6/10.""",6,"May 31, 2015",35
+100141,Erenumab,Migraine,"""Imitrex aborts acute throbbing migraines within 30 minutes. An indispensable rescue drug. Diagnosed with migraine.""",8,"September 13, 2015",78
+100142,Hydrocodone,Pain,"""Tramadol managed post-operative pain well enough to allow restorative sleep without excessive sedation. Overall rating: 7/10.""",7,"November 01, 2018",6
+100143,Hydroxyzine,Anxiety,"""Did absolutely nothing for my panic disorder and caused intense nausea, dizziness, and heart palpitations. Diagnosed with anxiety.""",2,"July 03, 2016",12
+100144,Erenumab,Migraine,"""Aimovig monthly injection reduced my monthly migraine days from 14 down to just 2. Overall rating: 8/10.""",8,"November 14, 2013",8
+100145,Epiduo,Acne,"""Broke out in a terrible allergic rash all over my neck and chest. Complete disaster for my skin.""",2,"October 27, 2017",6
+100146,Isotretinoin,Acne,"""Doxycycline cleared up severe inflammatory acne before my wedding. Fast-acting when combined with topical retinoids. Diagnosed with acne.""",10,"April 22, 2015",0
+100147,Celecoxib,Pain,"""Did not touch my severe sciatica pain at all, but caused extreme constipation and mental confusion. Overall rating: 2/10.""",2,"June 01, 2010",16
+100148,Citalopram,Depression,"""Caused extreme insomnia, increased suicidal ideation, and severe night sweats. Had to discontinue under doctor supervision after 10 days. Overall rating: 2/10.""",2,"February 13, 2011",12
+100149,Buspirone,Anxiety,"""Buspar taken twice daily significantly lowered my baseline generalized anxiety and physical tension without sedation.""",8,"April 08, 2015",1
+100150,Medroxyprogesterone,Birth Control,"""Nexplanon implant has been fantastic. No periods, no cramping, and total peace of mind for 3 years. Overall rating: 10/10.""",10,"July 25, 2017",7
+100151,Medroxyprogesterone,Birth Control,"""Very predictable light cycles with minimal cramping. No weight gain or mood changes whatsoever. Diagnosed with birth control.""",9,"May 28, 2010",57
+100152,Oxycodone,Pain,"""Provided immediate relief following major knee surgery. Allowed me to start physical therapy on schedule. Overall rating: 9/10.""",9,"February 08, 2011",6
+100153,Levonorgestrel,Birth Control,"""Regulated my periods well, but noticed a slight drop in libido and mild water retention before cycles. Diagnosed with birth control.""",4,"May 11, 2013",1
+100154,Losartan,High Blood Pressure,"""Metoprolol normalized my resting heart rate and blood pressure while reducing heart palpitations. Overall rating: 7/10.""",7,"October 31, 2014",16
+100155,Escitalopram,Depression,"""Lexapro was a game changer for my severe depressive episodes. Minimal initial nausea, but smooth sailing afterwards.""",8,"November 01, 2016",101
+100156,Levonorgestrel,Birth Control,"""Regulated my periods well, but noticed a slight drop in libido and mild water retention before cycles.""",4,"March 04, 2015",2
+100157,Ibuprofen,Pain,"""Tramadol managed post-operative pain well enough to allow restorative sleep without excessive sedation. Overall rating: 7/10.""",7,"August 07, 2017",26
+100158,Escitalopram,Anxiety,"""Propranolol is a lifesaver for performance anxiety and presentation tremors. Keeps the physical racing heart under control. Diagnosed with anxiety.""",9,"October 04, 2014",34
+100159,Oxycodone,Pain,"""Tramadol managed post-operative pain well enough to allow restorative sleep without excessive sedation. Overall rating: 9/10.""",9,"March 13, 2011",6
+100160,Minocycline,Acne,"""Works okay for surface pimples, but does little for hormonal cysts along the chin.""",6,"May 20, 2017",13
+100161,Spironolactone,Acne,"""Tretinoin purge lasted 4 weeks, but now at 6 months my skin texture is smoother and free from deep nodules. Overall rating: 7/10.""",7,"September 13, 2018",11
+100162,Ethinyl estradiol / levonorgestrel,Birth Control,"""Regulated my periods well, but noticed a slight drop in libido and mild water retention before cycles. Diagnosed with birth control.""",5,"October 23, 2012",10
+100163,Celecoxib,Pain,"""Provides about 4 hours of pain relief, but wears off faster than expected and causes mild constipation. Diagnosed with pain.""",6,"February 02, 2011",10
+100164,Carvedilol,High Blood Pressure,"""Maintains stable readings, but requires regular potassium and kidney function monitoring.""",5,"July 01, 2016",7
+100165,Minocycline,Acne,"""Tretinoin purge lasted 4 weeks, but now at 6 months my skin texture is smoother and free from deep nodules.""",9,"April 02, 2012",2
+100166,Venlafaxine,Depression,"""Zoloft helped lift the dark cloud that hung over me for years. It took about 5 weeks to feel the full therapeutic effect. Overall rating: 9/10.""",9,"November 05, 2011",43
+100167,Tretinoin,Acne,"""Broke out in a terrible allergic rash all over my neck and chest. Complete disaster for my skin. Diagnosed with acne.""",2,"October 19, 2013",6
+100168,Ethinyl estradiol / levonorgestrel,Birth Control,"""Yaz completely cleared my hormonal acne, regulated my cycle to exactly 28 days, and eliminated PMS mood swings. Diagnosed with birth control.""",7,"February 14, 2018",4
+100169,Tramadol,Pain,"""Tramadol managed post-operative pain well enough to allow restorative sleep without excessive sedation.""",9,"December 19, 2012",0
+100170,Escitalopram,Anxiety,"""Clonazepam provided stable all-day relief from debilitating agoraphobia and constant catastrophic thinking. Diagnosed with anxiety.""",9,"March 02, 2014",21
+100171,Venlafaxine,Depression,"""Zoloft helped lift the dark cloud that hung over me for years. It took about 5 weeks to feel the full therapeutic effect. Overall rating: 7/10.""",7,"November 03, 2016",27
+100172,Clindamycin / benzoyl peroxide,Acne,"""Doxycycline cleared up severe inflammatory acne before my wedding. Fast-acting when combined with topical retinoids. Diagnosed with acne.""",10,"July 31, 2014",0
+100173,Fluoxetine,Depression,"""After trying three different antidepressants, Prozac was the only one that stabilized my mood without feeling like a zombie.""",7,"February 03, 2011",17
+100174,Epiduo,Acne,"""Doxycycline cleared up severe inflammatory acne before my wedding. Fast-acting when combined with topical retinoids. Diagnosed with acne.""",10,"May 02, 2018",6
+100175,Gabapentin,Pain,"""Provided immediate relief following major knee surgery. Allowed me to start physical therapy on schedule. Overall rating: 8/10.""",8,"November 26, 2016",24
+100176,Clindamycin / benzoyl peroxide,Acne,"""Broke out in a terrible allergic rash all over my neck and chest. Complete disaster for my skin.""",1,"December 22, 2014",3
+100177,Alprazolam,Anxiety,"""Propranolol is a lifesaver for performance anxiety and presentation tremors. Keeps the physical racing heart under control. Diagnosed with anxiety.""",9,"March 26, 2017",28
+100178,Isotretinoin,Acne,"""Tretinoin purge lasted 4 weeks, but now at 6 months my skin texture is smoother and free from deep nodules.""",8,"June 07, 2017",11
+100179,Sertraline,Depression,"""It works somewhat for sadness, but decreased libido and mild weight gain make me question if I should stay on it.""",4,"May 31, 2011",27
+100180,Drospirenone / ethinyl estradiol,Birth Control,"""Yaz completely cleared my hormonal acne, regulated my cycle to exactly 28 days, and eliminated PMS mood swings.""",8,"September 07, 2013",3
+100181,Etonogestrel,Birth Control,"""Continuous heavy bleeding for 6 straight weeks accompanied by excruciating ovarian cramps.""",3,"June 17, 2011",7
+100182,Hydroxyzine,Anxiety,"""Developed rapid tolerance and experienced terrible rebound anxiety and withdrawal tremors between doses.""",1,"March 02, 2010",2
+100183,Minocycline,Acne,"""Destroyed my stomach lining with severe acid reflux and didn't even improve my facial cysts.""",3,"December 22, 2012",46
+100184,Sertraline,Depression,"""Caused extreme insomnia, increased suicidal ideation, and severe night sweats. Had to discontinue under doctor supervision after 10 days. Overall rating: 3/10.""",3,"January 11, 2015",37
+100185,Levonorgestrel,Birth Control,"""Sprintec has worked flawlessly for pregnancy prevention and skin clearance with zero adverse effects.""",7,"November 24, 2016",7
+100186,Venlafaxine,Depression,"""Zero improvement in depression, but gained 15 pounds in two months and suffered unbearable withdrawal brain zaps. Overall rating: 3/10.""",3,"March 20, 2017",19
+100187,Eszopiclone,Insomnia,"""Low-dose Trazodone (50mg) restored natural sleep architecture without dependency or grogginess. Diagnosed with insomnia.""",10,"March 19, 2011",40
+100188,Alprazolam,Anxiety,"""Did absolutely nothing for my panic disorder and caused intense nausea, dizziness, and heart palpitations. Diagnosed with anxiety.""",1,"August 31, 2011",14
+100189,Bupropion,Depression,"""Zoloft helped lift the dark cloud that hung over me for years. It took about 5 weeks to feel the full therapeutic effect. Diagnosed with depression.""",9,"April 22, 2013",18
+100190,Propranolol,Anxiety,"""Relieves mild social anxiety, but causes noticeable drowsiness and mild dizziness during the afternoon. Diagnosed with anxiety.""",4,"April 20, 2017",2
+100191,Levonorgestrel,Birth Control,"""Periods became much lighter, though occasional unpredictable breakthrough bleeding occurs mid-pack.""",4,"August 22, 2014",0
+100192,Clindamycin / benzoyl peroxide,Acne,"""Accutane completely cured my cystic acne after a 6-month course. Dry lips were tough, but my skin is 100% clear now. Overall rating: 10/10.""",10,"October 15, 2014",54
+100193,Clindamycin / benzoyl peroxide,Acne,"""Tretinoin purge lasted 4 weeks, but now at 6 months my skin texture is smoother and free from deep nodules.""",8,"January 09, 2011",55
+100194,Medroxyprogesterone,Birth Control,"""Mirena IUD insertion was mildly uncomfortable for a few seconds, but 4 years of zero periods and no hassle is worth it.""",7,"March 28, 2016",24
+100195,Fluoxetine,Depression,"""Caused extreme insomnia, increased suicidal ideation, and severe night sweats. Had to discontinue under doctor supervision after 10 days. Overall rating: 3/10.""",3,"December 19, 2013",7
+100196,Ethinyl estradiol / norgestimate,Birth Control,"""Caused severe depression, uncontrollable crying spells, 20-pound weight gain, and cystic acne within 3 months. Overall rating: 2/10.""",2,"September 25, 2016",7
+100197,Doxycycline,Acne,"""Tretinoin purge lasted 4 weeks, but now at 6 months my skin texture is smoother and free from deep nodules.""",8,"March 20, 2011",31
+100198,Tretinoin,Acne,"""Works okay for surface pimples, but does little for hormonal cysts along the chin. Diagnosed with acne.""",4,"July 15, 2012",22
+100199,Drospirenone / ethinyl estradiol,Birth Control,"""Caused severe depression, uncontrollable crying spells, 20-pound weight gain, and cystic acne within 3 months. Diagnosed with birth control.""",3,"May 18, 2017",39
+100200,Ethinyl estradiol / norethindrone,Birth Control,"""Mirena IUD insertion was mildly uncomfortable for a few seconds, but 4 years of zero periods and no hassle is worth it. Overall rating: 8/10.""",8,"December 08, 2013",36
+100201,Duloxetine,Depression,"""Made me emotionally detached and increased my fatigue tenfold. Did not work for my condition at all.""",3,"August 05, 2011",18
+100202,Celecoxib,Pain,"""Did not touch my severe sciatica pain at all, but caused extreme constipation and mental confusion. Overall rating: 1/10.""",1,"September 16, 2014",1
+100203,Hydroxyzine,Anxiety,"""Propranolol is a lifesaver for performance anxiety and presentation tremors. Keeps the physical racing heart under control. Diagnosed with anxiety.""",9,"September 08, 2016",4
+100204,Citalopram,Depression,"""Zoloft helped lift the dark cloud that hung over me for years. It took about 5 weeks to feel the full therapeutic effect.""",8,"July 23, 2017",54
+100205,Bupropion,Depression,"""Zoloft helped lift the dark cloud that hung over me for years. It took about 5 weeks to feel the full therapeutic effect. Overall rating: 10/10.""",10,"August 24, 2014",22
+100206,Minocycline,Acne,"""Made my acne flare up worse than ever before with deep painful cysts that left permanent scarring.""",1,"March 06, 2013",0
+100207,Celecoxib,Pain,"""Helps with joint stiffness in the morning, but pain returns in the evening during strenuous activities.""",6,"June 22, 2012",1
+100208,Doxycycline,Acne,"""Works okay for surface pimples, but does little for hormonal cysts along the chin.""",4,"August 10, 2018",10
+100209,Sertraline,Depression,"""This medication has truly given me my life back. Within four weeks my constant low mood and fatigue started lifting. Overall rating: 9/10.""",9,"May 18, 2018",0
+100210,Escitalopram,Anxiety,"""Lexapro smoothed out daily panic spikes and helped me regain control of my daily social interactions. Diagnosed with anxiety.""",8,"December 21, 2013",4
+100211,Bupropion,Depression,"""Caused extreme insomnia, increased suicidal ideation, and severe night sweats. Had to discontinue under doctor supervision after 10 days. Overall rating: 1/10.""",1,"November 15, 2010",14
+100212,Levonorgestrel,Birth Control,"""Periods became much lighter, though occasional unpredictable breakthrough bleeding occurs mid-pack. Overall rating: 6/10.""",6,"April 17, 2011",11
+100213,Tretinoin,Acne,"""Made my acne flare up worse than ever before with deep painful cysts that left permanent scarring. Diagnosed with acne.""",1,"January 22, 2014",18
+100214,Bupropion,Depression,"""Made me emotionally detached and increased my fatigue tenfold. Did not work for my condition at all. Diagnosed with depression.""",1,"November 19, 2010",4
+100215,Doxycycline,Acne,"""Doxycycline cleared up severe inflammatory acne before my wedding. Fast-acting when combined with topical retinoids.""",9,"November 09, 2010",29
+100216,Propranolol,Anxiety,"""Propranolol is a lifesaver for performance anxiety and presentation tremors. Keeps the physical racing heart under control. Overall rating: 8/10.""",8,"February 27, 2018",6
+100217,Trazodone,Insomnia,"""Helps me fall asleep reliably, but leaves a slight metallic taste and morning grogginess for an hour.""",4,"November 14, 2012",3
+100218,Sertraline,Depression,"""Mild improvement in mood after 6 weeks, though daytime lethargy and dry mouth make it hard to stay focused at work. Diagnosed with depression.""",6,"July 17, 2015",13
+100219,Buspirone,Anxiety,"""Moderate calming effect, though building tolerance quickly requires careful dosage monitoring. Diagnosed with anxiety.""",6,"July 18, 2013",10
+100220,Duloxetine,Depression,"""Wellbutrin gave me energy and motivation again without the sexual side effects of typical SSRIs. Very satisfied. Overall rating: 10/10.""",10,"August 19, 2016",45
+100221,Bupropion,Depression,"""After trying three different antidepressants, Prozac was the only one that stabilized my mood without feeling like a zombie.""",9,"August 22, 2010",25
+100222,Spironolactone,Acne,"""Epiduo gel worked wonders on stubborn forehead bumps and prevented new blackheads from forming. Diagnosed with acne.""",7,"April 24, 2014",20
+100223,Alprazolam,Anxiety,"""Helps take the edge off panic attacks, but leaves me feeling sluggish and unmotivated for hours. Diagnosed with anxiety.""",6,"April 23, 2017",0
+100224,Escitalopram,Depression,"""Helped moderately with depressive symptoms, but the persistent emotional numbness and vivid dreams are frustrating. Overall rating: 6/10.""",6,"February 28, 2011",4
+100225,Etonogestrel,Birth Control,"""Suffered debilitating daily migraines and blood pressure spikes. My doctor instructed immediate removal.""",3,"October 11, 2012",5
+100226,Naproxen,Pain,"""Did not touch my severe sciatica pain at all, but caused extreme constipation and mental confusion. Overall rating: 3/10.""",3,"March 08, 2014",5
+100227,Valsartan,High Blood Pressure,"""Amlodipine effectively controlled stage 2 hypertension with excellent stability across 24-hour ambulatory monitoring.""",9,"November 07, 2018",86
+100228,Tramadol,Pain,"""Naproxen 500mg twice daily relieved severe tendonitis inflammation within 48 hours. Diagnosed with pain.""",9,"May 03, 2014",11
+100229,Spironolactone,Acne,"""Noticeable reduction in redness, though skin peeling and sun sensitivity require constant heavy moisturizing. Overall rating: 6/10.""",6,"November 30, 2010",22
+100230,Lorazepam,Anxiety,"""Clonazepam provided stable all-day relief from debilitating agoraphobia and constant catastrophic thinking.""",9,"September 03, 2016",23
+100231,Celecoxib,Pain,"""Celebrex manages my chronic osteoarthritis flare-ups effectively without upsetting my sensitive stomach.""",10,"July 07, 2017",38
+100232,Naproxen,Pain,"""Severe nausea, vomiting, and dizziness within 30 minutes of taking the first tablet. Unbearable side effects. Diagnosed with pain.""",3,"July 09, 2017",12
+100233,Lorazepam,Anxiety,"""Buspar taken twice daily significantly lowered my baseline generalized anxiety and physical tension without sedation.""",9,"October 31, 2013",20
+100234,Amlodipine,High Blood Pressure,"""Losartan works smoothly with zero cough or fatigue. My primary care physician is very pleased with the readings.""",8,"April 26, 2013",16
+100235,Medroxyprogesterone,Birth Control,"""Mirena IUD insertion was mildly uncomfortable for a few seconds, but 4 years of zero periods and no hassle is worth it. Diagnosed with birth control.""",7,"June 21, 2011",5
+100236,Propranolol,Anxiety,"""Lexapro smoothed out daily panic spikes and helped me regain control of my daily social interactions.""",8,"February 01, 2018",30
+100237,Buspirone,Anxiety,"""Lexapro smoothed out daily panic spikes and helped me regain control of my daily social interactions. Overall rating: 8/10.""",8,"June 09, 2018",7
+100238,Hydrocodone,Pain,"""Tramadol managed post-operative pain well enough to allow restorative sleep without excessive sedation.""",8,"February 15, 2014",0
+100239,Gabapentin,Pain,"""Helps with joint stiffness in the morning, but pain returns in the evening during strenuous activities. Overall rating: 5/10.""",5,"August 22, 2015",10
+100240,Propranolol,Anxiety,"""Made me extremely groggy, confused, and unable to drive or work safely. Felt completely dissociated. Overall rating: 1/10.""",1,"August 02, 2010",3
+100241,Tramadol,Pain,"""Severe nausea, vomiting, and dizziness within 30 minutes of taking the first tablet. Unbearable side effects. Overall rating: 3/10.""",3,"December 10, 2010",50
+100242,Ethinyl estradiol / norgestimate,Birth Control,"""Very predictable light cycles with minimal cramping. No weight gain or mood changes whatsoever.""",8,"June 28, 2012",73
+100243,Levonorgestrel,Birth Control,"""Caused severe depression, uncontrollable crying spells, 20-pound weight gain, and cystic acne within 3 months. Overall rating: 1/10.""",1,"August 19, 2015",44
+100244,Minocycline,Acne,"""Spironolactone cleared hormonal cystic breakouts along my jawline within three months. Incredible transformation.""",7,"July 29, 2013",11
+100245,Losartan,High Blood Pressure,"""Caused severe peripheral edema with feet swelling so badly I couldn't put my shoes on.""",3,"June 06, 2010",0
+100246,Tretinoin,Acne,"""Caused extreme joint pain, cracked bleeding lips, severe dry eyes, and liver enzyme spikes that forced me to stop early. Diagnosed with acne.""",3,"April 06, 2015",47
+100247,Alprazolam,Anxiety,"""Propranolol is a lifesaver for performance anxiety and presentation tremors. Keeps the physical racing heart under control.""",7,"September 05, 2011",13
+100248,Buspirone,Anxiety,"""Relieves mild social anxiety, but causes noticeable drowsiness and mild dizziness during the afternoon. Overall rating: 6/10.""",6,"August 31, 2012",34
+100249,Clindamycin / benzoyl peroxide,Acne,"""Epiduo gel worked wonders on stubborn forehead bumps and prevented new blackheads from forming. Overall rating: 10/10.""",10,"September 15, 2010",79
+100250,Venlafaxine,Depression,"""Caused extreme insomnia, increased suicidal ideation, and severe night sweats. Had to discontinue under doctor supervision after 10 days. Diagnosed with depression.""",3,"October 12, 2015",34
+100251,Buspirone,Anxiety,"""Relieves mild social anxiety, but causes noticeable drowsiness and mild dizziness during the afternoon. Diagnosed with anxiety.""",5,"December 16, 2013",3
+100252,Spironolactone,Acne,"""Doxycycline cleared up severe inflammatory acne before my wedding. Fast-acting when combined with topical retinoids.""",7,"November 25, 2015",11
+100253,Escitalopram,Anxiety,"""Developed rapid tolerance and experienced terrible rebound anxiety and withdrawal tremors between doses. Overall rating: 3/10.""",3,"April 10, 2015",34
+100254,Fluoxetine,Depression,"""Citalopram helped me return to work and enjoy spending time with my family again. The adjustment period was well worth it.""",9,"January 02, 2014",9
+100255,Ethinyl estradiol / norgestimate,Birth Control,"""Sprintec has worked flawlessly for pregnancy prevention and skin clearance with zero adverse effects. Diagnosed with birth control.""",7,"June 27, 2018",4
+100256,Tretinoin,Acne,"""Spironolactone cleared hormonal cystic breakouts along my jawline within three months. Incredible transformation. Diagnosed with acne.""",9,"March 19, 2015",19
+100257,Rizatriptan,Migraine,"""Imitrex aborts acute throbbing migraines within 30 minutes. An indispensable rescue drug. Diagnosed with migraine.""",8,"September 15, 2018",66
+100258,Lisinopril,High Blood Pressure,"""Losartan works smoothly with zero cough or fatigue. My primary care physician is very pleased with the readings.""",8,"July 16, 2013",28
+100259,Losartan,High Blood Pressure,"""Brought my blood pressure down from 160/100 to 120/78 within three weeks. No noticeable side effects. Diagnosed with high blood pressure.""",10,"February 22, 2012",20
+100260,Tretinoin,Acne,"""Broke out in a terrible allergic rash all over my neck and chest. Complete disaster for my skin. Overall rating: 1/10.""",1,"May 25, 2011",1
+100261,Medroxyprogesterone,Birth Control,"""Very predictable light cycles with minimal cramping. No weight gain or mood changes whatsoever. Overall rating: 10/10.""",10,"October 20, 2013",22
+100262,Temazepam,Insomnia,"""Restoril provided crucial short-term relief during severe sleep disruption without morning hangover. Overall rating: 10/10.""",10,"December 26, 2018",110
+100263,Venlafaxine,Depression,"""Lexapro was a game changer for my severe depressive episodes. Minimal initial nausea, but smooth sailing afterwards. Diagnosed with depression.""",10,"April 18, 2013",3
+100264,Minocycline,Acne,"""Tretinoin purge lasted 4 weeks, but now at 6 months my skin texture is smoother and free from deep nodules. Diagnosed with acne.""",9,"January 18, 2018",17
+100265,Buspirone,Anxiety,"""Relieves mild social anxiety, but causes noticeable drowsiness and mild dizziness during the afternoon. Diagnosed with anxiety.""",5,"December 15, 2013",20
+100266,Tramadol,Pain,"""Tramadol managed post-operative pain well enough to allow restorative sleep without excessive sedation. Overall rating: 7/10.""",7,"October 03, 2015",32
+100267,Ethinyl estradiol / levonorgestrel,Birth Control,"""Periods became much lighter, though occasional unpredictable breakthrough bleeding occurs mid-pack.""",4,"June 02, 2011",11
+100268,Fluoxetine,Depression,"""Made me emotionally detached and increased my fatigue tenfold. Did not work for my condition at all. Diagnosed with depression.""",2,"May 13, 2010",21
+100269,Hydrocodone,Pain,"""Mild to moderate reduction in lower back pain, accompanied by lightheadedness and dry mouth.""",5,"June 08, 2016",4
+100270,Duloxetine,Depression,"""Wellbutrin gave me energy and motivation again without the sexual side effects of typical SSRIs. Very satisfied.""",9,"April 10, 2011",8
+100271,Venlafaxine,Depression,"""This medication has truly given me my life back. Within four weeks my constant low mood and fatigue started lifting. Overall rating: 10/10.""",10,"September 10, 2018",39
+100272,Clindamycin / benzoyl peroxide,Acne,"""Tretinoin purge lasted 4 weeks, but now at 6 months my skin texture is smoother and free from deep nodules.""",9,"May 18, 2011",39
+100273,Duloxetine,Depression,"""After trying three different antidepressants, Prozac was the only one that stabilized my mood without feeling like a zombie.""",8,"August 25, 2017",48
+100274,Temazepam,Insomnia,"""Experience sleepwalking and memory lapses where I ate entire meals without remembering next morning. Diagnosed with insomnia.""",3,"January 30, 2016",44
+100275,Clindamycin / benzoyl peroxide,Acne,"""Spironolactone cleared hormonal cystic breakouts along my jawline within three months. Incredible transformation. Overall rating: 8/10.""",8,"September 15, 2015",17
+100276,Doxycycline,Acne,"""Made my acne flare up worse than ever before with deep painful cysts that left permanent scarring.""",1,"January 18, 2014",12
+100277,Escitalopram,Anxiety,"""Xanax stopped my acute panic attacks in their tracks within 15 minutes. A crucial rescue medication when needed.""",8,"June 20, 2013",38
+100278,Spironolactone,Acne,"""Moderately effective, but application causes significant initial stinging and redness that takes hours to subside. Overall rating: 5/10.""",5,"June 12, 2016",10
+100279,Sertraline,Depression,"""Made me emotionally detached and increased my fatigue tenfold. Did not work for my condition at all. Overall rating: 3/10.""",3,"August 17, 2017",21
+100280,Propranolol,Anxiety,"""Buspar taken twice daily significantly lowered my baseline generalized anxiety and physical tension without sedation. Overall rating: 8/10.""",8,"August 22, 2015",38
+100281,Metoprolol,High Blood Pressure,"""Losartan works smoothly with zero cough or fatigue. My primary care physician is very pleased with the readings. Overall rating: 7/10.""",7,"November 06, 2011",52
+100282,Fluoxetine,Depression,"""Zero improvement in depression, but gained 15 pounds in two months and suffered unbearable withdrawal brain zaps.""",1,"October 23, 2012",7
+100283,Escitalopram,Depression,"""Zero improvement in depression, but gained 15 pounds in two months and suffered unbearable withdrawal brain zaps. Diagnosed with depression.""",2,"December 26, 2015",8
+100284,Venlafaxine,Depression,"""Mild improvement in mood after 6 weeks, though daytime lethargy and dry mouth make it hard to stay focused at work.""",6,"May 22, 2017",0
+100285,Ibuprofen,Pain,"""Severe nausea, vomiting, and dizziness within 30 minutes of taking the first tablet. Unbearable side effects.""",2,"November 29, 2010",15
+100286,Fluoxetine,Depression,"""Mild improvement in mood after 6 weeks, though daytime lethargy and dry mouth make it hard to stay focused at work. Diagnosed with depression.""",6,"September 03, 2014",0
+100287,Celecoxib,Pain,"""Celebrex manages my chronic osteoarthritis flare-ups effectively without upsetting my sensitive stomach. Overall rating: 9/10.""",9,"September 30, 2012",15
+100288,Levonorgestrel,Birth Control,"""Effective for pregnancy prevention, but experienced irregular spotting and slight breast tenderness for the first 4 months. Diagnosed with birth control.""",5,"September 03, 2010",7
+100289,Escitalopram,Depression,"""Wellbutrin gave me energy and motivation again without the sexual side effects of typical SSRIs. Very satisfied. Diagnosed with depression.""",10,"August 12, 2011",8
+100290,Tretinoin,Acne,"""Works okay for surface pimples, but does little for hormonal cysts along the chin. Overall rating: 6/10.""",6,"June 20, 2011",8
+100291,Ethinyl estradiol / norethindrone,Birth Control,"""Yaz completely cleared my hormonal acne, regulated my cycle to exactly 28 days, and eliminated PMS mood swings. Overall rating: 7/10.""",7,"May 17, 2011",0
+100292,Isotretinoin,Acne,"""Doxycycline cleared up severe inflammatory acne before my wedding. Fast-acting when combined with topical retinoids. Overall rating: 7/10.""",7,"November 25, 2016",0
+100293,Tretinoin,Acne,"""Broke out in a terrible allergic rash all over my neck and chest. Complete disaster for my skin. Diagnosed with acne.""",1,"February 01, 2018",31
+100294,Spironolactone,Acne,"""Made my acne flare up worse than ever before with deep painful cysts that left permanent scarring. Overall rating: 2/10.""",2,"June 17, 2013",8
+100295,Escitalopram,Anxiety,"""Clonazepam provided stable all-day relief from debilitating agoraphobia and constant catastrophic thinking.""",10,"May 31, 2012",3
+100296,Buspirone,Anxiety,"""Lexapro smoothed out daily panic spikes and helped me regain control of my daily social interactions. Diagnosed with anxiety.""",9,"July 17, 2017",17
+100297,Buspirone,Anxiety,"""Buspar taken twice daily significantly lowered my baseline generalized anxiety and physical tension without sedation. Overall rating: 7/10.""",7,"February 27, 2018",35
+100298,Epiduo,Acne,"""Accutane completely cured my cystic acne after a 6-month course. Dry lips were tough, but my skin is 100% clear now. Diagnosed with acne.""",7,"April 20, 2016",5
+100299,Bupropion,Depression,"""Took the sharp edge off my depression, but didn't completely resolve feelings of low energy and brain fog. Diagnosed with depression.""",4,"February 19, 2013",9
+100300,Etonogestrel,Birth Control,"""Regulated my periods well, but noticed a slight drop in libido and mild water retention before cycles.""",6,"June 02, 2014",0
+100301,Minocycline,Acne,"""Caused extreme joint pain, cracked bleeding lips, severe dry eyes, and liver enzyme spikes that forced me to stop early.""",3,"October 03, 2016",0
+100302,Alprazolam,Anxiety,"""Buspar taken twice daily significantly lowered my baseline generalized anxiety and physical tension without sedation. Diagnosed with anxiety.""",7,"September 26, 2013",18
+100303,Drospirenone / ethinyl estradiol,Birth Control,"""Sprintec has worked flawlessly for pregnancy prevention and skin clearance with zero adverse effects.""",8,"September 05, 2013",18
+100304,Metoprolol,High Blood Pressure,"""Metoprolol normalized my resting heart rate and blood pressure while reducing heart palpitations. Diagnosed with high blood pressure.""",10,"October 09, 2013",24
+100305,Hydroxyzine,Anxiety,"""Lexapro smoothed out daily panic spikes and helped me regain control of my daily social interactions. Overall rating: 10/10.""",10,"April 30, 2015",31
+100306,Levonorgestrel,Birth Control,"""Sprintec has worked flawlessly for pregnancy prevention and skin clearance with zero adverse effects. Overall rating: 7/10.""",7,"December 08, 2018",89
+100307,Etonogestrel,Birth Control,"""Completely destroyed my mental health, caused severe mood swings, and killed my energy levels. Overall rating: 3/10.""",3,"May 09, 2017",13
+100308,Ethinyl estradiol / levonorgestrel,Birth Control,"""Caused severe depression, uncontrollable crying spells, 20-pound weight gain, and cystic acne within 3 months. Diagnosed with birth control.""",3,"May 22, 2015",7
+100309,Citalopram,Depression,"""Took the sharp edge off my depression, but didn't completely resolve feelings of low energy and brain fog.""",6,"August 20, 2017",15
+100310,Isotretinoin,Acne,"""Noticeable reduction in redness, though skin peeling and sun sensitivity require constant heavy moisturizing.""",6,"December 12, 2014",3
+100311,Epiduo,Acne,"""Epiduo gel worked wonders on stubborn forehead bumps and prevented new blackheads from forming. Diagnosed with acne.""",8,"April 16, 2015",13
+100312,Medroxyprogesterone,Birth Control,"""Suffered debilitating daily migraines and blood pressure spikes. My doctor instructed immediate removal. Diagnosed with birth control.""",1,"April 29, 2012",1
+100313,Escitalopram,Anxiety,"""Paradoxical reaction—made my heart race faster and induced severe restless agitation. Overall rating: 2/10.""",2,"December 11, 2011",0
+100314,Hydroxyzine,Anxiety,"""Propranolol is a lifesaver for performance anxiety and presentation tremors. Keeps the physical racing heart under control. Diagnosed with anxiety.""",9,"June 07, 2015",78
+100315,Escitalopram,Depression,"""Wellbutrin gave me energy and motivation again without the sexual side effects of typical SSRIs. Very satisfied. Overall rating: 9/10.""",9,"November 27, 2017",43
+100316,Bupropion,Depression,"""It works somewhat for sadness, but decreased libido and mild weight gain make me question if I should stay on it. Diagnosed with depression.""",5,"December 02, 2018",11
+100317,Gabapentin,Pain,"""Celebrex manages my chronic osteoarthritis flare-ups effectively without upsetting my sensitive stomach.""",10,"April 04, 2013",12
+100318,Fluoxetine,Depression,"""Made me emotionally detached and increased my fatigue tenfold. Did not work for my condition at all. Diagnosed with depression.""",1,"November 16, 2012",3
+100319,Naproxen,Pain,"""Celebrex manages my chronic osteoarthritis flare-ups effectively without upsetting my sensitive stomach.""",9,"March 24, 2011",4
+100320,Tramadol,Pain,"""Provides about 4 hours of pain relief, but wears off faster than expected and causes mild constipation. Diagnosed with pain.""",4,"August 11, 2012",2
+100321,Sertraline,Depression,"""Citalopram helped me return to work and enjoy spending time with my family again. The adjustment period was well worth it.""",10,"January 22, 2010",19
+100322,Eszopiclone,Insomnia,"""Severe next-day sedation, brain fog, and severe headaches. Felt like a zombie all day. Overall rating: 1/10.""",1,"April 18, 2017",22
+100323,Fluoxetine,Depression,"""Caused extreme insomnia, increased suicidal ideation, and severe night sweats. Had to discontinue under doctor supervision after 10 days.""",2,"April 25, 2017",19
+100324,Clonazepam,Anxiety,"""Clonazepam provided stable all-day relief from debilitating agoraphobia and constant catastrophic thinking.""",7,"May 29, 2010",7
+100325,Rizatriptan,Migraine,"""Aimovig monthly injection reduced my monthly migraine days from 14 down to just 2. Overall rating: 10/10.""",10,"June 03, 2010",74
+100326,Fluoxetine,Depression,"""It works somewhat for sadness, but decreased libido and mild weight gain make me question if I should stay on it. Overall rating: 4/10.""",4,"March 11, 2017",13
+100327,Propranolol,Anxiety,"""Lexapro smoothed out daily panic spikes and helped me regain control of my daily social interactions. Overall rating: 8/10.""",8,"January 22, 2013",19
+100328,Duloxetine,Depression,"""After trying three different antidepressants, Prozac was the only one that stabilized my mood without feeling like a zombie. Diagnosed with depression.""",8,"November 19, 2012",22
+100329,Ibuprofen,Pain,"""Celebrex manages my chronic osteoarthritis flare-ups effectively without upsetting my sensitive stomach. Diagnosed with pain.""",9,"July 25, 2017",13
+100330,Ethinyl estradiol / norgestimate,Birth Control,"""Very predictable light cycles with minimal cramping. No weight gain or mood changes whatsoever. Diagnosed with birth control.""",10,"September 05, 2013",6
+100331,Escitalopram,Depression,"""Took the sharp edge off my depression, but didn't completely resolve feelings of low energy and brain fog. Overall rating: 4/10.""",4,"October 13, 2012",4
+100332,Citalopram,Depression,"""Wellbutrin gave me energy and motivation again without the sexual side effects of typical SSRIs. Very satisfied. Overall rating: 10/10.""",10,"May 21, 2013",34
+100333,Hydroxyzine,Anxiety,"""Moderate calming effect, though building tolerance quickly requires careful dosage monitoring. Diagnosed with anxiety.""",5,"August 25, 2012",0
+100334,Escitalopram,Depression,"""After trying three different antidepressants, Prozac was the only one that stabilized my mood without feeling like a zombie. Diagnosed with depression.""",9,"August 21, 2015",2
+100335,Valsartan,High Blood Pressure,"""Developed the notorious persistent dry hacking cough that kept me awake all night. Had to switch to an ARB. Diagnosed with high blood pressure.""",2,"April 23, 2013",0
+100336,Epiduo,Acne,"""Spironolactone cleared hormonal cystic breakouts along my jawline within three months. Incredible transformation. Overall rating: 8/10.""",8,"May 21, 2018",0
+100337,Propranolol,Migraine,"""Aimovig monthly injection reduced my monthly migraine days from 14 down to just 2.""",10,"July 18, 2018",46
+100338,Spironolactone,Acne,"""Made my acne flare up worse than ever before with deep painful cysts that left permanent scarring. Diagnosed with acne.""",1,"November 22, 2017",21
+100339,Isotretinoin,Acne,"""Caused extreme joint pain, cracked bleeding lips, severe dry eyes, and liver enzyme spikes that forced me to stop early. Diagnosed with acne.""",1,"January 08, 2016",11
+100340,Sertraline,Depression,"""Citalopram helped me return to work and enjoy spending time with my family again. The adjustment period was well worth it.""",10,"January 15, 2018",2
+100341,Propranolol,Anxiety,"""Xanax stopped my acute panic attacks in their tracks within 15 minutes. A crucial rescue medication when needed. Overall rating: 10/10.""",10,"June 25, 2011",16
+100342,Escitalopram,Anxiety,"""Clonazepam provided stable all-day relief from debilitating agoraphobia and constant catastrophic thinking. Diagnosed with anxiety.""",7,"June 16, 2013",15
+100343,Celecoxib,Pain,"""Gabapentin reduced sharp burning diabetic nerve pain from an 8/10 to a manageable 2/10. Diagnosed with pain.""",7,"October 27, 2010",4
+100344,Venlafaxine,Depression,"""This medication has truly given me my life back. Within four weeks my constant low mood and fatigue started lifting.""",7,"April 18, 2015",13
+100345,Citalopram,Depression,"""Citalopram helped me return to work and enjoy spending time with my family again. The adjustment period was well worth it. Diagnosed with depression.""",8,"March 30, 2017",12
+100346,Eszopiclone,Insomnia,"""Low-dose Trazodone (50mg) restored natural sleep architecture without dependency or grogginess. Overall rating: 10/10.""",10,"November 25, 2010",22
+100347,Oxycodone,Pain,"""Helps with joint stiffness in the morning, but pain returns in the evening during strenuous activities.""",6,"January 02, 2012",10
+100348,Rizatriptan,Migraine,"""Imitrex aborts acute throbbing migraines within 30 minutes. An indispensable rescue drug.""",8,"May 07, 2013",1
+100349,Escitalopram,Anxiety,"""Helps take the edge off panic attacks, but leaves me feeling sluggish and unmotivated for hours.""",5,"October 10, 2012",4
+100350,Hydroxyzine,Anxiety,"""Xanax stopped my acute panic attacks in their tracks within 15 minutes. A crucial rescue medication when needed.""",8,"May 28, 2017",23
+100351,Doxycycline,Acne,"""Caused extreme joint pain, cracked bleeding lips, severe dry eyes, and liver enzyme spikes that forced me to stop early.""",1,"February 18, 2011",12
+100352,Clonazepam,Anxiety,"""Xanax stopped my acute panic attacks in their tracks within 15 minutes. A crucial rescue medication when needed. Overall rating: 7/10.""",7,"December 03, 2014",46
+100353,Doxycycline,Acne,"""Epiduo gel worked wonders on stubborn forehead bumps and prevented new blackheads from forming. Overall rating: 7/10.""",7,"August 17, 2012",25
+100354,Drospirenone / ethinyl estradiol,Birth Control,"""Continuous heavy bleeding for 6 straight weeks accompanied by excruciating ovarian cramps.""",2,"May 21, 2013",3
+100355,Ethinyl estradiol / levonorgestrel,Birth Control,"""Completely destroyed my mental health, caused severe mood swings, and killed my energy levels. Overall rating: 3/10.""",3,"February 01, 2013",1
+100356,Escitalopram,Depression,"""Made me emotionally detached and increased my fatigue tenfold. Did not work for my condition at all. Diagnosed with depression.""",3,"July 24, 2015",18
+100357,Citalopram,Depression,"""Zoloft helped lift the dark cloud that hung over me for years. It took about 5 weeks to feel the full therapeutic effect. Overall rating: 10/10.""",10,"October 23, 2017",0
+100358,Doxycycline,Acne,"""Epiduo gel worked wonders on stubborn forehead bumps and prevented new blackheads from forming. Overall rating: 10/10.""",10,"September 14, 2012",21
+100359,Ethinyl estradiol / norgestimate,Birth Control,"""Very predictable light cycles with minimal cramping. No weight gain or mood changes whatsoever.""",8,"April 22, 2016",67
+100360,Epiduo,Acne,"""Spironolactone cleared hormonal cystic breakouts along my jawline within three months. Incredible transformation. Overall rating: 8/10.""",8,"April 12, 2012",20
+100361,Tretinoin,Acne,"""Doxycycline cleared up severe inflammatory acne before my wedding. Fast-acting when combined with topical retinoids.""",10,"January 03, 2016",11
+100362,Gabapentin,Pain,"""Naproxen 500mg twice daily relieved severe tendonitis inflammation within 48 hours. Diagnosed with pain.""",9,"June 11, 2010",24
+100363,Levonorgestrel,Birth Control,"""Yaz completely cleared my hormonal acne, regulated my cycle to exactly 28 days, and eliminated PMS mood swings. Overall rating: 8/10.""",8,"May 26, 2013",14
+100364,Melatonin,Insomnia,"""Ambien puts me to sleep in 20 minutes and allows 7 full hours of restful, uninterrupted sleep. Diagnosed with insomnia.""",8,"June 17, 2018",18
+100365,Buspirone,Anxiety,"""Buspar taken twice daily significantly lowered my baseline generalized anxiety and physical tension without sedation. Diagnosed with anxiety.""",8,"August 10, 2013",68
+100366,Ethinyl estradiol / norethindrone,Birth Control,"""Mirena IUD insertion was mildly uncomfortable for a few seconds, but 4 years of zero periods and no hassle is worth it. Overall rating: 9/10.""",9,"October 02, 2015",11
+100367,Ethinyl estradiol / norgestimate,Birth Control,"""Mirena IUD insertion was mildly uncomfortable for a few seconds, but 4 years of zero periods and no hassle is worth it.""",10,"February 27, 2014",77
+100368,Clindamycin / benzoyl peroxide,Acne,"""Spironolactone cleared hormonal cystic breakouts along my jawline within three months. Incredible transformation.""",8,"December 04, 2012",56
+100369,Buspirone,Anxiety,"""Moderate calming effect, though building tolerance quickly requires careful dosage monitoring.""",6,"March 14, 2012",2
+100370,Epiduo,Acne,"""Epiduo gel worked wonders on stubborn forehead bumps and prevented new blackheads from forming. Diagnosed with acne.""",8,"September 06, 2017",1
+100371,Clindamycin / benzoyl peroxide,Acne,"""Made my acne flare up worse than ever before with deep painful cysts that left permanent scarring. Overall rating: 2/10.""",2,"November 21, 2011",1
+100372,Celecoxib,Pain,"""Naproxen 500mg twice daily relieved severe tendonitis inflammation within 48 hours. Overall rating: 8/10.""",8,"January 24, 2012",0
+100373,Metoprolol,High Blood Pressure,"""Brought my blood pressure down from 160/100 to 120/78 within three weeks. No noticeable side effects.""",7,"June 30, 2017",2
+100374,Citalopram,Depression,"""Citalopram helped me return to work and enjoy spending time with my family again. The adjustment period was well worth it.""",8,"October 06, 2010",27
+100375,Hydrocodone,Pain,"""Provided immediate relief following major knee surgery. Allowed me to start physical therapy on schedule. Diagnosed with pain.""",10,"February 25, 2017",1
+100376,Celecoxib,Pain,"""Mild to moderate reduction in lower back pain, accompanied by lightheadedness and dry mouth.""",5,"January 28, 2010",3
+100377,Escitalopram,Anxiety,"""Propranolol is a lifesaver for performance anxiety and presentation tremors. Keeps the physical racing heart under control. Diagnosed with anxiety.""",7,"March 20, 2013",44
+100378,Bupropion,Depression,"""Horrible experience. My anxiety skyrocketed, experienced terrible akathisia and couldn't sit still for days.""",3,"January 30, 2011",0
+100379,Propranolol,Anxiety,"""Propranolol is a lifesaver for performance anxiety and presentation tremors. Keeps the physical racing heart under control. Overall rating: 9/10.""",9,"December 01, 2018",40
+100380,Epiduo,Acne,"""Epiduo gel worked wonders on stubborn forehead bumps and prevented new blackheads from forming.""",10,"October 26, 2017",7
+100381,Clindamycin / benzoyl peroxide,Acne,"""Kept active breakouts at bay while taking it daily, but acne returned as soon as the antibiotic course finished.""",4,"July 19, 2014",1
+100382,Clindamycin / benzoyl peroxide,Acne,"""Kept active breakouts at bay while taking it daily, but acne returned as soon as the antibiotic course finished. Diagnosed with acne.""",4,"December 03, 2011",11
+100383,Citalopram,Depression,"""Zero improvement in depression, but gained 15 pounds in two months and suffered unbearable withdrawal brain zaps. Diagnosed with depression.""",3,"January 26, 2011",17
+100384,Ethinyl estradiol / levonorgestrel,Birth Control,"""Completely destroyed my mental health, caused severe mood swings, and killed my energy levels. Overall rating: 1/10.""",1,"July 10, 2010",37
+100385,Metoprolol,High Blood Pressure,"""Effective at lowering BP, but causes mild swelling in my ankles and feet by the end of the day.""",5,"July 12, 2013",13
+100386,Citalopram,Depression,"""Citalopram helped me return to work and enjoy spending time with my family again. The adjustment period was well worth it. Overall rating: 8/10.""",8,"November 12, 2010",39
+100387,Tretinoin,Acne,"""Moderately effective, but application causes significant initial stinging and redness that takes hours to subside. Diagnosed with acne.""",6,"January 24, 2016",3
+100388,Tretinoin,Acne,"""Destroyed my stomach lining with severe acid reflux and didn't even improve my facial cysts. Diagnosed with acne.""",1,"May 12, 2018",3
+100389,Trazodone,Insomnia,"""Ambien puts me to sleep in 20 minutes and allows 7 full hours of restful, uninterrupted sleep. Overall rating: 10/10.""",10,"October 14, 2016",33
+100390,Ethinyl estradiol / norgestimate,Birth Control,"""Continuous heavy bleeding for 6 straight weeks accompanied by excruciating ovarian cramps.""",2,"February 10, 2017",29
+100391,Doxycycline,Acne,"""Broke out in a terrible allergic rash all over my neck and chest. Complete disaster for my skin. Diagnosed with acne.""",2,"March 18, 2014",83
+100392,Buspirone,Anxiety,"""Relieves mild social anxiety, but causes noticeable drowsiness and mild dizziness during the afternoon. Diagnosed with anxiety.""",6,"April 24, 2013",5
+100393,Ethinyl estradiol / norethindrone,Birth Control,"""Regulated my periods well, but noticed a slight drop in libido and mild water retention before cycles. Overall rating: 4/10.""",4,"December 25, 2017",4
+100394,Ethinyl estradiol / norethindrone,Birth Control,"""Mirena IUD insertion was mildly uncomfortable for a few seconds, but 4 years of zero periods and no hassle is worth it.""",10,"January 10, 2011",35
+100395,Citalopram,Depression,"""Wellbutrin gave me energy and motivation again without the sexual side effects of typical SSRIs. Very satisfied.""",9,"June 27, 2011",10
+100396,Sertraline,Depression,"""This medication has truly given me my life back. Within four weeks my constant low mood and fatigue started lifting.""",10,"December 20, 2013",64
+100397,Propranolol,Anxiety,"""Helps take the edge off panic attacks, but leaves me feeling sluggish and unmotivated for hours.""",5,"April 10, 2013",19
+100398,Spironolactone,Acne,"""Caused extreme joint pain, cracked bleeding lips, severe dry eyes, and liver enzyme spikes that forced me to stop early. Diagnosed with acne.""",3,"November 05, 2015",10
+100399,Fluoxetine,Depression,"""Wellbutrin gave me energy and motivation again without the sexual side effects of typical SSRIs. Very satisfied. Overall rating: 8/10.""",8,"July 13, 2015",33
+100400,Bupropion,Depression,"""Wellbutrin gave me energy and motivation again without the sexual side effects of typical SSRIs. Very satisfied. Overall rating: 9/10.""",9,"October 11, 2018",33
+100401,Duloxetine,Depression,"""Citalopram helped me return to work and enjoy spending time with my family again. The adjustment period was well worth it. Overall rating: 8/10.""",8,"August 29, 2016",2
+100402,Hydrocodone,Pain,"""Provided immediate relief following major knee surgery. Allowed me to start physical therapy on schedule. Overall rating: 8/10.""",8,"September 22, 2013",55
+100403,Levonorgestrel,Birth Control,"""Mirena IUD insertion was mildly uncomfortable for a few seconds, but 4 years of zero periods and no hassle is worth it. Overall rating: 9/10.""",9,"April 20, 2017",16
+100404,Doxepin,Insomnia,"""Restoril provided crucial short-term relief during severe sleep disruption without morning hangover.""",9,"May 17, 2015",42
+100405,Minocycline,Acne,"""Made my acne flare up worse than ever before with deep painful cysts that left permanent scarring. Diagnosed with acne.""",2,"October 08, 2018",6
+100406,Minocycline,Acne,"""Accutane completely cured my cystic acne after a 6-month course. Dry lips were tough, but my skin is 100% clear now. Diagnosed with acne.""",10,"March 29, 2012",54
+100407,Hydroxyzine,Anxiety,"""Clonazepam provided stable all-day relief from debilitating agoraphobia and constant catastrophic thinking. Diagnosed with anxiety.""",7,"May 08, 2012",11
+100408,Propranolol,Anxiety,"""Clonazepam provided stable all-day relief from debilitating agoraphobia and constant catastrophic thinking. Diagnosed with anxiety.""",7,"August 08, 2015",0
+100409,Duloxetine,Depression,"""Lexapro was a game changer for my severe depressive episodes. Minimal initial nausea, but smooth sailing afterwards. Diagnosed with depression.""",9,"September 30, 2014",56
+100410,Drospirenone / ethinyl estradiol,Birth Control,"""Very predictable light cycles with minimal cramping. No weight gain or mood changes whatsoever. Diagnosed with birth control.""",10,"September 07, 2015",2
+100411,Metoprolol,High Blood Pressure,"""Developed the notorious persistent dry hacking cough that kept me awake all night. Had to switch to an ARB. Overall rating: 2/10.""",2,"November 13, 2017",6
+100412,Etonogestrel,Birth Control,"""Yaz completely cleared my hormonal acne, regulated my cycle to exactly 28 days, and eliminated PMS mood swings. Diagnosed with birth control.""",7,"June 15, 2017",71
+100413,Spironolactone,Acne,"""Moderately effective, but application causes significant initial stinging and redness that takes hours to subside. Overall rating: 4/10.""",4,"December 06, 2018",30
+100414,Clonazepam,Anxiety,"""Lexapro smoothed out daily panic spikes and helped me regain control of my daily social interactions. Diagnosed with anxiety.""",9,"October 26, 2015",20
+100415,Buspirone,Anxiety,"""Moderate calming effect, though building tolerance quickly requires careful dosage monitoring. Overall rating: 4/10.""",4,"March 12, 2015",9
+100416,Ethinyl estradiol / levonorgestrel,Birth Control,"""Convenient weekly patch, but edges tend to peel slightly and cause minor skin redness at application sites.""",6,"June 01, 2015",5
+100417,Sertraline,Depression,"""Citalopram helped me return to work and enjoy spending time with my family again. The adjustment period was well worth it.""",7,"November 27, 2013",8
+100418,Spironolactone,Acne,"""Tretinoin purge lasted 4 weeks, but now at 6 months my skin texture is smoother and free from deep nodules. Overall rating: 8/10.""",8,"May 05, 2015",9
+100419,Fluoxetine,Depression,"""Helped moderately with depressive symptoms, but the persistent emotional numbness and vivid dreams are frustrating. Overall rating: 5/10.""",5,"July 03, 2010",11
+100420,Medroxyprogesterone,Birth Control,"""Nexplanon implant has been fantastic. No periods, no cramping, and total peace of mind for 3 years. Diagnosed with birth control.""",9,"December 22, 2018",33
+100421,Venlafaxine,Depression,"""Horrible experience. My anxiety skyrocketed, experienced terrible akathisia and couldn't sit still for days. Diagnosed with depression.""",1,"October 18, 2011",28
+100422,Doxycycline,Acne,"""Tretinoin purge lasted 4 weeks, but now at 6 months my skin texture is smoother and free from deep nodules. Diagnosed with acne.""",10,"January 26, 2012",37
+100423,Sertraline,Depression,"""Mild improvement in mood after 6 weeks, though daytime lethargy and dry mouth make it hard to stay focused at work. Overall rating: 5/10.""",5,"August 22, 2016",0
+100424,Clonazepam,Anxiety,"""Propranolol is a lifesaver for performance anxiety and presentation tremors. Keeps the physical racing heart under control. Diagnosed with anxiety.""",8,"December 05, 2018",16
+100425,Fluoxetine,Depression,"""Wellbutrin gave me energy and motivation again without the sexual side effects of typical SSRIs. Very satisfied.""",8,"February 18, 2015",1
+100426,Venlafaxine,Depression,"""It works somewhat for sadness, but decreased libido and mild weight gain make me question if I should stay on it. Diagnosed with depression.""",5,"May 11, 2014",7
+100427,Hydrocodone,Pain,"""Mild to moderate reduction in lower back pain, accompanied by lightheadedness and dry mouth. Diagnosed with pain.""",5,"December 08, 2011",5
+100428,Drospirenone / ethinyl estradiol,Birth Control,"""Effective for pregnancy prevention, but experienced irregular spotting and slight breast tenderness for the first 4 months. Diagnosed with birth control.""",5,"July 03, 2011",21
+100429,Doxycycline,Acne,"""Doxycycline cleared up severe inflammatory acne before my wedding. Fast-acting when combined with topical retinoids. Diagnosed with acne.""",7,"August 03, 2011",10
+100430,Escitalopram,Anxiety,"""Clonazepam provided stable all-day relief from debilitating agoraphobia and constant catastrophic thinking. Overall rating: 8/10.""",8,"January 31, 2012",2
+100431,Escitalopram,Anxiety,"""Buspar taken twice daily significantly lowered my baseline generalized anxiety and physical tension without sedation. Overall rating: 8/10.""",8,"March 29, 2013",3
+100432,Venlafaxine,Depression,"""This medication has truly given me my life back. Within four weeks my constant low mood and fatigue started lifting. Overall rating: 10/10.""",10,"February 09, 2010",34
+100433,Escitalopram,Anxiety,"""Lexapro smoothed out daily panic spikes and helped me regain control of my daily social interactions. Diagnosed with anxiety.""",10,"July 21, 2015",23
+100434,Epiduo,Acne,"""Spironolactone cleared hormonal cystic breakouts along my jawline within three months. Incredible transformation.""",10,"May 04, 2016",2
+100435,Sertraline,Depression,"""Zero improvement in depression, but gained 15 pounds in two months and suffered unbearable withdrawal brain zaps.""",2,"January 12, 2016",1
+100436,Clindamycin / benzoyl peroxide,Acne,"""Made my acne flare up worse than ever before with deep painful cysts that left permanent scarring. Diagnosed with acne.""",3,"September 24, 2015",21
+100437,Venlafaxine,Depression,"""This medication has truly given me my life back. Within four weeks my constant low mood and fatigue started lifting. Diagnosed with depression.""",9,"December 13, 2014",1
+100438,Hydroxyzine,Anxiety,"""Made me extremely groggy, confused, and unable to drive or work safely. Felt completely dissociated. Overall rating: 1/10.""",1,"May 13, 2010",31
+100439,Buspirone,Anxiety,"""Xanax stopped my acute panic attacks in their tracks within 15 minutes. A crucial rescue medication when needed.""",7,"May 09, 2012",29
+100440,Ethinyl estradiol / norgestimate,Birth Control,"""Periods became much lighter, though occasional unpredictable breakthrough bleeding occurs mid-pack.""",5,"November 28, 2016",0
+100441,Citalopram,Depression,"""This medication has truly given me my life back. Within four weeks my constant low mood and fatigue started lifting. Diagnosed with depression.""",8,"December 07, 2013",2
+100442,Lorazepam,Anxiety,"""Moderate calming effect, though building tolerance quickly requires careful dosage monitoring. Overall rating: 4/10.""",4,"June 03, 2016",43
+100443,Tretinoin,Acne,"""Destroyed my stomach lining with severe acid reflux and didn't even improve my facial cysts.""",3,"May 31, 2018",8
+100444,Ethinyl estradiol / norgestimate,Birth Control,"""Suffered debilitating daily migraines and blood pressure spikes. My doctor instructed immediate removal. Diagnosed with birth control.""",2,"June 28, 2011",8
+100445,Tretinoin,Acne,"""Moderately effective, but application causes significant initial stinging and redness that takes hours to subside. Overall rating: 4/10.""",4,"August 06, 2011",16
+100446,Buspirone,Anxiety,"""Clonazepam provided stable all-day relief from debilitating agoraphobia and constant catastrophic thinking.""",10,"February 08, 2017",70
+100447,Drospirenone / ethinyl estradiol,Birth Control,"""Continuous heavy bleeding for 6 straight weeks accompanied by excruciating ovarian cramps. Diagnosed with birth control.""",2,"February 20, 2014",76
+100448,Propranolol,Anxiety,"""Xanax stopped my acute panic attacks in their tracks within 15 minutes. A crucial rescue medication when needed. Diagnosed with anxiety.""",7,"February 21, 2015",33
+100449,Ibuprofen,Pain,"""Mild to moderate reduction in lower back pain, accompanied by lightheadedness and dry mouth.""",4,"October 26, 2014",4
+100450,Ethinyl estradiol / norgestimate,Birth Control,"""Mirena IUD insertion was mildly uncomfortable for a few seconds, but 4 years of zero periods and no hassle is worth it. Overall rating: 9/10.""",9,"February 20, 2016",2
+100451,Propranolol,Anxiety,"""Moderate calming effect, though building tolerance quickly requires careful dosage monitoring. Diagnosed with anxiety.""",5,"July 20, 2018",15
+100452,Sertraline,Depression,"""This medication has truly given me my life back. Within four weeks my constant low mood and fatigue started lifting.""",10,"December 13, 2014",19
+100453,Clonazepam,Anxiety,"""Made me extremely groggy, confused, and unable to drive or work safely. Felt completely dissociated. Diagnosed with anxiety.""",2,"May 21, 2013",9
+100454,Sertraline,Depression,"""Zero improvement in depression, but gained 15 pounds in two months and suffered unbearable withdrawal brain zaps. Overall rating: 2/10.""",2,"December 04, 2010",42
+100455,Isotretinoin,Acne,"""Made my acne flare up worse than ever before with deep painful cysts that left permanent scarring. Diagnosed with acne.""",1,"June 05, 2013",2
+100456,Celecoxib,Pain,"""Severe nausea, vomiting, and dizziness within 30 minutes of taking the first tablet. Unbearable side effects. Diagnosed with pain.""",2,"January 25, 2011",12
+100457,Venlafaxine,Depression,"""Lexapro was a game changer for my severe depressive episodes. Minimal initial nausea, but smooth sailing afterwards. Diagnosed with depression.""",8,"August 17, 2017",0
+100458,Propranolol,Anxiety,"""Xanax stopped my acute panic attacks in their tracks within 15 minutes. A crucial rescue medication when needed. Overall rating: 9/10.""",9,"October 13, 2017",15
+100459,Sertraline,Depression,"""Citalopram helped me return to work and enjoy spending time with my family again. The adjustment period was well worth it.""",10,"February 27, 2011",1
+100460,Epiduo,Acne,"""Caused extreme joint pain, cracked bleeding lips, severe dry eyes, and liver enzyme spikes that forced me to stop early. Diagnosed with acne.""",1,"August 05, 2017",2
+100461,Venlafaxine,Depression,"""Citalopram helped me return to work and enjoy spending time with my family again. The adjustment period was well worth it.""",7,"December 08, 2014",3
+100462,Epiduo,Acne,"""Epiduo gel worked wonders on stubborn forehead bumps and prevented new blackheads from forming. Diagnosed with acne.""",8,"December 18, 2014",25
+100463,Ethinyl estradiol / levonorgestrel,Birth Control,"""Nexplanon implant has been fantastic. No periods, no cramping, and total peace of mind for 3 years. Diagnosed with birth control.""",7,"March 10, 2018",32
+100464,Tretinoin,Acne,"""Caused extreme joint pain, cracked bleeding lips, severe dry eyes, and liver enzyme spikes that forced me to stop early.""",2,"February 08, 2013",15
+100465,Ibuprofen,Pain,"""Provided immediate relief following major knee surgery. Allowed me to start physical therapy on schedule. Diagnosed with pain.""",9,"May 20, 2013",78
+100466,Duloxetine,Depression,"""Took the sharp edge off my depression, but didn't completely resolve feelings of low energy and brain fog. Overall rating: 4/10.""",4,"March 31, 2017",4
+100467,Bupropion,Depression,"""Made me emotionally detached and increased my fatigue tenfold. Did not work for my condition at all.""",1,"September 14, 2012",6
+100468,Alprazolam,Anxiety,"""Moderate calming effect, though building tolerance quickly requires careful dosage monitoring. Overall rating: 6/10.""",6,"June 25, 2011",20
+100469,Minocycline,Acne,"""Caused extreme joint pain, cracked bleeding lips, severe dry eyes, and liver enzyme spikes that forced me to stop early. Overall rating: 2/10.""",2,"August 22, 2018",4
+100470,Fluoxetine,Depression,"""Mild improvement in mood after 6 weeks, though daytime lethargy and dry mouth make it hard to stay focused at work.""",4,"September 05, 2010",33
+100471,Valsartan,High Blood Pressure,"""Amlodipine effectively controlled stage 2 hypertension with excellent stability across 24-hour ambulatory monitoring. Overall rating: 9/10.""",9,"October 01, 2014",0
+100472,Hydrocodone,Pain,"""Provided immediate relief following major knee surgery. Allowed me to start physical therapy on schedule. Overall rating: 8/10.""",8,"November 20, 2010",84
+100473,Escitalopram,Anxiety,"""Propranolol is a lifesaver for performance anxiety and presentation tremors. Keeps the physical racing heart under control. Overall rating: 8/10.""",8,"July 30, 2016",1
+100474,Celecoxib,Pain,"""Severe nausea, vomiting, and dizziness within 30 minutes of taking the first tablet. Unbearable side effects. Overall rating: 3/10.""",3,"November 01, 2017",39
+100475,Alprazolam,Anxiety,"""Made me extremely groggy, confused, and unable to drive or work safely. Felt completely dissociated.""",1,"November 15, 2014",13
+100476,Fluoxetine,Depression,"""Mild improvement in mood after 6 weeks, though daytime lethargy and dry mouth make it hard to stay focused at work.""",4,"February 21, 2010",49
+100477,Gabapentin,Pain,"""Helps with joint stiffness in the morning, but pain returns in the evening during strenuous activities. Diagnosed with pain.""",4,"October 20, 2015",0
+100478,Ethinyl estradiol / norethindrone,Birth Control,"""Regulated my periods well, but noticed a slight drop in libido and mild water retention before cycles. Diagnosed with birth control.""",4,"October 05, 2018",8
+100479,Ethinyl estradiol / norgestimate,Birth Control,"""Caused severe depression, uncontrollable crying spells, 20-pound weight gain, and cystic acne within 3 months. Overall rating: 1/10.""",1,"October 25, 2014",62
+100480,Epiduo,Acne,"""Tretinoin purge lasted 4 weeks, but now at 6 months my skin texture is smoother and free from deep nodules. Diagnosed with acne.""",7,"January 15, 2014",17
+100481,Fluoxetine,Depression,"""Horrible experience. My anxiety skyrocketed, experienced terrible akathisia and couldn't sit still for days. Overall rating: 1/10.""",1,"September 03, 2018",17
+100482,Sertraline,Depression,"""Mild improvement in mood after 6 weeks, though daytime lethargy and dry mouth make it hard to stay focused at work. Diagnosed with depression.""",6,"September 16, 2015",11
+100483,Escitalopram,Depression,"""Caused extreme insomnia, increased suicidal ideation, and severe night sweats. Had to discontinue under doctor supervision after 10 days. Overall rating: 1/10.""",1,"January 30, 2014",10
+100484,Spironolactone,Acne,"""Tretinoin purge lasted 4 weeks, but now at 6 months my skin texture is smoother and free from deep nodules.""",7,"August 11, 2013",23
+100485,Minocycline,Acne,"""Destroyed my stomach lining with severe acid reflux and didn't even improve my facial cysts. Diagnosed with acne.""",2,"March 08, 2014",15
+100486,Escitalopram,Depression,"""Mild improvement in mood after 6 weeks, though daytime lethargy and dry mouth make it hard to stay focused at work. Diagnosed with depression.""",4,"July 08, 2010",23
+100487,Temazepam,Insomnia,"""Low-dose Trazodone (50mg) restored natural sleep architecture without dependency or grogginess. Overall rating: 10/10.""",10,"December 20, 2010",1
+100488,Lorazepam,Anxiety,"""Lexapro smoothed out daily panic spikes and helped me regain control of my daily social interactions. Overall rating: 8/10.""",8,"April 18, 2018",7
+100489,Ibuprofen,Pain,"""Gabapentin reduced sharp burning diabetic nerve pain from an 8/10 to a manageable 2/10. Diagnosed with pain.""",10,"February 17, 2016",72
+100490,Levonorgestrel,Birth Control,"""Nexplanon implant has been fantastic. No periods, no cramping, and total peace of mind for 3 years.""",7,"January 28, 2016",53
+100491,Minocycline,Acne,"""Destroyed my stomach lining with severe acid reflux and didn't even improve my facial cysts. Diagnosed with acne.""",1,"March 22, 2014",10
+100492,Ethinyl estradiol / levonorgestrel,Birth Control,"""Regulated my periods well, but noticed a slight drop in libido and mild water retention before cycles. Overall rating: 4/10.""",4,"July 09, 2015",9
+100493,Melatonin,Insomnia,"""Severe next-day sedation, brain fog, and severe headaches. Felt like a zombie all day.""",1,"June 29, 2010",5
+100494,Hydrochlorothiazide,High Blood Pressure,"""Made my blood pressure crash too low causing fainting spells and severe dizziness upon standing. Overall rating: 3/10.""",3,"May 22, 2018",3
+100495,Duloxetine,Depression,"""After trying three different antidepressants, Prozac was the only one that stabilized my mood without feeling like a zombie.""",8,"August 21, 2016",14
+100496,Clonazepam,Anxiety,"""Propranolol is a lifesaver for performance anxiety and presentation tremors. Keeps the physical racing heart under control. Overall rating: 8/10.""",8,"July 14, 2013",10
+100497,Losartan,High Blood Pressure,"""Combination of Lisinopril and HCTZ lowered my readings to optimal range with once-daily morning dosing. Overall rating: 9/10.""",9,"August 14, 2012",21
+100498,Escitalopram,Depression,"""This medication has truly given me my life back. Within four weeks my constant low mood and fatigue started lifting.""",7,"January 16, 2015",1
+100499,Propranolol,Anxiety,"""Buspar taken twice daily significantly lowered my baseline generalized anxiety and physical tension without sedation. Overall rating: 9/10.""",9,"June 16, 2013",87
+100500,Clonazepam,Anxiety,"""Did absolutely nothing for my panic disorder and caused intense nausea, dizziness, and heart palpitations. Diagnosed with anxiety.""",1,"October 25, 2017",77
+100501,Oxycodone,Pain,"""Provided immediate relief following major knee surgery. Allowed me to start physical therapy on schedule. Diagnosed with pain.""",9,"October 13, 2012",28
+100502,Melatonin,Insomnia,"""Low-dose Trazodone (50mg) restored natural sleep architecture without dependency or grogginess. Overall rating: 7/10.""",7,"December 14, 2011",18
+100503,Venlafaxine,Depression,"""Citalopram helped me return to work and enjoy spending time with my family again. The adjustment period was well worth it. Diagnosed with depression.""",10,"October 20, 2012",8
+100504,Sertraline,Depression,"""This medication has truly given me my life back. Within four weeks my constant low mood and fatigue started lifting.""",8,"October 04, 2018",40
+100505,Topiramate,Migraine,"""Aimovig monthly injection reduced my monthly migraine days from 14 down to just 2. Diagnosed with migraine.""",10,"March 25, 2017",27
+100506,Sertraline,Depression,"""Helped moderately with depressive symptoms, but the persistent emotional numbness and vivid dreams are frustrating.""",4,"March 30, 2017",1
+100507,Alprazolam,Anxiety,"""Xanax stopped my acute panic attacks in their tracks within 15 minutes. A crucial rescue medication when needed. Overall rating: 9/10.""",9,"July 27, 2010",58
+100508,Bupropion,Depression,"""Took the sharp edge off my depression, but didn't completely resolve feelings of low energy and brain fog.""",6,"April 17, 2014",17
+100509,Oxycodone,Pain,"""Celebrex manages my chronic osteoarthritis flare-ups effectively without upsetting my sensitive stomach. Overall rating: 8/10.""",8,"January 01, 2015",71
+100510,Medroxyprogesterone,Birth Control,"""Mirena IUD insertion was mildly uncomfortable for a few seconds, but 4 years of zero periods and no hassle is worth it. Overall rating: 8/10.""",8,"August 15, 2014",31
+100511,Ethinyl estradiol / norethindrone,Birth Control,"""Very predictable light cycles with minimal cramping. No weight gain or mood changes whatsoever.""",7,"September 14, 2014",22
+100512,Escitalopram,Depression,"""Caused extreme insomnia, increased suicidal ideation, and severe night sweats. Had to discontinue under doctor supervision after 10 days. Overall rating: 3/10.""",3,"October 08, 2018",9
+100513,Hydrocodone,Pain,"""Naproxen 500mg twice daily relieved severe tendonitis inflammation within 48 hours. Diagnosed with pain.""",10,"August 10, 2013",64
+100514,Spironolactone,Acne,"""Spironolactone cleared hormonal cystic breakouts along my jawline within three months. Incredible transformation.""",9,"September 24, 2018",48
+100515,Spironolactone,Acne,"""Broke out in a terrible allergic rash all over my neck and chest. Complete disaster for my skin. Diagnosed with acne.""",2,"August 11, 2012",0
+100516,Temazepam,Insomnia,"""Restoril provided crucial short-term relief during severe sleep disruption without morning hangover. Diagnosed with insomnia.""",8,"August 18, 2010",0
+100517,Ethinyl estradiol / norgestimate,Birth Control,"""Completely destroyed my mental health, caused severe mood swings, and killed my energy levels. Overall rating: 3/10.""",3,"December 13, 2011",8
+100518,Duloxetine,Depression,"""It works somewhat for sadness, but decreased libido and mild weight gain make me question if I should stay on it. Diagnosed with depression.""",6,"April 26, 2010",16
+100519,Naproxen,Pain,"""Gabapentin reduced sharp burning diabetic nerve pain from an 8/10 to a manageable 2/10. Overall rating: 8/10.""",8,"January 30, 2016",104
+100520,Isotretinoin,Acne,"""Spironolactone cleared hormonal cystic breakouts along my jawline within three months. Incredible transformation. Diagnosed with acne.""",7,"June 15, 2012",3
+100521,Venlafaxine,Depression,"""Lexapro was a game changer for my severe depressive episodes. Minimal initial nausea, but smooth sailing afterwards.""",9,"October 27, 2013",21
+100522,Tramadol,Pain,"""Severe nausea, vomiting, and dizziness within 30 minutes of taking the first tablet. Unbearable side effects.""",2,"July 30, 2016",8
+100523,Ibuprofen,Pain,"""Naproxen 500mg twice daily relieved severe tendonitis inflammation within 48 hours. Overall rating: 7/10.""",7,"October 25, 2010",84
+100524,Spironolactone,Acne,"""Destroyed my stomach lining with severe acid reflux and didn't even improve my facial cysts. Overall rating: 2/10.""",2,"May 21, 2013",33
+100525,Epiduo,Acne,"""Made my acne flare up worse than ever before with deep painful cysts that left permanent scarring. Diagnosed with acne.""",3,"July 23, 2013",32
+100526,Venlafaxine,Depression,"""Zero improvement in depression, but gained 15 pounds in two months and suffered unbearable withdrawal brain zaps.""",3,"June 19, 2017",11
+100527,Hydroxyzine,Anxiety,"""Propranolol is a lifesaver for performance anxiety and presentation tremors. Keeps the physical racing heart under control.""",9,"December 29, 2011",12
+100528,Gabapentin,Pain,"""Severe nausea, vomiting, and dizziness within 30 minutes of taking the first tablet. Unbearable side effects.""",3,"October 03, 2016",5
+100529,Doxycycline,Acne,"""Destroyed my stomach lining with severe acid reflux and didn't even improve my facial cysts. Overall rating: 3/10.""",3,"July 31, 2011",1
+100530,Minocycline,Acne,"""Spironolactone cleared hormonal cystic breakouts along my jawline within three months. Incredible transformation. Diagnosed with acne.""",9,"December 30, 2010",48
+100531,Ethinyl estradiol / norethindrone,Birth Control,"""Periods became much lighter, though occasional unpredictable breakthrough bleeding occurs mid-pack.""",6,"December 22, 2012",16
+100532,Fluoxetine,Depression,"""Helped moderately with depressive symptoms, but the persistent emotional numbness and vivid dreams are frustrating. Diagnosed with depression.""",5,"January 06, 2010",81
+100533,Escitalopram,Depression,"""After trying three different antidepressants, Prozac was the only one that stabilized my mood without feeling like a zombie. Overall rating: 10/10.""",10,"April 01, 2014",136
+100534,Tretinoin,Acne,"""Epiduo gel worked wonders on stubborn forehead bumps and prevented new blackheads from forming. Diagnosed with acne.""",10,"July 03, 2018",19
+100535,Ibuprofen,Pain,"""Provided immediate relief following major knee surgery. Allowed me to start physical therapy on schedule. Overall rating: 7/10.""",7,"March 24, 2010",35
+100536,Minocycline,Acne,"""Caused extreme joint pain, cracked bleeding lips, severe dry eyes, and liver enzyme spikes that forced me to stop early. Overall rating: 1/10.""",1,"October 22, 2011",52
+100537,Hydrocodone,Pain,"""Naproxen 500mg twice daily relieved severe tendonitis inflammation within 48 hours. Diagnosed with pain.""",7,"June 01, 2015",45
+100538,Naproxen,Pain,"""Tramadol managed post-operative pain well enough to allow restorative sleep without excessive sedation.""",8,"August 08, 2010",6
+100539,Bupropion,Depression,"""Citalopram helped me return to work and enjoy spending time with my family again. The adjustment period was well worth it. Diagnosed with depression.""",8,"February 05, 2018",14
+100540,Losartan,High Blood Pressure,"""Losartan works smoothly with zero cough or fatigue. My primary care physician is very pleased with the readings.""",9,"July 23, 2010",3
+100541,Doxycycline,Acne,"""Accutane completely cured my cystic acne after a 6-month course. Dry lips were tough, but my skin is 100% clear now. Overall rating: 10/10.""",10,"January 16, 2010",73
+100542,Clonazepam,Anxiety,"""Xanax stopped my acute panic attacks in their tracks within 15 minutes. A crucial rescue medication when needed.""",10,"April 27, 2012",22
+100543,Bupropion,Depression,"""This medication has truly given me my life back. Within four weeks my constant low mood and fatigue started lifting. Overall rating: 7/10.""",7,"October 20, 2018",6
+100544,Isotretinoin,Acne,"""Epiduo gel worked wonders on stubborn forehead bumps and prevented new blackheads from forming. Overall rating: 9/10.""",9,"January 28, 2012",26
+100545,Epiduo,Acne,"""Accutane completely cured my cystic acne after a 6-month course. Dry lips were tough, but my skin is 100% clear now. Overall rating: 8/10.""",8,"December 07, 2014",23
+100546,Escitalopram,Anxiety,"""Xanax stopped my acute panic attacks in their tracks within 15 minutes. A crucial rescue medication when needed.""",9,"June 09, 2018",10
+100547,Ibuprofen,Pain,"""Naproxen 500mg twice daily relieved severe tendonitis inflammation within 48 hours. Overall rating: 9/10.""",9,"June 26, 2018",2
+100548,Propranolol,Anxiety,"""Helps take the edge off panic attacks, but leaves me feeling sluggish and unmotivated for hours. Diagnosed with anxiety.""",5,"September 15, 2017",11
+100549,Levonorgestrel,Birth Control,"""Mirena IUD insertion was mildly uncomfortable for a few seconds, but 4 years of zero periods and no hassle is worth it.""",8,"June 06, 2014",17
+100550,Metoprolol,High Blood Pressure,"""Blood pressure is well controlled, though occasional dizziness when standing up quickly requires caution.""",6,"June 29, 2018",14
+100551,Clonazepam,Anxiety,"""Made me extremely groggy, confused, and unable to drive or work safely. Felt completely dissociated.""",1,"June 24, 2010",13
+100552,Clonazepam,Anxiety,"""Made me extremely groggy, confused, and unable to drive or work safely. Felt completely dissociated. Diagnosed with anxiety.""",2,"November 22, 2012",34
+100553,Isotretinoin,Acne,"""Moderately effective, but application causes significant initial stinging and redness that takes hours to subside. Diagnosed with acne.""",4,"June 16, 2014",8
+100554,Buspirone,Anxiety,"""Developed rapid tolerance and experienced terrible rebound anxiety and withdrawal tremors between doses. Diagnosed with anxiety.""",3,"December 27, 2016",14
+100555,Buspirone,Anxiety,"""Made me extremely groggy, confused, and unable to drive or work safely. Felt completely dissociated.""",1,"May 09, 2016",37
+100556,Alprazolam,Anxiety,"""Developed rapid tolerance and experienced terrible rebound anxiety and withdrawal tremors between doses. Overall rating: 1/10.""",1,"January 03, 2016",9
+100557,Levonorgestrel,Birth Control,"""Completely destroyed my mental health, caused severe mood swings, and killed my energy levels. Diagnosed with birth control.""",2,"October 30, 2016",2
+100558,Clonazepam,Anxiety,"""Lexapro smoothed out daily panic spikes and helped me regain control of my daily social interactions. Diagnosed with anxiety.""",10,"August 20, 2017",0
+100559,Celecoxib,Pain,"""Gabapentin reduced sharp burning diabetic nerve pain from an 8/10 to a manageable 2/10.""",9,"May 13, 2018",33
+100560,Alprazolam,Anxiety,"""Propranolol is a lifesaver for performance anxiety and presentation tremors. Keeps the physical racing heart under control. Overall rating: 9/10.""",9,"June 27, 2013",23
+100561,Tretinoin,Acne,"""Spironolactone cleared hormonal cystic breakouts along my jawline within three months. Incredible transformation.""",7,"May 15, 2013",29
+100562,Temazepam,Insomnia,"""Restoril provided crucial short-term relief during severe sleep disruption without morning hangover. Overall rating: 9/10.""",9,"October 13, 2016",5
+100563,Ibuprofen,Pain,"""Tramadol managed post-operative pain well enough to allow restorative sleep without excessive sedation. Diagnosed with pain.""",8,"June 08, 2015",3
+100564,Drospirenone / ethinyl estradiol,Birth Control,"""Suffered debilitating daily migraines and blood pressure spikes. My doctor instructed immediate removal.""",1,"June 28, 2013",0
+100565,Oxycodone,Pain,"""Gabapentin reduced sharp burning diabetic nerve pain from an 8/10 to a manageable 2/10.""",7,"August 25, 2010",10
+100566,Clindamycin / benzoyl peroxide,Acne,"""Spironolactone cleared hormonal cystic breakouts along my jawline within three months. Incredible transformation. Overall rating: 9/10.""",9,"February 17, 2014",21
+100567,Medroxyprogesterone,Birth Control,"""Nexplanon implant has been fantastic. No periods, no cramping, and total peace of mind for 3 years.""",7,"March 06, 2014",11
+100568,Escitalopram,Anxiety,"""Lexapro smoothed out daily panic spikes and helped me regain control of my daily social interactions. Overall rating: 10/10.""",10,"November 11, 2013",13
+100569,Citalopram,Depression,"""Caused extreme insomnia, increased suicidal ideation, and severe night sweats. Had to discontinue under doctor supervision after 10 days. Overall rating: 3/10.""",3,"April 23, 2010",42
+100570,Tretinoin,Acne,"""Spironolactone cleared hormonal cystic breakouts along my jawline within three months. Incredible transformation. Diagnosed with acne.""",8,"July 11, 2012",10
+100571,Naproxen,Pain,"""Provided immediate relief following major knee surgery. Allowed me to start physical therapy on schedule. Diagnosed with pain.""",10,"February 06, 2010",17
+100572,Escitalopram,Anxiety,"""Xanax stopped my acute panic attacks in their tracks within 15 minutes. A crucial rescue medication when needed.""",8,"October 30, 2012",36
+100573,Celecoxib,Pain,"""Caused alarming stomach ulcers and internal bleeding after just one week of prescribed use. Overall rating: 3/10.""",3,"March 23, 2014",9
+100574,Levonorgestrel,Birth Control,"""Mirena IUD insertion was mildly uncomfortable for a few seconds, but 4 years of zero periods and no hassle is worth it. Diagnosed with birth control.""",8,"November 03, 2015",23
+100575,Etonogestrel,Birth Control,"""Sprintec has worked flawlessly for pregnancy prevention and skin clearance with zero adverse effects. Diagnosed with birth control.""",7,"March 13, 2014",47
+100576,Lorazepam,Anxiety,"""Relieves mild social anxiety, but causes noticeable drowsiness and mild dizziness during the afternoon. Overall rating: 5/10.""",5,"September 19, 2010",29
+100577,Tretinoin,Acne,"""Doxycycline cleared up severe inflammatory acne before my wedding. Fast-acting when combined with topical retinoids. Overall rating: 9/10.""",9,"May 11, 2017",3
+100578,Oxycodone,Pain,"""Did not touch my severe sciatica pain at all, but caused extreme constipation and mental confusion. Diagnosed with pain.""",2,"August 02, 2018",47
+100579,Clindamycin / benzoyl peroxide,Acne,"""Doxycycline cleared up severe inflammatory acne before my wedding. Fast-acting when combined with topical retinoids. Diagnosed with acne.""",10,"July 28, 2011",16
+100580,Hydrocodone,Pain,"""Mild to moderate reduction in lower back pain, accompanied by lightheadedness and dry mouth. Overall rating: 5/10.""",5,"May 10, 2014",2
+100581,Ibuprofen,Pain,"""Provides about 4 hours of pain relief, but wears off faster than expected and causes mild constipation. Overall rating: 6/10.""",6,"February 23, 2018",6
+100582,Ibuprofen,Pain,"""Mild to moderate reduction in lower back pain, accompanied by lightheadedness and dry mouth. Diagnosed with pain.""",6,"January 08, 2014",39
+100583,Escitalopram,Anxiety,"""Made me extremely groggy, confused, and unable to drive or work safely. Felt completely dissociated. Overall rating: 3/10.""",3,"February 04, 2011",12
+100584,Propranolol,Anxiety,"""Made me extremely groggy, confused, and unable to drive or work safely. Felt completely dissociated. Diagnosed with anxiety.""",3,"October 06, 2013",7
+100585,Celecoxib,Pain,"""Celebrex manages my chronic osteoarthritis flare-ups effectively without upsetting my sensitive stomach. Overall rating: 8/10.""",8,"November 03, 2018",24
+100586,Levonorgestrel,Birth Control,"""Nexplanon implant has been fantastic. No periods, no cramping, and total peace of mind for 3 years. Overall rating: 9/10.""",9,"August 08, 2010",6
+100587,Etonogestrel,Birth Control,"""Periods became much lighter, though occasional unpredictable breakthrough bleeding occurs mid-pack.""",6,"August 12, 2015",0
+100588,Fluoxetine,Depression,"""Took the sharp edge off my depression, but didn't completely resolve feelings of low energy and brain fog.""",6,"September 10, 2011",1
+100589,Venlafaxine,Depression,"""After trying three different antidepressants, Prozac was the only one that stabilized my mood without feeling like a zombie.""",10,"July 19, 2013",3
+100590,Levonorgestrel,Birth Control,"""Mirena IUD insertion was mildly uncomfortable for a few seconds, but 4 years of zero periods and no hassle is worth it. Diagnosed with birth control.""",7,"December 26, 2011",3
+100591,Minocycline,Acne,"""Spironolactone cleared hormonal cystic breakouts along my jawline within three months. Incredible transformation.""",10,"June 18, 2016",3
+100592,Ethinyl estradiol / levonorgestrel,Birth Control,"""Sprintec has worked flawlessly for pregnancy prevention and skin clearance with zero adverse effects. Overall rating: 7/10.""",7,"February 07, 2017",24
+100593,Buspirone,Anxiety,"""Xanax stopped my acute panic attacks in their tracks within 15 minutes. A crucial rescue medication when needed.""",10,"December 27, 2015",4
+100594,Fluoxetine,Depression,"""Zoloft helped lift the dark cloud that hung over me for years. It took about 5 weeks to feel the full therapeutic effect.""",7,"March 15, 2010",10
+100595,Oxycodone,Pain,"""Helps with joint stiffness in the morning, but pain returns in the evening during strenuous activities. Overall rating: 4/10.""",4,"June 13, 2011",22
+100596,Escitalopram,Depression,"""This medication has truly given me my life back. Within four weeks my constant low mood and fatigue started lifting.""",9,"May 06, 2013",15
+100597,Hydrochlorothiazide,High Blood Pressure,"""Losartan works smoothly with zero cough or fatigue. My primary care physician is very pleased with the readings. Overall rating: 9/10.""",9,"July 01, 2015",26
+100598,Isotretinoin,Acne,"""Spironolactone cleared hormonal cystic breakouts along my jawline within three months. Incredible transformation.""",10,"February 26, 2018",4
+100599,Propranolol,Migraine,"""Aimovig monthly injection reduced my monthly migraine days from 14 down to just 2.""",7,"May 20, 2011",5
+100600,Epiduo,Acne,"""Works okay for surface pimples, but does little for hormonal cysts along the chin. Diagnosed with acne.""",4,"December 27, 2016",0
+100601,Sertraline,Depression,"""Caused extreme insomnia, increased suicidal ideation, and severe night sweats. Had to discontinue under doctor supervision after 10 days.""",3,"September 26, 2017",3
+100602,Venlafaxine,Depression,"""Wellbutrin gave me energy and motivation again without the sexual side effects of typical SSRIs. Very satisfied. Overall rating: 7/10.""",7,"November 14, 2017",7
+100603,Sertraline,Depression,"""It works somewhat for sadness, but decreased libido and mild weight gain make me question if I should stay on it. Overall rating: 6/10.""",6,"June 03, 2017",1
+100604,Bupropion,Depression,"""This medication has truly given me my life back. Within four weeks my constant low mood and fatigue started lifting. Diagnosed with depression.""",8,"January 23, 2018",2
+100605,Gabapentin,Pain,"""Gabapentin reduced sharp burning diabetic nerve pain from an 8/10 to a manageable 2/10. Diagnosed with pain.""",7,"March 29, 2012",3
+100606,Ethinyl estradiol / norethindrone,Birth Control,"""Completely destroyed my mental health, caused severe mood swings, and killed my energy levels. Overall rating: 1/10.""",1,"October 19, 2011",11
+100607,Duloxetine,Depression,"""After trying three different antidepressants, Prozac was the only one that stabilized my mood without feeling like a zombie. Overall rating: 8/10.""",8,"August 18, 2012",5
+100608,Citalopram,Depression,"""Took the sharp edge off my depression, but didn't completely resolve feelings of low energy and brain fog.""",4,"January 04, 2011",4
+100609,Ethinyl estradiol / norethindrone,Birth Control,"""Yaz completely cleared my hormonal acne, regulated my cycle to exactly 28 days, and eliminated PMS mood swings. Overall rating: 7/10.""",7,"April 27, 2013",16
+100610,Tretinoin,Acne,"""Accutane completely cured my cystic acne after a 6-month course. Dry lips were tough, but my skin is 100% clear now. Overall rating: 8/10.""",8,"January 15, 2014",28
+100611,Etonogestrel,Birth Control,"""Nexplanon implant has been fantastic. No periods, no cramping, and total peace of mind for 3 years.""",7,"July 21, 2011",0
+100612,Gabapentin,Pain,"""Naproxen 500mg twice daily relieved severe tendonitis inflammation within 48 hours. Overall rating: 9/10.""",9,"March 22, 2018",38
+100613,Sertraline,Depression,"""Made me emotionally detached and increased my fatigue tenfold. Did not work for my condition at all. Overall rating: 1/10.""",1,"February 13, 2015",17
+100614,Tretinoin,Acne,"""Tretinoin purge lasted 4 weeks, but now at 6 months my skin texture is smoother and free from deep nodules. Diagnosed with acne.""",10,"December 09, 2018",2
+100615,Citalopram,Depression,"""Lexapro was a game changer for my severe depressive episodes. Minimal initial nausea, but smooth sailing afterwards.""",7,"September 01, 2014",49
+100616,Amlodipine,High Blood Pressure,"""Amlodipine effectively controlled stage 2 hypertension with excellent stability across 24-hour ambulatory monitoring. Overall rating: 10/10.""",10,"September 27, 2018",60
+100617,Epiduo,Acne,"""Tretinoin purge lasted 4 weeks, but now at 6 months my skin texture is smoother and free from deep nodules.""",8,"August 12, 2014",1
+100618,Alprazolam,Anxiety,"""Lexapro smoothed out daily panic spikes and helped me regain control of my daily social interactions. Diagnosed with anxiety.""",9,"June 19, 2016",7
+100619,Naproxen,Pain,"""Naproxen 500mg twice daily relieved severe tendonitis inflammation within 48 hours. Diagnosed with pain.""",9,"November 09, 2017",39
+100620,Gabapentin,Pain,"""Celebrex manages my chronic osteoarthritis flare-ups effectively without upsetting my sensitive stomach. Diagnosed with pain.""",8,"August 02, 2017",33
+100621,Tramadol,Pain,"""Gabapentin reduced sharp burning diabetic nerve pain from an 8/10 to a manageable 2/10. Diagnosed with pain.""",7,"April 07, 2015",4
+100622,Ethinyl estradiol / norgestimate,Birth Control,"""Completely destroyed my mental health, caused severe mood swings, and killed my energy levels. Overall rating: 1/10.""",1,"September 13, 2012",4
+100623,Spironolactone,Acne,"""Tretinoin purge lasted 4 weeks, but now at 6 months my skin texture is smoother and free from deep nodules. Overall rating: 8/10.""",8,"August 20, 2012",11
+100624,Sertraline,Depression,"""After trying three different antidepressants, Prozac was the only one that stabilized my mood without feeling like a zombie. Overall rating: 10/10.""",10,"July 18, 2013",15
+100625,Sertraline,Depression,"""After trying three different antidepressants, Prozac was the only one that stabilized my mood without feeling like a zombie. Overall rating: 7/10.""",7,"May 27, 2010",23
+100626,Propranolol,Anxiety,"""Lexapro smoothed out daily panic spikes and helped me regain control of my daily social interactions. Diagnosed with anxiety.""",7,"February 24, 2017",11
+100627,Clindamycin / benzoyl peroxide,Acne,"""Tretinoin purge lasted 4 weeks, but now at 6 months my skin texture is smoother and free from deep nodules. Overall rating: 8/10.""",8,"January 28, 2014",14
+100628,Ethinyl estradiol / norethindrone,Birth Control,"""Completely destroyed my mental health, caused severe mood swings, and killed my energy levels. Diagnosed with birth control.""",2,"May 15, 2017",24
+100629,Tretinoin,Acne,"""Spironolactone cleared hormonal cystic breakouts along my jawline within three months. Incredible transformation.""",7,"October 30, 2013",0
+100630,Spironolactone,Acne,"""Works okay for surface pimples, but does little for hormonal cysts along the chin. Diagnosed with acne.""",5,"March 12, 2011",2
+100631,Citalopram,Depression,"""Citalopram helped me return to work and enjoy spending time with my family again. The adjustment period was well worth it. Diagnosed with depression.""",8,"February 03, 2018",29
+100632,Doxycycline,Acne,"""Accutane completely cured my cystic acne after a 6-month course. Dry lips were tough, but my skin is 100% clear now. Overall rating: 8/10.""",8,"June 02, 2012",54
+100633,Lorazepam,Anxiety,"""Developed rapid tolerance and experienced terrible rebound anxiety and withdrawal tremors between doses. Overall rating: 3/10.""",3,"July 10, 2010",12
+100634,Lisinopril,High Blood Pressure,"""Suffered extreme fatigue, cold extremities, and brain fog that made daily work impossible. Overall rating: 3/10.""",3,"May 21, 2017",13
+100635,Alprazolam,Anxiety,"""Lexapro smoothed out daily panic spikes and helped me regain control of my daily social interactions. Diagnosed with anxiety.""",10,"July 18, 2010",2
+100636,Escitalopram,Anxiety,"""Buspar taken twice daily significantly lowered my baseline generalized anxiety and physical tension without sedation. Diagnosed with anxiety.""",10,"June 27, 2016",14
+100637,Bupropion,Depression,"""Zero improvement in depression, but gained 15 pounds in two months and suffered unbearable withdrawal brain zaps. Diagnosed with depression.""",1,"April 25, 2014",13
+100638,Tretinoin,Acne,"""Noticeable reduction in redness, though skin peeling and sun sensitivity require constant heavy moisturizing. Overall rating: 6/10.""",6,"June 18, 2014",2
+100639,Trazodone,Insomnia,"""Experience sleepwalking and memory lapses where I ate entire meals without remembering next morning. Overall rating: 2/10.""",2,"October 03, 2016",5
+100640,Ibuprofen,Pain,"""Caused alarming stomach ulcers and internal bleeding after just one week of prescribed use. Diagnosed with pain.""",2,"April 07, 2018",8
+100641,Amlodipine,High Blood Pressure,"""Numbers look good on paper, but I feel slightly more fatigued during intense cardio workouts. Diagnosed with high blood pressure.""",4,"November 15, 2013",0
+100642,Metoprolol,High Blood Pressure,"""Amlodipine effectively controlled stage 2 hypertension with excellent stability across 24-hour ambulatory monitoring. Diagnosed with high blood pressure.""",8,"February 21, 2017",9
+100643,Spironolactone,Acne,"""Tretinoin purge lasted 4 weeks, but now at 6 months my skin texture is smoother and free from deep nodules. Diagnosed with acne.""",9,"May 26, 2016",5
+100644,Valsartan,High Blood Pressure,"""Numbers look good on paper, but I feel slightly more fatigued during intense cardio workouts. Overall rating: 6/10.""",6,"February 22, 2010",3
+100645,Alprazolam,Anxiety,"""Xanax stopped my acute panic attacks in their tracks within 15 minutes. A crucial rescue medication when needed.""",8,"December 29, 2012",3
+100646,Medroxyprogesterone,Birth Control,"""Mirena IUD insertion was mildly uncomfortable for a few seconds, but 4 years of zero periods and no hassle is worth it.""",9,"September 12, 2010",53
+100647,Hydrocodone,Pain,"""Tramadol managed post-operative pain well enough to allow restorative sleep without excessive sedation.""",7,"November 28, 2016",21
+100648,Medroxyprogesterone,Birth Control,"""Completely destroyed my mental health, caused severe mood swings, and killed my energy levels.""",1,"September 24, 2015",20
+100649,Medroxyprogesterone,Birth Control,"""Caused severe depression, uncontrollable crying spells, 20-pound weight gain, and cystic acne within 3 months. Overall rating: 2/10.""",2,"May 07, 2014",28
+100650,Minocycline,Acne,"""Destroyed my stomach lining with severe acid reflux and didn't even improve my facial cysts.""",3,"May 05, 2018",12
+100651,Tretinoin,Acne,"""Noticeable reduction in redness, though skin peeling and sun sensitivity require constant heavy moisturizing. Diagnosed with acne.""",5,"November 26, 2017",0
+100652,Ibuprofen,Pain,"""Gabapentin reduced sharp burning diabetic nerve pain from an 8/10 to a manageable 2/10. Overall rating: 8/10.""",8,"January 13, 2015",18
+100653,Escitalopram,Depression,"""Helped moderately with depressive symptoms, but the persistent emotional numbness and vivid dreams are frustrating. Overall rating: 4/10.""",4,"June 16, 2010",8
+100654,Clonazepam,Anxiety,"""Moderate calming effect, though building tolerance quickly requires careful dosage monitoring.""",4,"September 15, 2013",13
+100655,Clonazepam,Anxiety,"""Did absolutely nothing for my panic disorder and caused intense nausea, dizziness, and heart palpitations. Diagnosed with anxiety.""",1,"July 28, 2010",10
+100656,Ethinyl estradiol / norethindrone,Birth Control,"""Periods became much lighter, though occasional unpredictable breakthrough bleeding occurs mid-pack. Diagnosed with birth control.""",6,"March 03, 2016",1
+100657,Spironolactone,Acne,"""Caused extreme joint pain, cracked bleeding lips, severe dry eyes, and liver enzyme spikes that forced me to stop early.""",2,"November 03, 2015",6
+100658,Venlafaxine,Depression,"""Zoloft helped lift the dark cloud that hung over me for years. It took about 5 weeks to feel the full therapeutic effect. Overall rating: 10/10.""",10,"January 12, 2011",10
+100659,Minocycline,Acne,"""Broke out in a terrible allergic rash all over my neck and chest. Complete disaster for my skin. Overall rating: 3/10.""",3,"April 17, 2013",18
+100660,Bupropion,Depression,"""Caused extreme insomnia, increased suicidal ideation, and severe night sweats. Had to discontinue under doctor supervision after 10 days.""",3,"July 02, 2017",15
+100661,Isotretinoin,Acne,"""Doxycycline cleared up severe inflammatory acne before my wedding. Fast-acting when combined with topical retinoids. Overall rating: 8/10.""",8,"December 06, 2018",10
+100662,Lisinopril,High Blood Pressure,"""Amlodipine effectively controlled stage 2 hypertension with excellent stability across 24-hour ambulatory monitoring. Overall rating: 9/10.""",9,"October 08, 2015",103
+100663,Ethinyl estradiol / norethindrone,Birth Control,"""Yaz completely cleared my hormonal acne, regulated my cycle to exactly 28 days, and eliminated PMS mood swings. Overall rating: 7/10.""",7,"October 06, 2015",22
+100664,Duloxetine,Depression,"""This medication has truly given me my life back. Within four weeks my constant low mood and fatigue started lifting.""",7,"July 08, 2017",6
+100665,Ibuprofen,Pain,"""Provided immediate relief following major knee surgery. Allowed me to start physical therapy on schedule.""",10,"January 12, 2016",2
+100666,Ethinyl estradiol / norgestimate,Birth Control,"""Completely destroyed my mental health, caused severe mood swings, and killed my energy levels. Diagnosed with birth control.""",3,"October 23, 2010",2
+100667,Celecoxib,Pain,"""Celebrex manages my chronic osteoarthritis flare-ups effectively without upsetting my sensitive stomach.""",10,"December 25, 2010",6
+100668,Venlafaxine,Depression,"""This medication has truly given me my life back. Within four weeks my constant low mood and fatigue started lifting. Diagnosed with depression.""",9,"July 21, 2012",4
+100669,Valsartan,High Blood Pressure,"""Combination of Lisinopril and HCTZ lowered my readings to optimal range with once-daily morning dosing. Overall rating: 10/10.""",10,"July 19, 2013",4
+100670,Sertraline,Depression,"""Helped moderately with depressive symptoms, but the persistent emotional numbness and vivid dreams are frustrating. Diagnosed with depression.""",6,"July 26, 2016",3
+100671,Venlafaxine,Depression,"""Caused extreme insomnia, increased suicidal ideation, and severe night sweats. Had to discontinue under doctor supervision after 10 days. Overall rating: 2/10.""",2,"October 29, 2018",3
+100672,Ibuprofen,Pain,"""Mild to moderate reduction in lower back pain, accompanied by lightheadedness and dry mouth. Overall rating: 5/10.""",5,"June 07, 2014",22
+100673,Drospirenone / ethinyl estradiol,Birth Control,"""Yaz completely cleared my hormonal acne, regulated my cycle to exactly 28 days, and eliminated PMS mood swings.""",8,"May 17, 2018",2
+100674,Minocycline,Acne,"""Caused extreme joint pain, cracked bleeding lips, severe dry eyes, and liver enzyme spikes that forced me to stop early. Overall rating: 3/10.""",3,"August 06, 2017",13
+100675,Medroxyprogesterone,Birth Control,"""Continuous heavy bleeding for 6 straight weeks accompanied by excruciating ovarian cramps.""",3,"March 17, 2016",9
+100676,Etonogestrel,Birth Control,"""Sprintec has worked flawlessly for pregnancy prevention and skin clearance with zero adverse effects. Diagnosed with birth control.""",7,"June 03, 2014",96
+100677,Clonazepam,Anxiety,"""Did absolutely nothing for my panic disorder and caused intense nausea, dizziness, and heart palpitations.""",2,"August 18, 2014",2
+100678,Amlodipine,High Blood Pressure,"""Caused severe peripheral edema with feet swelling so badly I couldn't put my shoes on.""",1,"December 01, 2016",9
+100679,Medroxyprogesterone,Birth Control,"""Sprintec has worked flawlessly for pregnancy prevention and skin clearance with zero adverse effects.""",8,"June 04, 2018",83
+100680,Valsartan,High Blood Pressure,"""Developed the notorious persistent dry hacking cough that kept me awake all night. Had to switch to an ARB. Overall rating: 2/10.""",2,"July 14, 2017",36
+100681,Fluoxetine,Depression,"""Wellbutrin gave me energy and motivation again without the sexual side effects of typical SSRIs. Very satisfied.""",10,"July 12, 2017",40
+100682,Oxycodone,Pain,"""Celebrex manages my chronic osteoarthritis flare-ups effectively without upsetting my sensitive stomach. Overall rating: 7/10.""",7,"January 20, 2015",7
+100683,Spironolactone,Acne,"""Noticeable reduction in redness, though skin peeling and sun sensitivity require constant heavy moisturizing. Diagnosed with acne.""",6,"May 10, 2016",1
+100684,Doxycycline,Acne,"""Accutane completely cured my cystic acne after a 6-month course. Dry lips were tough, but my skin is 100% clear now. Overall rating: 10/10.""",10,"October 05, 2012",26
+100685,Levonorgestrel,Birth Control,"""Convenient weekly patch, but edges tend to peel slightly and cause minor skin redness at application sites. Overall rating: 6/10.""",6,"July 05, 2011",26
+100686,Gabapentin,Pain,"""Tramadol managed post-operative pain well enough to allow restorative sleep without excessive sedation. Overall rating: 10/10.""",10,"September 09, 2018",19
+100687,Clindamycin / benzoyl peroxide,Acne,"""Kept active breakouts at bay while taking it daily, but acne returned as soon as the antibiotic course finished. Overall rating: 4/10.""",4,"July 28, 2011",8
+100688,Medroxyprogesterone,Birth Control,"""Nexplanon implant has been fantastic. No periods, no cramping, and total peace of mind for 3 years.""",7,"September 09, 2015",7
+100689,Gabapentin,Pain,"""Did not touch my severe sciatica pain at all, but caused extreme constipation and mental confusion.""",3,"March 09, 2016",26
+100690,Epiduo,Acne,"""Caused extreme joint pain, cracked bleeding lips, severe dry eyes, and liver enzyme spikes that forced me to stop early. Overall rating: 3/10.""",3,"May 27, 2014",3
+100691,Tretinoin,Acne,"""Broke out in a terrible allergic rash all over my neck and chest. Complete disaster for my skin.""",3,"March 19, 2015",7
+100692,Escitalopram,Anxiety,"""Xanax stopped my acute panic attacks in their tracks within 15 minutes. A crucial rescue medication when needed. Diagnosed with anxiety.""",9,"September 05, 2012",13
+100693,Medroxyprogesterone,Birth Control,"""Suffered debilitating daily migraines and blood pressure spikes. My doctor instructed immediate removal. Diagnosed with birth control.""",3,"July 29, 2011",12
+100694,Hydroxyzine,Anxiety,"""Clonazepam provided stable all-day relief from debilitating agoraphobia and constant catastrophic thinking. Overall rating: 8/10.""",8,"June 15, 2010",6
+100695,Fluoxetine,Depression,"""Wellbutrin gave me energy and motivation again without the sexual side effects of typical SSRIs. Very satisfied.""",7,"June 25, 2010",2
+100696,Gabapentin,Pain,"""Tramadol managed post-operative pain well enough to allow restorative sleep without excessive sedation. Overall rating: 9/10.""",9,"July 10, 2010",22
+100697,Duloxetine,Depression,"""It works somewhat for sadness, but decreased libido and mild weight gain make me question if I should stay on it. Diagnosed with depression.""",4,"December 14, 2012",3
+100698,Hydroxyzine,Anxiety,"""Helps take the edge off panic attacks, but leaves me feeling sluggish and unmotivated for hours. Overall rating: 5/10.""",5,"August 04, 2016",8
+100699,Hydrocodone,Pain,"""Severe allergic reaction with full-body hives and breathing difficulty. Avoid at all costs.""",3,"October 17, 2015",3
+100700,Epiduo,Acne,"""Made my acne flare up worse than ever before with deep painful cysts that left permanent scarring. Diagnosed with acne.""",2,"January 28, 2010",11
+100701,Clonazepam,Anxiety,"""Xanax stopped my acute panic attacks in their tracks within 15 minutes. A crucial rescue medication when needed. Diagnosed with anxiety.""",8,"March 20, 2017",18
+100702,Minocycline,Acne,"""Epiduo gel worked wonders on stubborn forehead bumps and prevented new blackheads from forming. Diagnosed with acne.""",8,"April 30, 2011",1
+100703,Celecoxib,Pain,"""Provided immediate relief following major knee surgery. Allowed me to start physical therapy on schedule. Overall rating: 9/10.""",9,"July 28, 2017",9
+100704,Hydroxyzine,Anxiety,"""Clonazepam provided stable all-day relief from debilitating agoraphobia and constant catastrophic thinking.""",8,"September 25, 2012",3
+100705,Escitalopram,Depression,"""Helped moderately with depressive symptoms, but the persistent emotional numbness and vivid dreams are frustrating. Diagnosed with depression.""",4,"August 25, 2011",0
+100706,Venlafaxine,Depression,"""After trying three different antidepressants, Prozac was the only one that stabilized my mood without feeling like a zombie. Diagnosed with depression.""",8,"April 27, 2016",110
+100707,Celecoxib,Pain,"""Caused alarming stomach ulcers and internal bleeding after just one week of prescribed use.""",3,"June 06, 2012",7
+100708,Clonazepam,Anxiety,"""Made me extremely groggy, confused, and unable to drive or work safely. Felt completely dissociated. Overall rating: 2/10.""",2,"September 27, 2016",29
+100709,Venlafaxine,Depression,"""It works somewhat for sadness, but decreased libido and mild weight gain make me question if I should stay on it.""",4,"February 14, 2018",2
+100710,Naproxen,Pain,"""Severe nausea, vomiting, and dizziness within 30 minutes of taking the first tablet. Unbearable side effects.""",3,"March 30, 2014",20
+100711,Spironolactone,Acne,"""Epiduo gel worked wonders on stubborn forehead bumps and prevented new blackheads from forming. Diagnosed with acne.""",8,"September 16, 2014",34
+100712,Levonorgestrel,Birth Control,"""Effective for pregnancy prevention, but experienced irregular spotting and slight breast tenderness for the first 4 months. Diagnosed with birth control.""",4,"August 24, 2015",9
+100713,Drospirenone / ethinyl estradiol,Birth Control,"""Sprintec has worked flawlessly for pregnancy prevention and skin clearance with zero adverse effects.""",8,"September 09, 2018",15
+100714,Hydrocodone,Pain,"""Provided immediate relief following major knee surgery. Allowed me to start physical therapy on schedule. Diagnosed with pain.""",10,"December 11, 2015",12
+100715,Propranolol,Anxiety,"""Paradoxical reaction—made my heart race faster and induced severe restless agitation. Overall rating: 2/10.""",2,"August 09, 2016",7
+100716,Drospirenone / ethinyl estradiol,Birth Control,"""Caused severe depression, uncontrollable crying spells, 20-pound weight gain, and cystic acne within 3 months. Overall rating: 3/10.""",3,"July 03, 2011",47
+100717,Minocycline,Acne,"""Made my acne flare up worse than ever before with deep painful cysts that left permanent scarring. Overall rating: 1/10.""",1,"February 14, 2012",31
+100718,Venlafaxine,Depression,"""Caused extreme insomnia, increased suicidal ideation, and severe night sweats. Had to discontinue under doctor supervision after 10 days. Diagnosed with depression.""",1,"January 30, 2010",60
+100719,Epiduo,Acne,"""Doxycycline cleared up severe inflammatory acne before my wedding. Fast-acting when combined with topical retinoids.""",9,"September 26, 2011",3
+100720,Propranolol,Anxiety,"""Helps take the edge off panic attacks, but leaves me feeling sluggish and unmotivated for hours. Diagnosed with anxiety.""",5,"February 06, 2014",13
+100721,Ibuprofen,Pain,"""Did not touch my severe sciatica pain at all, but caused extreme constipation and mental confusion. Overall rating: 2/10.""",2,"March 11, 2016",50
+100722,Drospirenone / ethinyl estradiol,Birth Control,"""Sprintec has worked flawlessly for pregnancy prevention and skin clearance with zero adverse effects. Overall rating: 9/10.""",9,"November 05, 2012",4
+100723,Erenumab,Migraine,"""Relieves migraine pain, but causes intense chest tightness and neck heaviness for an hour. Diagnosed with migraine.""",6,"May 03, 2011",0
+100724,Tramadol,Pain,"""Gabapentin reduced sharp burning diabetic nerve pain from an 8/10 to a manageable 2/10. Diagnosed with pain.""",8,"June 29, 2014",32
+100725,Medroxyprogesterone,Birth Control,"""Caused severe depression, uncontrollable crying spells, 20-pound weight gain, and cystic acne within 3 months.""",3,"May 13, 2014",15
+100726,Trazodone,Insomnia,"""Low-dose Trazodone (50mg) restored natural sleep architecture without dependency or grogginess. Diagnosed with insomnia.""",7,"November 19, 2014",44
+100727,Sertraline,Depression,"""Zoloft helped lift the dark cloud that hung over me for years. It took about 5 weeks to feel the full therapeutic effect.""",9,"February 15, 2018",3
+100728,Clindamycin / benzoyl peroxide,Acne,"""Broke out in a terrible allergic rash all over my neck and chest. Complete disaster for my skin. Diagnosed with acne.""",3,"September 13, 2016",28
+100729,Duloxetine,Depression,"""Made me emotionally detached and increased my fatigue tenfold. Did not work for my condition at all. Overall rating: 1/10.""",1,"February 13, 2010",4
+100730,Fluoxetine,Depression,"""Mild improvement in mood after 6 weeks, though daytime lethargy and dry mouth make it hard to stay focused at work.""",6,"October 17, 2018",1
+100731,Escitalopram,Anxiety,"""Buspar taken twice daily significantly lowered my baseline generalized anxiety and physical tension without sedation. Diagnosed with anxiety.""",8,"May 28, 2010",4
+100732,Isotretinoin,Acne,"""Works okay for surface pimples, but does little for hormonal cysts along the chin. Overall rating: 4/10.""",4,"December 17, 2013",16
+100733,Naproxen,Pain,"""Provided immediate relief following major knee surgery. Allowed me to start physical therapy on schedule. Diagnosed with pain.""",8,"November 22, 2017",26
+100734,Duloxetine,Depression,"""Zoloft helped lift the dark cloud that hung over me for years. It took about 5 weeks to feel the full therapeutic effect. Diagnosed with depression.""",9,"November 26, 2013",17
+100735,Spironolactone,Acne,"""Caused extreme joint pain, cracked bleeding lips, severe dry eyes, and liver enzyme spikes that forced me to stop early. Overall rating: 1/10.""",1,"July 13, 2014",8
+100736,Escitalopram,Anxiety,"""Xanax stopped my acute panic attacks in their tracks within 15 minutes. A crucial rescue medication when needed. Diagnosed with anxiety.""",10,"October 24, 2010",50
+100737,Propranolol,Anxiety,"""Lexapro smoothed out daily panic spikes and helped me regain control of my daily social interactions. Overall rating: 7/10.""",7,"January 13, 2016",11
+100738,Levonorgestrel,Birth Control,"""Periods became much lighter, though occasional unpredictable breakthrough bleeding occurs mid-pack. Diagnosed with birth control.""",6,"June 04, 2015",16
+100739,Medroxyprogesterone,Birth Control,"""Completely destroyed my mental health, caused severe mood swings, and killed my energy levels. Diagnosed with birth control.""",2,"April 23, 2010",10
+100740,Hydroxyzine,Anxiety,"""Buspar taken twice daily significantly lowered my baseline generalized anxiety and physical tension without sedation. Diagnosed with anxiety.""",10,"November 12, 2017",11
+100741,Spironolactone,Acne,"""Epiduo gel worked wonders on stubborn forehead bumps and prevented new blackheads from forming.""",9,"November 10, 2017",14
+100742,Levonorgestrel,Birth Control,"""Mirena IUD insertion was mildly uncomfortable for a few seconds, but 4 years of zero periods and no hassle is worth it.""",7,"March 21, 2016",8
+100743,Amlodipine,High Blood Pressure,"""Amlodipine effectively controlled stage 2 hypertension with excellent stability across 24-hour ambulatory monitoring. Overall rating: 9/10.""",9,"January 19, 2012",33
+100744,Hydrochlorothiazide,High Blood Pressure,"""Blood pressure is well controlled, though occasional dizziness when standing up quickly requires caution.""",4,"April 01, 2018",6
+100745,Doxycycline,Acne,"""Spironolactone cleared hormonal cystic breakouts along my jawline within three months. Incredible transformation. Diagnosed with acne.""",8,"December 29, 2013",6
+100746,Duloxetine,Depression,"""Citalopram helped me return to work and enjoy spending time with my family again. The adjustment period was well worth it. Overall rating: 7/10.""",7,"November 19, 2016",55
+100747,Citalopram,Depression,"""Made me emotionally detached and increased my fatigue tenfold. Did not work for my condition at all. Overall rating: 1/10.""",1,"December 17, 2016",8
+100748,Tretinoin,Acne,"""Broke out in a terrible allergic rash all over my neck and chest. Complete disaster for my skin. Overall rating: 3/10.""",3,"January 20, 2012",14
+100749,Erenumab,Migraine,"""Topamax caused severe cognitive decline, memory loss, and kidney stone symptoms. Diagnosed with migraine.""",2,"June 10, 2011",42
+100750,Venlafaxine,Depression,"""Caused extreme insomnia, increased suicidal ideation, and severe night sweats. Had to discontinue under doctor supervision after 10 days. Diagnosed with depression.""",2,"November 23, 2013",17
+100751,Epiduo,Acne,"""Kept active breakouts at bay while taking it daily, but acne returned as soon as the antibiotic course finished. Diagnosed with acne.""",4,"October 24, 2015",1
+100752,Hydroxyzine,Anxiety,"""Helps me fall asleep when anxious, but does not prevent morning anticipatory anxiety or stress triggers. Overall rating: 4/10.""",4,"July 07, 2016",28
+100753,Escitalopram,Depression,"""Zoloft helped lift the dark cloud that hung over me for years. It took about 5 weeks to feel the full therapeutic effect. Overall rating: 9/10.""",9,"August 29, 2012",23
+100754,Minocycline,Acne,"""Caused extreme joint pain, cracked bleeding lips, severe dry eyes, and liver enzyme spikes that forced me to stop early. Overall rating: 2/10.""",2,"October 03, 2014",7
+100755,Fluoxetine,Depression,"""Took the sharp edge off my depression, but didn't completely resolve feelings of low energy and brain fog. Overall rating: 5/10.""",5,"January 21, 2015",1
+100756,Citalopram,Depression,"""This medication has truly given me my life back. Within four weeks my constant low mood and fatigue started lifting. Diagnosed with depression.""",8,"January 10, 2013",37
+100757,Ethinyl estradiol / levonorgestrel,Birth Control,"""Regulated my periods well, but noticed a slight drop in libido and mild water retention before cycles. Diagnosed with birth control.""",5,"September 05, 2011",9
+100758,Buspirone,Anxiety,"""Buspar taken twice daily significantly lowered my baseline generalized anxiety and physical tension without sedation. Diagnosed with anxiety.""",10,"October 19, 2015",18
+100759,Lorazepam,Anxiety,"""Propranolol is a lifesaver for performance anxiety and presentation tremors. Keeps the physical racing heart under control. Diagnosed with anxiety.""",10,"May 14, 2016",53
+100760,Sertraline,Depression,"""Lexapro was a game changer for my severe depressive episodes. Minimal initial nausea, but smooth sailing afterwards. Overall rating: 8/10.""",8,"May 06, 2015",37
+100761,Ethinyl estradiol / norethindrone,Birth Control,"""Mirena IUD insertion was mildly uncomfortable for a few seconds, but 4 years of zero periods and no hassle is worth it. Overall rating: 9/10.""",9,"April 14, 2016",3
+100762,Alprazolam,Anxiety,"""Paradoxical reaction—made my heart race faster and induced severe restless agitation.""",2,"December 09, 2013",6
+100763,Drospirenone / ethinyl estradiol,Birth Control,"""Suffered debilitating daily migraines and blood pressure spikes. My doctor instructed immediate removal. Overall rating: 1/10.""",1,"December 25, 2013",5
+100764,Isotretinoin,Acne,"""Tretinoin purge lasted 4 weeks, but now at 6 months my skin texture is smoother and free from deep nodules. Diagnosed with acne.""",10,"March 19, 2013",32
+100765,Hydroxyzine,Anxiety,"""Did absolutely nothing for my panic disorder and caused intense nausea, dizziness, and heart palpitations. Overall rating: 1/10.""",1,"January 29, 2017",0
+100766,Tramadol,Pain,"""Gabapentin reduced sharp burning diabetic nerve pain from an 8/10 to a manageable 2/10. Overall rating: 7/10.""",7,"July 23, 2012",20
+100767,Minocycline,Acne,"""Moderately effective, but application causes significant initial stinging and redness that takes hours to subside. Overall rating: 6/10.""",6,"December 28, 2014",14
+100768,Drospirenone / ethinyl estradiol,Birth Control,"""Completely destroyed my mental health, caused severe mood swings, and killed my energy levels. Overall rating: 3/10.""",3,"November 17, 2011",37
+100769,Duloxetine,Depression,"""Wellbutrin gave me energy and motivation again without the sexual side effects of typical SSRIs. Very satisfied. Diagnosed with depression.""",8,"November 10, 2017",10
+100770,Tramadol,Pain,"""Provided immediate relief following major knee surgery. Allowed me to start physical therapy on schedule.""",10,"April 23, 2015",41
+100771,Escitalopram,Anxiety,"""Xanax stopped my acute panic attacks in their tracks within 15 minutes. A crucial rescue medication when needed.""",10,"December 11, 2012",2
+100772,Hydrocodone,Pain,"""Gabapentin reduced sharp burning diabetic nerve pain from an 8/10 to a manageable 2/10.""",10,"April 10, 2018",44
+100773,Spironolactone,Acne,"""Noticeable reduction in redness, though skin peeling and sun sensitivity require constant heavy moisturizing.""",4,"May 24, 2010",1
+100774,Ibuprofen,Pain,"""Severe allergic reaction with full-body hives and breathing difficulty. Avoid at all costs. Overall rating: 2/10.""",2,"January 24, 2016",9
+100775,Valsartan,High Blood Pressure,"""Amlodipine effectively controlled stage 2 hypertension with excellent stability across 24-hour ambulatory monitoring.""",8,"August 17, 2016",38
+100776,Escitalopram,Anxiety,"""Helps take the edge off panic attacks, but leaves me feeling sluggish and unmotivated for hours. Diagnosed with anxiety.""",6,"March 05, 2017",1
+100777,Gabapentin,Pain,"""Naproxen 500mg twice daily relieved severe tendonitis inflammation within 48 hours.""",9,"January 02, 2011",6
+100778,Clonazepam,Anxiety,"""Propranolol is a lifesaver for performance anxiety and presentation tremors. Keeps the physical racing heart under control.""",9,"January 01, 2010",30
+100779,Lorazepam,Anxiety,"""Did absolutely nothing for my panic disorder and caused intense nausea, dizziness, and heart palpitations. Overall rating: 1/10.""",1,"January 01, 2016",22
+100780,Fluoxetine,Depression,"""Caused extreme insomnia, increased suicidal ideation, and severe night sweats. Had to discontinue under doctor supervision after 10 days. Overall rating: 2/10.""",2,"December 13, 2018",18
+100781,Spironolactone,Acne,"""Doxycycline cleared up severe inflammatory acne before my wedding. Fast-acting when combined with topical retinoids.""",7,"August 14, 2014",28
+100782,Ethinyl estradiol / levonorgestrel,Birth Control,"""Very predictable light cycles with minimal cramping. No weight gain or mood changes whatsoever. Overall rating: 8/10.""",8,"June 22, 2012",18
+100783,Spironolactone,Acne,"""Epiduo gel worked wonders on stubborn forehead bumps and prevented new blackheads from forming. Diagnosed with acne.""",8,"September 05, 2017",6
+100784,Tretinoin,Acne,"""Works okay for surface pimples, but does little for hormonal cysts along the chin. Overall rating: 6/10.""",6,"February 10, 2012",4
+100785,Etonogestrel,Birth Control,"""Very predictable light cycles with minimal cramping. No weight gain or mood changes whatsoever. Diagnosed with birth control.""",9,"January 29, 2015",4
+100786,Minocycline,Acne,"""Kept active breakouts at bay while taking it daily, but acne returned as soon as the antibiotic course finished.""",4,"July 23, 2010",23
+100787,Temazepam,Insomnia,"""Low-dose Trazodone (50mg) restored natural sleep architecture without dependency or grogginess.""",7,"January 08, 2018",21
+100788,Clonazepam,Anxiety,"""Xanax stopped my acute panic attacks in their tracks within 15 minutes. A crucial rescue medication when needed. Overall rating: 7/10.""",7,"June 08, 2012",12
+100789,Minocycline,Acne,"""Tretinoin purge lasted 4 weeks, but now at 6 months my skin texture is smoother and free from deep nodules. Diagnosed with acne.""",10,"November 16, 2018",14
+100790,Sertraline,Depression,"""Wellbutrin gave me energy and motivation again without the sexual side effects of typical SSRIs. Very satisfied. Overall rating: 8/10.""",8,"October 20, 2010",70
+100791,Propranolol,Anxiety,"""Clonazepam provided stable all-day relief from debilitating agoraphobia and constant catastrophic thinking.""",9,"May 15, 2011",3
+100792,Eszopiclone,Insomnia,"""Helps me fall asleep reliably, but leaves a slight metallic taste and morning grogginess for an hour. Diagnosed with insomnia.""",5,"May 18, 2010",8
+100793,Venlafaxine,Depression,"""Horrible experience. My anxiety skyrocketed, experienced terrible akathisia and couldn't sit still for days. Overall rating: 1/10.""",1,"May 13, 2014",12
+100794,Oxycodone,Pain,"""Provided immediate relief following major knee surgery. Allowed me to start physical therapy on schedule. Diagnosed with pain.""",9,"March 01, 2016",22
+100795,Clonazepam,Anxiety,"""Propranolol is a lifesaver for performance anxiety and presentation tremors. Keeps the physical racing heart under control.""",9,"June 23, 2017",0
+100796,Fluoxetine,Depression,"""This medication has truly given me my life back. Within four weeks my constant low mood and fatigue started lifting.""",10,"November 28, 2018",49
+100797,Isotretinoin,Acne,"""Accutane completely cured my cystic acne after a 6-month course. Dry lips were tough, but my skin is 100% clear now. Diagnosed with acne.""",8,"October 15, 2018",64
+100798,Hydrocodone,Pain,"""Dulls sharp nerve pain, but leaves me in a mental fog with mild morning headaches.""",4,"October 08, 2011",8
+100799,Propranolol,Anxiety,"""Relieves mild social anxiety, but causes noticeable drowsiness and mild dizziness during the afternoon.""",5,"December 27, 2013",11
+100800,Oxycodone,Pain,"""Mild to moderate reduction in lower back pain, accompanied by lightheadedness and dry mouth.""",4,"July 21, 2013",25
+100801,Erenumab,Migraine,"""Topamax caused severe cognitive decline, memory loss, and kidney stone symptoms.""",2,"September 24, 2017",22
+100802,Isotretinoin,Acne,"""Moderately effective, but application causes significant initial stinging and redness that takes hours to subside. Diagnosed with acne.""",5,"November 28, 2014",1
+100803,Clonazepam,Anxiety,"""Lexapro smoothed out daily panic spikes and helped me regain control of my daily social interactions.""",10,"February 05, 2016",20
+100804,Tretinoin,Acne,"""Caused extreme joint pain, cracked bleeding lips, severe dry eyes, and liver enzyme spikes that forced me to stop early.""",2,"December 16, 2015",16
+100805,Venlafaxine,Depression,"""Wellbutrin gave me energy and motivation again without the sexual side effects of typical SSRIs. Very satisfied. Overall rating: 9/10.""",9,"January 03, 2010",13
+100806,Etonogestrel,Birth Control,"""Sprintec has worked flawlessly for pregnancy prevention and skin clearance with zero adverse effects. Overall rating: 8/10.""",8,"September 14, 2018",32
+100807,Celecoxib,Pain,"""Naproxen 500mg twice daily relieved severe tendonitis inflammation within 48 hours. Overall rating: 7/10.""",7,"February 17, 2012",65
+100808,Escitalopram,Anxiety,"""Propranolol is a lifesaver for performance anxiety and presentation tremors. Keeps the physical racing heart under control. Overall rating: 8/10.""",8,"August 06, 2014",62
+100809,Tramadol,Pain,"""Gabapentin reduced sharp burning diabetic nerve pain from an 8/10 to a manageable 2/10.""",7,"May 09, 2010",14
+100810,Sertraline,Depression,"""Zoloft helped lift the dark cloud that hung over me for years. It took about 5 weeks to feel the full therapeutic effect. Diagnosed with depression.""",7,"May 11, 2014",2
+100811,Tramadol,Pain,"""Celebrex manages my chronic osteoarthritis flare-ups effectively without upsetting my sensitive stomach.""",9,"October 17, 2016",100
+100812,Celecoxib,Pain,"""Tramadol managed post-operative pain well enough to allow restorative sleep without excessive sedation.""",8,"April 02, 2015",43
+100813,Ethinyl estradiol / norgestimate,Birth Control,"""Mirena IUD insertion was mildly uncomfortable for a few seconds, but 4 years of zero periods and no hassle is worth it. Diagnosed with birth control.""",10,"August 27, 2010",3
+100814,Medroxyprogesterone,Birth Control,"""Nexplanon implant has been fantastic. No periods, no cramping, and total peace of mind for 3 years. Overall rating: 7/10.""",7,"November 16, 2010",60
+100815,Lisinopril,High Blood Pressure,"""Caused severe peripheral edema with feet swelling so badly I couldn't put my shoes on. Diagnosed with high blood pressure.""",1,"April 28, 2014",36
+100816,Venlafaxine,Depression,"""Citalopram helped me return to work and enjoy spending time with my family again. The adjustment period was well worth it.""",8,"April 06, 2016",17
+100817,Ibuprofen,Pain,"""Naproxen 500mg twice daily relieved severe tendonitis inflammation within 48 hours. Overall rating: 7/10.""",7,"July 25, 2017",21
+100818,Clonazepam,Anxiety,"""Helps me fall asleep when anxious, but does not prevent morning anticipatory anxiety or stress triggers. Diagnosed with anxiety.""",4,"July 03, 2014",5
+100819,Escitalopram,Anxiety,"""Helps take the edge off panic attacks, but leaves me feeling sluggish and unmotivated for hours. Overall rating: 6/10.""",6,"July 14, 2013",0
+100820,Buspirone,Anxiety,"""Paradoxical reaction—made my heart race faster and induced severe restless agitation. Diagnosed with anxiety.""",2,"August 17, 2013",7
+100821,Gabapentin,Pain,"""Helps with joint stiffness in the morning, but pain returns in the evening during strenuous activities. Overall rating: 4/10.""",4,"January 28, 2015",16
+100822,Lorazepam,Anxiety,"""Lexapro smoothed out daily panic spikes and helped me regain control of my daily social interactions.""",7,"October 22, 2015",0
+100823,Fluoxetine,Depression,"""Horrible experience. My anxiety skyrocketed, experienced terrible akathisia and couldn't sit still for days.""",1,"July 13, 2013",7
+100824,Citalopram,Depression,"""Zero improvement in depression, but gained 15 pounds in two months and suffered unbearable withdrawal brain zaps. Diagnosed with depression.""",3,"September 26, 2015",9
+100825,Alprazolam,Anxiety,"""Developed rapid tolerance and experienced terrible rebound anxiety and withdrawal tremors between doses. Overall rating: 1/10.""",1,"December 27, 2013",13
+100826,Escitalopram,Depression,"""Wellbutrin gave me energy and motivation again without the sexual side effects of typical SSRIs. Very satisfied. Overall rating: 8/10.""",8,"January 12, 2011",60
+100827,Hydroxyzine,Anxiety,"""Relieves mild social anxiety, but causes noticeable drowsiness and mild dizziness during the afternoon. Diagnosed with anxiety.""",4,"August 22, 2013",4
+100828,Drospirenone / ethinyl estradiol,Birth Control,"""Mirena IUD insertion was mildly uncomfortable for a few seconds, but 4 years of zero periods and no hassle is worth it.""",7,"March 13, 2018",10
+100829,Ethinyl estradiol / norgestimate,Birth Control,"""Mirena IUD insertion was mildly uncomfortable for a few seconds, but 4 years of zero periods and no hassle is worth it. Overall rating: 7/10.""",7,"November 14, 2014",32
+100830,Clindamycin / benzoyl peroxide,Acne,"""Destroyed my stomach lining with severe acid reflux and didn't even improve my facial cysts. Diagnosed with acne.""",1,"September 20, 2018",10
+100831,Hydrocodone,Pain,"""Naproxen 500mg twice daily relieved severe tendonitis inflammation within 48 hours. Diagnosed with pain.""",7,"September 05, 2011",6
+100832,Isotretinoin,Acne,"""Moderately effective, but application causes significant initial stinging and redness that takes hours to subside. Overall rating: 4/10.""",4,"June 11, 2018",6
+100833,Buspirone,Anxiety,"""Propranolol is a lifesaver for performance anxiety and presentation tremors. Keeps the physical racing heart under control. Overall rating: 8/10.""",8,"August 30, 2011",3
+100834,Venlafaxine,Depression,"""After trying three different antidepressants, Prozac was the only one that stabilized my mood without feeling like a zombie. Overall rating: 7/10.""",7,"December 15, 2010",4
+100835,Tretinoin,Acne,"""Spironolactone cleared hormonal cystic breakouts along my jawline within three months. Incredible transformation. Overall rating: 8/10.""",8,"April 09, 2016",16
+100836,Venlafaxine,Depression,"""Zoloft helped lift the dark cloud that hung over me for years. It took about 5 weeks to feel the full therapeutic effect. Diagnosed with depression.""",8,"November 18, 2015",13
+100837,Minocycline,Acne,"""Epiduo gel worked wonders on stubborn forehead bumps and prevented new blackheads from forming.""",10,"April 06, 2011",59
+100838,Oxycodone,Pain,"""Celebrex manages my chronic osteoarthritis flare-ups effectively without upsetting my sensitive stomach. Overall rating: 9/10.""",9,"August 29, 2016",10
+100839,Hydrocodone,Pain,"""Severe allergic reaction with full-body hives and breathing difficulty. Avoid at all costs. Diagnosed with pain.""",1,"August 21, 2011",15
+100840,Clonazepam,Anxiety,"""Did absolutely nothing for my panic disorder and caused intense nausea, dizziness, and heart palpitations.""",1,"July 01, 2018",18
+100841,Oxycodone,Pain,"""Naproxen 500mg twice daily relieved severe tendonitis inflammation within 48 hours.""",7,"March 24, 2013",0
+100842,Fluoxetine,Depression,"""Took the sharp edge off my depression, but didn't completely resolve feelings of low energy and brain fog. Overall rating: 4/10.""",4,"April 04, 2010",10
+100843,Doxycycline,Acne,"""Broke out in a terrible allergic rash all over my neck and chest. Complete disaster for my skin. Diagnosed with acne.""",1,"June 02, 2015",3
+100844,Celecoxib,Pain,"""Severe nausea, vomiting, and dizziness within 30 minutes of taking the first tablet. Unbearable side effects. Overall rating: 3/10.""",3,"July 15, 2016",58
+100845,Amlodipine,High Blood Pressure,"""Brought my blood pressure down from 160/100 to 120/78 within three weeks. No noticeable side effects. Overall rating: 9/10.""",9,"April 02, 2012",3
+100846,Levonorgestrel,Birth Control,"""Effective for pregnancy prevention, but experienced irregular spotting and slight breast tenderness for the first 4 months.""",4,"May 11, 2014",5
+100847,Hydrocodone,Pain,"""Dulls sharp nerve pain, but leaves me in a mental fog with mild morning headaches.""",6,"April 13, 2013",0
+100848,Levonorgestrel,Birth Control,"""Effective for pregnancy prevention, but experienced irregular spotting and slight breast tenderness for the first 4 months. Overall rating: 4/10.""",4,"June 09, 2015",57
+100849,Ethinyl estradiol / levonorgestrel,Birth Control,"""Sprintec has worked flawlessly for pregnancy prevention and skin clearance with zero adverse effects. Overall rating: 8/10.""",8,"April 15, 2016",16
+100850,Metoprolol,High Blood Pressure,"""Metoprolol normalized my resting heart rate and blood pressure while reducing heart palpitations. Overall rating: 8/10.""",8,"June 30, 2015",21
+100851,Clindamycin / benzoyl peroxide,Acne,"""Doxycycline cleared up severe inflammatory acne before my wedding. Fast-acting when combined with topical retinoids. Overall rating: 9/10.""",9,"January 04, 2017",1
+100852,Minocycline,Acne,"""Destroyed my stomach lining with severe acid reflux and didn't even improve my facial cysts. Diagnosed with acne.""",3,"November 21, 2012",24
+100853,Drospirenone / ethinyl estradiol,Birth Control,"""Continuous heavy bleeding for 6 straight weeks accompanied by excruciating ovarian cramps.""",1,"September 14, 2011",4
+100854,Isotretinoin,Acne,"""Tretinoin purge lasted 4 weeks, but now at 6 months my skin texture is smoother and free from deep nodules. Diagnosed with acne.""",8,"August 09, 2017",54
+100855,Gabapentin,Pain,"""Provides about 4 hours of pain relief, but wears off faster than expected and causes mild constipation. Diagnosed with pain.""",4,"September 18, 2011",2
+100856,Buspirone,Anxiety,"""Lexapro smoothed out daily panic spikes and helped me regain control of my daily social interactions.""",9,"April 26, 2012",5
+100857,Ibuprofen,Pain,"""Provides about 4 hours of pain relief, but wears off faster than expected and causes mild constipation.""",6,"June 19, 2013",0
+100858,Gabapentin,Pain,"""Did not touch my severe sciatica pain at all, but caused extreme constipation and mental confusion. Diagnosed with pain.""",1,"May 02, 2016",11
+100859,Amlodipine,High Blood Pressure,"""Metoprolol normalized my resting heart rate and blood pressure while reducing heart palpitations.""",7,"February 26, 2018",19
+100860,Bupropion,Depression,"""Wellbutrin gave me energy and motivation again without the sexual side effects of typical SSRIs. Very satisfied. Overall rating: 10/10.""",10,"May 13, 2018",1
+100861,Losartan,High Blood Pressure,"""Caused severe peripheral edema with feet swelling so badly I couldn't put my shoes on.""",3,"March 14, 2011",26
+100862,Venlafaxine,Depression,"""Zoloft helped lift the dark cloud that hung over me for years. It took about 5 weeks to feel the full therapeutic effect. Diagnosed with depression.""",9,"August 03, 2012",14
+100863,Lorazepam,Anxiety,"""Xanax stopped my acute panic attacks in their tracks within 15 minutes. A crucial rescue medication when needed. Diagnosed with anxiety.""",7,"September 30, 2018",17
+100864,Hydroxyzine,Anxiety,"""Propranolol is a lifesaver for performance anxiety and presentation tremors. Keeps the physical racing heart under control.""",10,"May 07, 2014",13
+100865,Clonazepam,Anxiety,"""Xanax stopped my acute panic attacks in their tracks within 15 minutes. A crucial rescue medication when needed. Overall rating: 8/10.""",8,"July 29, 2018",12
+100866,Trazodone,Insomnia,"""Experience sleepwalking and memory lapses where I ate entire meals without remembering next morning.""",2,"September 28, 2010",14
+100867,Citalopram,Depression,"""Made me emotionally detached and increased my fatigue tenfold. Did not work for my condition at all. Diagnosed with depression.""",2,"August 23, 2013",3
+100868,Levonorgestrel,Birth Control,"""Caused severe depression, uncontrollable crying spells, 20-pound weight gain, and cystic acne within 3 months. Diagnosed with birth control.""",2,"March 31, 2018",3
+100869,Drospirenone / ethinyl estradiol,Birth Control,"""Effective for pregnancy prevention, but experienced irregular spotting and slight breast tenderness for the first 4 months. Diagnosed with birth control.""",5,"March 24, 2011",19
+100870,Clonazepam,Anxiety,"""Paradoxical reaction—made my heart race faster and induced severe restless agitation. Diagnosed with anxiety.""",1,"June 10, 2010",52
+100871,Clonazepam,Anxiety,"""Propranolol is a lifesaver for performance anxiety and presentation tremors. Keeps the physical racing heart under control. Overall rating: 7/10.""",7,"June 19, 2014",11
+100872,Levonorgestrel,Birth Control,"""Suffered debilitating daily migraines and blood pressure spikes. My doctor instructed immediate removal. Overall rating: 2/10.""",2,"April 20, 2013",5
+100873,Gabapentin,Pain,"""Tramadol managed post-operative pain well enough to allow restorative sleep without excessive sedation.""",8,"February 07, 2018",24
+100874,Buspirone,Anxiety,"""Clonazepam provided stable all-day relief from debilitating agoraphobia and constant catastrophic thinking. Overall rating: 8/10.""",8,"January 21, 2015",12
+100875,Bupropion,Depression,"""This medication has truly given me my life back. Within four weeks my constant low mood and fatigue started lifting. Overall rating: 8/10.""",8,"August 20, 2013",0
+100876,Celecoxib,Pain,"""Severe nausea, vomiting, and dizziness within 30 minutes of taking the first tablet. Unbearable side effects.""",1,"April 13, 2011",3
+100877,Naproxen,Pain,"""Mild to moderate reduction in lower back pain, accompanied by lightheadedness and dry mouth. Diagnosed with pain.""",4,"November 15, 2018",12
+100878,Eszopiclone,Insomnia,"""Works for falling asleep, but does not prevent waking up at 4 AM.""",4,"August 13, 2018",10
+100879,Escitalopram,Depression,"""Lexapro was a game changer for my severe depressive episodes. Minimal initial nausea, but smooth sailing afterwards.""",8,"August 17, 2018",0
+100880,Celecoxib,Pain,"""Tramadol managed post-operative pain well enough to allow restorative sleep without excessive sedation. Overall rating: 9/10.""",9,"January 09, 2017",6
+100881,Sertraline,Depression,"""Zero improvement in depression, but gained 15 pounds in two months and suffered unbearable withdrawal brain zaps.""",1,"February 22, 2015",4
+100882,Escitalopram,Anxiety,"""Clonazepam provided stable all-day relief from debilitating agoraphobia and constant catastrophic thinking.""",7,"June 07, 2012",26
+100883,Buspirone,Anxiety,"""Xanax stopped my acute panic attacks in their tracks within 15 minutes. A crucial rescue medication when needed. Diagnosed with anxiety.""",10,"September 24, 2016",0
+100884,Venlafaxine,Depression,"""Horrible experience. My anxiety skyrocketed, experienced terrible akathisia and couldn't sit still for days.""",2,"January 28, 2012",1
+100885,Escitalopram,Depression,"""Helped moderately with depressive symptoms, but the persistent emotional numbness and vivid dreams are frustrating. Diagnosed with depression.""",4,"June 25, 2016",16
+100886,Etonogestrel,Birth Control,"""Nexplanon implant has been fantastic. No periods, no cramping, and total peace of mind for 3 years. Overall rating: 7/10.""",7,"January 01, 2012",4
+100887,Bupropion,Depression,"""Citalopram helped me return to work and enjoy spending time with my family again. The adjustment period was well worth it. Diagnosed with depression.""",8,"January 15, 2014",25
+100888,Losartan,High Blood Pressure,"""Metoprolol normalized my resting heart rate and blood pressure while reducing heart palpitations. Overall rating: 9/10.""",9,"October 05, 2010",6
+100889,Ethinyl estradiol / norethindrone,Birth Control,"""Completely destroyed my mental health, caused severe mood swings, and killed my energy levels.""",1,"May 15, 2011",1
+100890,Naproxen,Pain,"""Gabapentin reduced sharp burning diabetic nerve pain from an 8/10 to a manageable 2/10. Diagnosed with pain.""",10,"May 06, 2012",6
+100891,Gabapentin,Pain,"""Naproxen 500mg twice daily relieved severe tendonitis inflammation within 48 hours. Diagnosed with pain.""",7,"March 22, 2013",30
+100892,Escitalopram,Anxiety,"""Did absolutely nothing for my panic disorder and caused intense nausea, dizziness, and heart palpitations.""",2,"November 21, 2016",34
+100893,Buspirone,Anxiety,"""Buspar taken twice daily significantly lowered my baseline generalized anxiety and physical tension without sedation. Diagnosed with anxiety.""",10,"August 11, 2012",42
+100894,Tramadol,Pain,"""Severe nausea, vomiting, and dizziness within 30 minutes of taking the first tablet. Unbearable side effects. Overall rating: 1/10.""",1,"January 05, 2017",9
+100895,Ethinyl estradiol / norgestimate,Birth Control,"""Completely destroyed my mental health, caused severe mood swings, and killed my energy levels. Overall rating: 1/10.""",1,"July 06, 2010",19
+100896,Doxycycline,Acne,"""Kept active breakouts at bay while taking it daily, but acne returned as soon as the antibiotic course finished. Diagnosed with acne.""",6,"April 04, 2012",2
+100897,Hydrocodone,Pain,"""Celebrex manages my chronic osteoarthritis flare-ups effectively without upsetting my sensitive stomach. Diagnosed with pain.""",7,"March 02, 2016",8
+100898,Minocycline,Acne,"""Tretinoin purge lasted 4 weeks, but now at 6 months my skin texture is smoother and free from deep nodules. Diagnosed with acne.""",9,"May 19, 2016",54
+100899,Oxycodone,Pain,"""Celebrex manages my chronic osteoarthritis flare-ups effectively without upsetting my sensitive stomach. Overall rating: 8/10.""",8,"July 17, 2017",0
+100900,Hydroxyzine,Anxiety,"""Buspar taken twice daily significantly lowered my baseline generalized anxiety and physical tension without sedation. Overall rating: 7/10.""",7,"September 29, 2011",2
+100901,Hydrocodone,Pain,"""Severe allergic reaction with full-body hives and breathing difficulty. Avoid at all costs. Overall rating: 3/10.""",3,"April 30, 2018",4
+100902,Venlafaxine,Depression,"""Zoloft helped lift the dark cloud that hung over me for years. It took about 5 weeks to feel the full therapeutic effect.""",9,"May 03, 2012",0
+100903,Alprazolam,Anxiety,"""Buspar taken twice daily significantly lowered my baseline generalized anxiety and physical tension without sedation. Overall rating: 9/10.""",9,"May 08, 2010",4
+100904,Spironolactone,Acne,"""Epiduo gel worked wonders on stubborn forehead bumps and prevented new blackheads from forming. Overall rating: 8/10.""",8,"February 07, 2012",20
+100905,Hydroxyzine,Anxiety,"""Did absolutely nothing for my panic disorder and caused intense nausea, dizziness, and heart palpitations. Diagnosed with anxiety.""",2,"May 10, 2010",9
+100906,Minocycline,Acne,"""Tretinoin purge lasted 4 weeks, but now at 6 months my skin texture is smoother and free from deep nodules. Overall rating: 8/10.""",8,"June 04, 2012",53
+100907,Propranolol,Anxiety,"""Xanax stopped my acute panic attacks in their tracks within 15 minutes. A crucial rescue medication when needed.""",9,"January 15, 2011",40
+100908,Escitalopram,Anxiety,"""Buspar taken twice daily significantly lowered my baseline generalized anxiety and physical tension without sedation.""",10,"October 25, 2013",10
+100909,Losartan,High Blood Pressure,"""Made my blood pressure crash too low causing fainting spells and severe dizziness upon standing.""",3,"August 18, 2018",5
+100910,Medroxyprogesterone,Birth Control,"""Suffered debilitating daily migraines and blood pressure spikes. My doctor instructed immediate removal.""",3,"February 15, 2018",8
+100911,Sertraline,Depression,"""Wellbutrin gave me energy and motivation again without the sexual side effects of typical SSRIs. Very satisfied.""",7,"September 15, 2017",21
+100912,Levonorgestrel,Birth Control,"""Caused severe depression, uncontrollable crying spells, 20-pound weight gain, and cystic acne within 3 months.""",2,"November 03, 2015",5
+100913,Drospirenone / ethinyl estradiol,Birth Control,"""Continuous heavy bleeding for 6 straight weeks accompanied by excruciating ovarian cramps. Diagnosed with birth control.""",1,"May 09, 2012",17
+100914,Spironolactone,Acne,"""Doxycycline cleared up severe inflammatory acne before my wedding. Fast-acting when combined with topical retinoids. Overall rating: 9/10.""",9,"July 11, 2017",12
+100915,Sertraline,Depression,"""This medication has truly given me my life back. Within four weeks my constant low mood and fatigue started lifting. Diagnosed with depression.""",9,"April 11, 2016",19
+100916,Escitalopram,Anxiety,"""Propranolol is a lifesaver for performance anxiety and presentation tremors. Keeps the physical racing heart under control. Overall rating: 9/10.""",9,"August 03, 2011",13
+100917,Amlodipine,High Blood Pressure,"""Caused severe peripheral edema with feet swelling so badly I couldn't put my shoes on.""",3,"June 29, 2013",6
+100918,Tramadol,Pain,"""Gabapentin reduced sharp burning diabetic nerve pain from an 8/10 to a manageable 2/10.""",10,"April 13, 2015",71
+100919,Lisinopril,High Blood Pressure,"""Brought my blood pressure down from 160/100 to 120/78 within three weeks. No noticeable side effects. Overall rating: 10/10.""",10,"May 25, 2014",34
+100920,Duloxetine,Depression,"""Took the sharp edge off my depression, but didn't completely resolve feelings of low energy and brain fog. Diagnosed with depression.""",6,"December 27, 2013",1
+100921,Tretinoin,Acne,"""Destroyed my stomach lining with severe acid reflux and didn't even improve my facial cysts. Overall rating: 3/10.""",3,"May 14, 2016",36
+100922,Bupropion,Depression,"""Caused extreme insomnia, increased suicidal ideation, and severe night sweats. Had to discontinue under doctor supervision after 10 days. Overall rating: 3/10.""",3,"June 25, 2013",12
+100923,Gabapentin,Pain,"""Provides about 4 hours of pain relief, but wears off faster than expected and causes mild constipation.""",5,"August 12, 2011",22
+100924,Levonorgestrel,Birth Control,"""Regulated my periods well, but noticed a slight drop in libido and mild water retention before cycles. Diagnosed with birth control.""",5,"June 17, 2017",16
+100925,Epiduo,Acne,"""Made my acne flare up worse than ever before with deep painful cysts that left permanent scarring.""",2,"September 25, 2010",9
+100926,Propranolol,Anxiety,"""Buspar taken twice daily significantly lowered my baseline generalized anxiety and physical tension without sedation. Overall rating: 10/10.""",10,"August 12, 2018",0
+100927,Isotretinoin,Acne,"""Moderately effective, but application causes significant initial stinging and redness that takes hours to subside. Diagnosed with acne.""",6,"December 08, 2018",3
+100928,Citalopram,Depression,"""It works somewhat for sadness, but decreased libido and mild weight gain make me question if I should stay on it. Diagnosed with depression.""",4,"March 04, 2015",7
+100929,Spironolactone,Acne,"""Spironolactone cleared hormonal cystic breakouts along my jawline within three months. Incredible transformation. Overall rating: 8/10.""",8,"April 22, 2014",24
+100930,Citalopram,Depression,"""After trying three different antidepressants, Prozac was the only one that stabilized my mood without feeling like a zombie. Diagnosed with depression.""",10,"October 30, 2018",7
+100931,Clindamycin / benzoyl peroxide,Acne,"""Kept active breakouts at bay while taking it daily, but acne returned as soon as the antibiotic course finished. Diagnosed with acne.""",4,"December 25, 2017",1
+100932,Lorazepam,Anxiety,"""Lexapro smoothed out daily panic spikes and helped me regain control of my daily social interactions.""",10,"December 29, 2014",43
+100933,Venlafaxine,Depression,"""Caused extreme insomnia, increased suicidal ideation, and severe night sweats. Had to discontinue under doctor supervision after 10 days. Diagnosed with depression.""",1,"September 08, 2016",74
+100934,Medroxyprogesterone,Birth Control,"""Nexplanon implant has been fantastic. No periods, no cramping, and total peace of mind for 3 years.""",10,"June 10, 2012",17
+100935,Ethinyl estradiol / norgestimate,Birth Control,"""Caused severe depression, uncontrollable crying spells, 20-pound weight gain, and cystic acne within 3 months.""",3,"May 30, 2017",3
+100936,Venlafaxine,Depression,"""Zoloft helped lift the dark cloud that hung over me for years. It took about 5 weeks to feel the full therapeutic effect. Overall rating: 10/10.""",10,"March 12, 2012",7
+100937,Venlafaxine,Depression,"""Zero improvement in depression, but gained 15 pounds in two months and suffered unbearable withdrawal brain zaps. Overall rating: 2/10.""",2,"January 19, 2018",0
+100938,Propranolol,Migraine,"""Imitrex aborts acute throbbing migraines within 30 minutes. An indispensable rescue drug. Diagnosed with migraine.""",7,"September 22, 2015",58
+100939,Isotretinoin,Acne,"""Doxycycline cleared up severe inflammatory acne before my wedding. Fast-acting when combined with topical retinoids. Diagnosed with acne.""",9,"August 06, 2010",3
+100940,Sertraline,Depression,"""It works somewhat for sadness, but decreased libido and mild weight gain make me question if I should stay on it.""",5,"August 21, 2012",8
+100941,Lorazepam,Anxiety,"""Helps take the edge off panic attacks, but leaves me feeling sluggish and unmotivated for hours. Overall rating: 6/10.""",6,"April 12, 2014",3
+100942,Buspirone,Anxiety,"""Buspar taken twice daily significantly lowered my baseline generalized anxiety and physical tension without sedation.""",8,"March 25, 2016",19
+100943,Doxycycline,Acne,"""Broke out in a terrible allergic rash all over my neck and chest. Complete disaster for my skin. Diagnosed with acne.""",2,"May 30, 2011",18
+100944,Escitalopram,Depression,"""Citalopram helped me return to work and enjoy spending time with my family again. The adjustment period was well worth it. Overall rating: 7/10.""",7,"May 18, 2017",42
+100945,Clonazepam,Anxiety,"""Paradoxical reaction—made my heart race faster and induced severe restless agitation. Overall rating: 1/10.""",1,"November 06, 2018",4
+100946,Oxycodone,Pain,"""Severe allergic reaction with full-body hives and breathing difficulty. Avoid at all costs. Diagnosed with pain.""",3,"October 04, 2014",0
+100947,Clonazepam,Anxiety,"""Buspar taken twice daily significantly lowered my baseline generalized anxiety and physical tension without sedation. Overall rating: 9/10.""",9,"October 12, 2016",3
+100948,Duloxetine,Depression,"""Zoloft helped lift the dark cloud that hung over me for years. It took about 5 weeks to feel the full therapeutic effect. Overall rating: 8/10.""",8,"August 10, 2014",55
+100949,Lisinopril,High Blood Pressure,"""Maintains stable readings, but requires regular potassium and kidney function monitoring. Diagnosed with high blood pressure.""",4,"February 18, 2014",20
+100950,Escitalopram,Depression,"""Citalopram helped me return to work and enjoy spending time with my family again. The adjustment period was well worth it. Diagnosed with depression.""",7,"November 27, 2015",21
+100951,Erenumab,Migraine,"""Topamax caused severe cognitive decline, memory loss, and kidney stone symptoms. Diagnosed with migraine.""",2,"November 03, 2016",16
+100952,Duloxetine,Depression,"""Citalopram helped me return to work and enjoy spending time with my family again. The adjustment period was well worth it. Diagnosed with depression.""",7,"December 14, 2018",26
+100953,Escitalopram,Anxiety,"""Relieves mild social anxiety, but causes noticeable drowsiness and mild dizziness during the afternoon. Overall rating: 5/10.""",5,"February 03, 2015",1
+100954,Buspirone,Anxiety,"""Propranolol is a lifesaver for performance anxiety and presentation tremors. Keeps the physical racing heart under control. Overall rating: 9/10.""",9,"March 30, 2013",58
+100955,Duloxetine,Depression,"""It works somewhat for sadness, but decreased libido and mild weight gain make me question if I should stay on it. Diagnosed with depression.""",6,"October 21, 2018",5
+100956,Escitalopram,Anxiety,"""Buspar taken twice daily significantly lowered my baseline generalized anxiety and physical tension without sedation. Diagnosed with anxiety.""",10,"July 31, 2010",11
+100957,Hydrocodone,Pain,"""Tramadol managed post-operative pain well enough to allow restorative sleep without excessive sedation.""",7,"June 04, 2011",17
+100958,Lorazepam,Anxiety,"""Made me extremely groggy, confused, and unable to drive or work safely. Felt completely dissociated. Diagnosed with anxiety.""",2,"February 24, 2013",0
+100959,Spironolactone,Acne,"""Spironolactone cleared hormonal cystic breakouts along my jawline within three months. Incredible transformation. Diagnosed with acne.""",7,"April 15, 2018",4
+100960,Fluoxetine,Depression,"""Citalopram helped me return to work and enjoy spending time with my family again. The adjustment period was well worth it.""",8,"June 10, 2015",32
+100961,Fluoxetine,Depression,"""This medication has truly given me my life back. Within four weeks my constant low mood and fatigue started lifting.""",7,"September 05, 2016",2
+100962,Carvedilol,High Blood Pressure,"""Combination of Lisinopril and HCTZ lowered my readings to optimal range with once-daily morning dosing. Overall rating: 10/10.""",10,"September 01, 2012",22
+100963,Oxycodone,Pain,"""Helps with joint stiffness in the morning, but pain returns in the evening during strenuous activities.""",4,"March 15, 2017",2
+100964,Doxycycline,Acne,"""Made my acne flare up worse than ever before with deep painful cysts that left permanent scarring. Overall rating: 1/10.""",1,"May 05, 2015",8
+100965,Doxycycline,Acne,"""Made my acne flare up worse than ever before with deep painful cysts that left permanent scarring. Diagnosed with acne.""",3,"November 30, 2017",6
+100966,Isotretinoin,Acne,"""Doxycycline cleared up severe inflammatory acne before my wedding. Fast-acting when combined with topical retinoids. Overall rating: 10/10.""",10,"April 14, 2014",10
+100967,Tramadol,Pain,"""Severe nausea, vomiting, and dizziness within 30 minutes of taking the first tablet. Unbearable side effects. Diagnosed with pain.""",3,"February 23, 2017",22
+100968,Clindamycin / benzoyl peroxide,Acne,"""Broke out in a terrible allergic rash all over my neck and chest. Complete disaster for my skin. Overall rating: 3/10.""",3,"January 12, 2013",6
+100969,Epiduo,Acne,"""Spironolactone cleared hormonal cystic breakouts along my jawline within three months. Incredible transformation. Diagnosed with acne.""",10,"July 15, 2017",20
+100970,Hydroxyzine,Anxiety,"""Buspar taken twice daily significantly lowered my baseline generalized anxiety and physical tension without sedation. Overall rating: 9/10.""",9,"February 22, 2016",15
+100971,Sertraline,Depression,"""After trying three different antidepressants, Prozac was the only one that stabilized my mood without feeling like a zombie.""",7,"November 22, 2015",26
+100972,Duloxetine,Depression,"""Wellbutrin gave me energy and motivation again without the sexual side effects of typical SSRIs. Very satisfied. Overall rating: 8/10.""",8,"March 01, 2012",66
+100973,Venlafaxine,Depression,"""Mild improvement in mood after 6 weeks, though daytime lethargy and dry mouth make it hard to stay focused at work. Diagnosed with depression.""",4,"February 26, 2017",13
+100974,Citalopram,Depression,"""Horrible experience. My anxiety skyrocketed, experienced terrible akathisia and couldn't sit still for days. Overall rating: 1/10.""",1,"May 12, 2017",4
+100975,Etonogestrel,Birth Control,"""Regulated my periods well, but noticed a slight drop in libido and mild water retention before cycles. Overall rating: 4/10.""",4,"April 21, 2013",0
+100976,Buspirone,Anxiety,"""Did absolutely nothing for my panic disorder and caused intense nausea, dizziness, and heart palpitations. Overall rating: 3/10.""",3,"October 06, 2017",5
+100977,Losartan,High Blood Pressure,"""Caused severe peripheral edema with feet swelling so badly I couldn't put my shoes on.""",2,"February 09, 2013",16
+100978,Etonogestrel,Birth Control,"""Mirena IUD insertion was mildly uncomfortable for a few seconds, but 4 years of zero periods and no hassle is worth it. Overall rating: 9/10.""",9,"December 30, 2011",1
+100979,Escitalopram,Anxiety,"""Clonazepam provided stable all-day relief from debilitating agoraphobia and constant catastrophic thinking.""",8,"March 28, 2017",16
+100980,Clonazepam,Anxiety,"""Lexapro smoothed out daily panic spikes and helped me regain control of my daily social interactions. Diagnosed with anxiety.""",10,"March 12, 2011",21
+100981,Lisinopril,High Blood Pressure,"""Effective at lowering BP, but causes mild swelling in my ankles and feet by the end of the day.""",4,"May 29, 2016",4
+100982,Gabapentin,Pain,"""Did not touch my severe sciatica pain at all, but caused extreme constipation and mental confusion. Diagnosed with pain.""",1,"March 07, 2017",26
+100983,Fluoxetine,Depression,"""Lexapro was a game changer for my severe depressive episodes. Minimal initial nausea, but smooth sailing afterwards. Diagnosed with depression.""",10,"September 12, 2013",2
+100984,Valsartan,High Blood Pressure,"""Maintains stable readings, but requires regular potassium and kidney function monitoring. Overall rating: 6/10.""",6,"November 22, 2014",0
+100985,Spironolactone,Acne,"""Noticeable reduction in redness, though skin peeling and sun sensitivity require constant heavy moisturizing.""",4,"April 24, 2014",13
+100986,Zolpidem,Insomnia,"""Severe next-day sedation, brain fog, and severe headaches. Felt like a zombie all day. Overall rating: 2/10.""",2,"August 24, 2017",12
+100987,Minocycline,Acne,"""Epiduo gel worked wonders on stubborn forehead bumps and prevented new blackheads from forming. Overall rating: 7/10.""",7,"November 26, 2010",27
+100988,Medroxyprogesterone,Birth Control,"""Suffered debilitating daily migraines and blood pressure spikes. My doctor instructed immediate removal.""",2,"March 21, 2016",10
+100989,Fluoxetine,Depression,"""Citalopram helped me return to work and enjoy spending time with my family again. The adjustment period was well worth it. Overall rating: 8/10.""",8,"March 14, 2011",6
+100990,Celecoxib,Pain,"""Tramadol managed post-operative pain well enough to allow restorative sleep without excessive sedation. Diagnosed with pain.""",7,"February 16, 2012",41
+100991,Bupropion,Depression,"""After trying three different antidepressants, Prozac was the only one that stabilized my mood without feeling like a zombie.""",8,"November 22, 2018",38
+100992,Alprazolam,Anxiety,"""Xanax stopped my acute panic attacks in their tracks within 15 minutes. A crucial rescue medication when needed. Overall rating: 10/10.""",10,"August 18, 2010",28
+100993,Isotretinoin,Acne,"""Noticeable reduction in redness, though skin peeling and sun sensitivity require constant heavy moisturizing. Diagnosed with acne.""",5,"June 26, 2017",3
+100994,Clonazepam,Anxiety,"""Made me extremely groggy, confused, and unable to drive or work safely. Felt completely dissociated.""",3,"June 01, 2010",16
+100995,Gabapentin,Pain,"""Naproxen 500mg twice daily relieved severe tendonitis inflammation within 48 hours.""",7,"September 21, 2012",10
+100996,Celecoxib,Pain,"""Provided immediate relief following major knee surgery. Allowed me to start physical therapy on schedule. Overall rating: 8/10.""",8,"November 25, 2018",2
+100997,Sertraline,Depression,"""Helped moderately with depressive symptoms, but the persistent emotional numbness and vivid dreams are frustrating.""",6,"July 30, 2015",24
+100998,Propranolol,Anxiety,"""Helps me fall asleep when anxious, but does not prevent morning anticipatory anxiety or stress triggers. Overall rating: 4/10.""",4,"October 13, 2013",1
+100999,Levonorgestrel,Birth Control,"""Continuous heavy bleeding for 6 straight weeks accompanied by excruciating ovarian cramps.""",3,"September 03, 2017",54
+101000,Propranolol,Anxiety,"""Xanax stopped my acute panic attacks in their tracks within 15 minutes. A crucial rescue medication when needed. Diagnosed with anxiety.""",8,"December 12, 2011",14
