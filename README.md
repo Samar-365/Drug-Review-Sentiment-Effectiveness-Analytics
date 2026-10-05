@@ -23,6 +23,29 @@ Review|Patient review
 date|Date of review entry
 usefulCount| number of users who found review useful
 
+## Dataset Sources & Setup
+
+Due to GitHub repository size limits, the full raw training and test datasets (~110 MB combined) are not tracked in version control. 
+
+### 1. Download Full Datasets:
+You can obtain the complete raw datasets from either of the following official sources:
+* **UCI Machine Learning Repository:** [Drug Review Dataset (Drugs.com)](https://archive.ics.uci.edu/dataset/591/drug+review+dataset)
+* **Kaggle:** [Kaggle UCI ML Drug Review Dataset](https://www.kaggle.com/datasets/jessicali9530/kuc-hackathon-winter-2018)
+
+### 2. Directory Placement:
+After extracting the downloaded files, place them into the `data/` directory structure as follows:
+```
+data/
+├── train/
+│   └── drugsComTrain_raw.csv
+├── test/
+│   └── drugsComTest_raw.csv
+└── sample/
+    └── sample_drug_reviews.csv  <-- (Included in repo for immediate testing)
+```
+
+> **Note:** A curated 1,000-row sample dataset is included directly in `data/sample/sample_drug_reviews.csv` for fast local testing, CI/CD pipeline validation, and Streamlit demo runs without needing to download the full files first.
+
 ### How is Data Preprocessing done in Apache Spark?
 1. Fit pipeline
 ![](Spark_fit.PNG)
