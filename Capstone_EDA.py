@@ -43,9 +43,10 @@ def sentiment(x):
 
 if __name__ == "__main__":
     # %%
-    #Reading the csv file
-    df_train = pd.read_csv("C:/MITA Spring 19/Turkoz/Capstone/Drug_Dataset/train_raw/train_csv.csv")
-    df_test = pd.read_csv("C:/MITA Spring 19/Turkoz/Capstone/Drug_Dataset/test_raw/test_raw.csv")
+    #Reading the csv file — paths loaded from config.py
+    import config
+    df_train = pd.read_csv(config.DATA_TRAIN_PATH)
+    df_test = pd.read_csv(config.DATA_TEST_PATH)
     
     #Shape of data
     print("Shape of train data: ",df_train.shape)

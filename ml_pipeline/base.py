@@ -1,110 +1,264 @@
-# -*- coding: utf-8 -*-
-"""
-Base Data Loader and Preprocessor for Drug Review Sentiment Analysis.
-Supports both 3-class sentiment (Negative/Neutral/Positive) and binary modes.
-"""
-
-import os
-import re
 import logging
+
 import pandas as pd
 from sklearn.feature_extraction.text import TfidfVectorizer
 
-def map_sentiment_3class(rating):
-    """
-    Maps clinical patient ratings (1.0 to 10.0) into 3 sentiment classes:
-    - Negative (0): 1.0 - 3.0
-    - Neutral  (1): 4.0 - 6.0
-    - Positive (2): 7.0 - 10.0
-    """
-    if pd.isna(rating):
-        return 1
-    val = float(rating)
-    if val <= 3.0:
-        return 0
-    elif val <= 6.0:
-        return 1
-    else:
-        return 2
 
-def clean_review_text(text):
-    """
-    Cleans raw review text: decodes HTML entities, strips unwanted tags,
-    normalizes whitespace.
-    """
-    if not isinstance(text, str) or not text.strip():
-        return ""
-    # Remove HTML entities like &#039; and tags
-    text = text.replace("&#039;", "'").replace("&quot;", '"').replace("&amp;", "&")
-    text = re.sub(r"<.*?>", " ", text)
-    text = re.sub(r"\s+", " ", text).strip()
-    return text
+# ------------------------------------------------------------
+# 3-Class sentiment label mapping
+#
+# rating 1–3  -> Negative (0)
+# rating 4–6  -> Neutral  (1)
+# rating 7–10 -> Positive (2)
+# ------------------------------------------------------------
+
+def _rating_to_3class(rating):
+    if rating <= 3:
+        return 0  # Negative
+    elif rating <= 6:
+        return 1  # Neutral
+    else:
+        return 2  # Positive
+
+
+SENTIMENT_LABELS = {
+    0: "Negative",
+    1: "Neutral",
+    2: "Positive",
+}
+
 
 class SentimentDataLoader:
-    def __init__(self, train_path, test_path=None, num_classes=3):
+
+    def __init__(
+        self,
+        train_path,
+        test_path,
+    ):
         self.train_path = train_path
         self.test_path = test_path
-        self.num_classes = num_classes
+
 
     def load(self):
+
         try:
-            logging.info("Loading training data from %s", self.train_path)
-            df_train = pd.read_csv(self.train_path)
-            
-            if self.test_path and os.path.exists(self.test_path):
-                logging.info("Loading test data from %s", self.test_path)
-                df_test = pd.read_csv(self.test_path)
-            else:
-                logging.info("No separate test path provided or found. Using empty test split.")
-                df_test = pd.DataFrame(columns=df_train.columns)
 
-            for df in [df_train, df_test]:
-                if not df.empty:
-                    if 'rating' in df.columns:
-                        if self.num_classes == 3:
-                            df['sentiment'] = df['rating'].apply(map_sentiment_3class)
-                        else:
-                            df['sentiment'] = (df['rating'] > 5.0).astype(int)
-                    if 'review' in df.columns:
-                        df['review'] = df['review'].fillna('').apply(clean_review_text)
-                    if 'condition' in df.columns:
-                        df['condition'] = df['condition'].fillna('Unknown').astype(str).str.replace(r"<.*?>", "", regex=True).str.strip()
+            logging.info(
+                "Loading training data from %s",
+                self.train_path,
+            )
 
-            logging.info("Data loaded and mapped successfully.")
-            return df_train, df_test
-        except Exception as e:
-            logging.error("Error loading data: %s", e, exc_info=True)
+            df_train = pd.read_csv(
+                self.train_path
+            )
+
+
+            logging.info(
+                "Loading test data from %s",
+                self.test_path,
+            )
+
+            df_test = pd.read_csv(
+                self.test_path
+            )
+
+
+            for df in [
+                df_train,
+                df_test,
+            ]:
+
+                # --------------------------------------------
+                # Rating cleanup
+                # --------------------------------------------
+
+                df["rating"] = pd.to_numeric(
+                    df["rating"],
+                    errors="coerce",
+                )
+
+
+                df.dropna(
+                    subset=[
+                        "rating"
+                    ],
+                    inplace=True,
+                )
+
+
+                # --------------------------------------------
+                # Review cleanup
+                # --------------------------------------------
+
+                df["review"] = (
+                    df["review"]
+                    .fillna("")
+                    .astype(str)
+                )
+
+
+                # --------------------------------------------
+                # 3-Class sentiment
+                #
+                # rating 1–3  -> Negative (0)
+                # rating 4–6  -> Neutral  (1)
+                # rating 7–10 -> Positive (2)
+                # --------------------------------------------
+
+                df["sentiment"] = df["rating"].apply(
+                    _rating_to_3class
+                )
+
+
+            logging.info(
+                "Data loaded successfully."
+            )
+
+
+            return (
+                df_train,
+                df_test,
+            )
+
+
+        except Exception as error:
+
+            logging.error(
+                "Error loading data: %s",
+                error,
+                exc_info=True,
+            )
+
             raise
+
 
 class TextPreprocessor:
-    def __init__(self, max_features=10000, ngram_range=(1, 2), stop_words='english'):
-        self.vectorizer = TfidfVectorizer(
-            max_features=max_features,
-            ngram_range=ngram_range,
-            stop_words=stop_words,
-            sublinear_tf=True
+
+    def __init__(
+        self,
+        max_features=10000,
+    ):
+
+        # ----------------------------------------------------
+        # IMPORTANT:
+        #
+        # We intentionally DO NOT use:
+        #
+        # stop_words="english"
+        #
+        # because words such as "not" are important for
+        # sentiment analysis.
+        #
+        # ngram_range=(1, 2) lets the model learn phrases like:
+        #
+        # "not good"
+        # "not well"
+        # "did not"
+        # "very good"
+        # "worked well"
+        # ----------------------------------------------------
+
+        self.vectorizer = (
+            TfidfVectorizer(
+
+                max_features=max_features,
+
+                ngram_range=(
+                    1,
+                    2,
+                ),
+
+                lowercase=True,
+
+                sublinear_tf=True,
+
+            )
         )
 
-    def fit_transform(self, train_texts, test_texts=None):
-        try:
-            logging.info("Starting TF-IDF vectorization...")
-            clean_train = [clean_review_text(t) for t in train_texts]
-            if test_texts is not None and len(test_texts) > 0:
-                clean_test = [clean_review_text(t) for t in test_texts]
-                all_texts = pd.concat([pd.Series(clean_train), pd.Series(clean_test)])
-                self.vectorizer.fit(all_texts)
-                X_train = self.vectorizer.transform(clean_train)
-                X_test = self.vectorizer.transform(clean_test)
-                logging.info("TF-IDF vectorization complete. Vocab size: %d", len(self.vectorizer.vocabulary_))
-                return X_train, X_test
-            else:
-                X_train = self.vectorizer.fit_transform(clean_train)
-                logging.info("TF-IDF vectorization complete on train texts. Vocab size: %d", len(self.vectorizer.vocabulary_))
-                return X_train, None
-        except Exception as e:
-            logging.error("Error during TF-IDF vectorization: %s", e, exc_info=True)
-            raise
 
-    def transform(self, texts):
-        clean_texts = [clean_review_text(t) for t in texts]
-        return self.vectorizer.transform(clean_texts)
+    def fit_transform(
+        self,
+        train_texts,
+        test_texts,
+    ):
+
+        try:
+
+            logging.info(
+                "Starting TF-IDF vectorization..."
+            )
+
+
+            train_texts = (
+                train_texts
+                .fillna("")
+                .astype(str)
+            )
+
+
+            test_texts = (
+                test_texts
+                .fillna("")
+                .astype(str)
+            )
+
+
+            # ------------------------------------------------
+            # Fit only on training data.
+            #
+            # This avoids test-data leakage.
+            # ------------------------------------------------
+
+            self.vectorizer.fit(
+                train_texts
+            )
+
+
+            X_train = (
+                self.vectorizer
+                .transform(
+                    train_texts
+                )
+            )
+
+
+            X_test = (
+                self.vectorizer
+                .transform(
+                    test_texts
+                )
+            )
+
+
+            logging.info(
+                "TF-IDF vectorization complete."
+            )
+
+
+            logging.info(
+                "Training feature shape: %s",
+                X_train.shape,
+            )
+
+
+            logging.info(
+                "Testing feature shape: %s",
+                X_test.shape,
+            )
+
+
+            return (
+                X_train,
+                X_test,
+            )
+
+
+        except Exception as error:
+
+            logging.error(
+                "Error during TF-IDF vectorization: %s",
+                error,
+                exc_info=True,
+            )
+
+            raise

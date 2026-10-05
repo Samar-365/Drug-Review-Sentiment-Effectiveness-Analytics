@@ -1,73 +1,176 @@
-# -*- coding: utf-8 -*-
 """
-Pytest configuration and synthetic mock fixtures for ML pipeline tests.
-Ensures test suite executes reliably in CI/CD without requiring heavy external datasets.
+Synthetic test fixtures for the drug review sentiment pipeline.
+
+All fixtures are self-contained — no external CSV files required.
+The 50-row mock dataset covers all three sentiment classes and
+includes edge cases (short reviews, punctuation-heavy text, etc.)
+so tests are fully reproducible in any environment.
 """
 
-import pytest
+import os
+import tempfile
+
 import pandas as pd
-import numpy as np
-from sklearn.linear_model import LogisticRegression
-from sklearn.feature_extraction.text import TfidfVectorizer
-from ml_pipeline.base import map_sentiment_3class
+import pytest
+
+
+# ============================================================
+# RAW REVIEW DATA
+# ============================================================
+
+_MOCK_REVIEWS = [
+    # Positive reviews — ratings 7-10
+    ("Aspirin",        "Pain",       "Worked perfectly, no side effects at all.",          10, "2021-01-01", 12),
+    ("Ibuprofen",      "Pain",       "Great relief within 30 minutes.",                     9, "2021-01-02", 8),
+    ("Metformin",      "Diabetes",   "Excellent medication, controlled my sugar well.",      9, "2021-01-03", 15),
+    ("Lisinopril",     "Hypert.",    "Blood pressure finally under control.",                8, "2021-01-04", 6),
+    ("Atorvastatin",   "Cholest.",   "Cholesterol dropped significantly.",                   8, "2021-01-05", 9),
+    ("Omeprazole",     "Acid",       "Heartburn gone after first dose.",                     9, "2021-01-06", 11),
+    ("Sertraline",     "Depress.",   "Mood improved greatly over two weeks.",                8, "2021-01-07", 14),
+    ("Amoxicillin",    "Infection",  "Cleared my infection completely.",                    10, "2021-01-08", 7),
+    ("Levothyroxine",  "Thyroid",    "Energy levels back to normal.",                        8, "2021-01-09", 5),
+    ("Amlodipine",     "Hypert.",    "Works well with minimal side effects.",                7, "2021-01-10", 3),
+    ("Metoprolol",     "Heart",      "Heart rate stable and consistent.",                    8, "2021-01-11", 10),
+    ("Prednisone",     "Inflam.",    "Inflammation resolved quickly.",                       7, "2021-01-12", 4),
+    ("Gabapentin",     "Nerve",      "Pain significantly reduced.",                          8, "2021-01-13", 6),
+    ("Citalopram",     "Anxiety",    "Anxiety much better after 3 weeks.",                   9, "2021-01-14", 13),
+    ("Furosemide",     "Edema",      "Swelling reduced noticeably.",                         7, "2021-01-15", 2),
+    ("Pantoprazole",   "Acid",       "No more acid reflux.",                                 9, "2021-01-16", 8),
+    ("Warfarin",       "Clots",      "Clotting under control with monitoring.",              7, "2021-01-17", 5),
+    ("Albuterol",      "Asthma",     "Breathing improved immediately.",                      9, "2021-01-18", 9),
+    ("Clonazepam",     "Anxiety",    "Very effective for panic attacks.",                    8, "2021-01-19", 7),
+    ("Hydrocodone",    "Pain",       "Pain relief was fast and effective.",                  7, "2021-01-20", 4),
+
+    # Neutral reviews — ratings 4-6
+    ("Aspirin",        "Fever",      "Helped a little but not consistently.",                5, "2021-02-01", 3),
+    ("Ibuprofen",      "Back Pain",  "Some relief but wore off quickly.",                    5, "2021-02-02", 2),
+    ("Metformin",      "Diabetes",   "Okay results, some stomach discomfort.",               4, "2021-02-03", 6),
+    ("Lisinopril",     "Hypert.",    "Partially effective, still adjusting dose.",           5, "2021-02-04", 1),
+    ("Atorvastatin",   "Cholest.",   "Mild improvement, monitoring continues.",              4, "2021-02-05", 4),
+    ("Omeprazole",     "Acid",       "Works sometimes, not always consistent.",              6, "2021-02-06", 3),
+    ("Sertraline",     "Depress.",   "Mixed results so far after a month.",                  5, "2021-02-07", 5),
+    ("Amoxicillin",    "Sinus",      "Partially cleared the infection.",                     5, "2021-02-08", 2),
+    ("Levothyroxine",  "Thyroid",    "Fatigue reduced but not eliminated.",                  6, "2021-02-09", 3),
+    ("Amlodipine",     "Hypert.",    "Blood pressure slightly better.",                      4, "2021-02-10", 1),
+
+    # Negative reviews — ratings 1-3
+    ("Aspirin",        "Headache",   "Did not help at all.",                                 2, "2021-03-01", 0),
+    ("Ibuprofen",      "Joint",      "Caused stomach pain, stopped taking it.",              1, "2021-03-02", 5),
+    ("Metformin",      "Diabetes",   "Terrible nausea and diarrhea.",                        2, "2021-03-03", 8),
+    ("Lisinopril",     "Hypert.",    "Persistent cough made it unbearable.",                 1, "2021-03-04", 7),
+    ("Atorvastatin",   "Cholest.",   "Muscle cramps were severe.",                           2, "2021-03-05", 6),
+    ("Omeprazole",     "Acid",       "Made my symptoms worse.",                              1, "2021-03-06", 4),
+    ("Sertraline",     "Depress.",   "Side effects outweighed any benefit.",                 2, "2021-03-07", 9),
+    ("Amoxicillin",    "Ear",        "Allergic reaction, had to stop.",                      1, "2021-03-08", 3),
+    ("Levothyroxine",  "Thyroid",    "Heart palpitations, very scary.",                      2, "2021-03-09", 2),
+    ("Amlodipine",     "Hypert.",    "Severe ankle swelling, not recommended.",              1, "2021-03-10", 4),
+
+    # Edge cases — short text, punctuation, numbers
+    ("DrugA",          "CondA",      "Good.",                                                8, "2021-04-01", 0),
+    ("DrugB",          "CondB",      "Bad!",                                                 2, "2021-04-02", 0),
+    ("DrugC",          "CondC",      "Ok.",                                                  5, "2021-04-03", 0),
+    ("DrugD",          "CondD",      "Took 3 pills daily for 7 days. Fine.",                 6, "2021-04-04", 1),
+    ("DrugE",          "CondE",      "100% effective for me.",                               9, "2021-04-05", 2),
+    ("DrugF",          "CondF",      "Not good, not bad.",                                   4, "2021-04-06", 0),
+    ("DrugG",          "CondG",      "Did NOT work at all!!!",                               1, "2021-04-07", 3),
+    ("DrugH",          "CondH",      "Very very very very good medication.",                 9, "2021-04-08", 1),
+    ("DrugI",          "CondI",      "Worked well but caused minor drowsiness.",             7, "2021-04-09", 2),
+    ("DrugJ",          "CondJ",      "Ineffective for two weeks then started working.",      6, "2021-04-10", 1),
+]
+
+_COLUMNS = [
+    "drugName",
+    "condition",
+    "review",
+    "rating",
+    "date",
+    "usefulCount",
+]
+
+
+# ============================================================
+# FIXTURES
+# ============================================================
 
 @pytest.fixture(scope="session")
-def mock_drug_reviews_df():
+def mock_df():
     """
-    Generates a realistic 60-row synthetic DataFrame matching standard 7-column schema.
+    Full 50-row synthetic DataFrame.
+    Covers all three sentiment classes and edge cases.
+    Has the 'sentiment' column pre-computed via the 3-class mapping.
     """
-    np.random.seed(42)
-    conditions = ["Depression", "Acne", "Anxiety", "Pain", "Birth Control", "High Blood Pressure"]
-    drugs = ["Sertraline", "Accutane", "Xanax", "Tramadol", "Nexplanon", "Lisinopril"]
-    
-    sample_texts = [
-        "This drug completely changed my life for the better! Zero side effects and high efficacy.",
-        "Helped somewhat with symptoms, but causes annoying nausea and daytime fatigue.",
-        "Terrible adverse reaction! Severe headache, vomiting, and ended up in emergency room.",
-        "Works moderately well for chronic pain, but wears off after four hours.",
-        "Clear skin in three weeks. Highly recommend this medication to anyone struggling with acne.",
-        "Did not work at all. Felt dizzy and disoriented every time I took it."
-    ]
-    
-    rows = []
-    for i in range(60):
-        cond_idx = i % len(conditions)
-        sentiment_bucket = i % 3  # 0: Neg (1-3), 1: Neu (4-6), 2: Pos (7-10)
-        if sentiment_bucket == 0:
-            rating = float(np.random.choice([1.0, 2.0, 3.0]))
-        elif sentiment_bucket == 1:
-            rating = float(np.random.choice([4.0, 5.0, 6.0]))
+    df = pd.DataFrame(_MOCK_REVIEWS, columns=_COLUMNS)
+    df["rating"] = df["rating"].astype(float)
+
+    # Apply 3-class mapping inline so the fixture is self-contained
+    def _to_3class(r):
+        if r <= 3:
+            return 0
+        elif r <= 6:
+            return 1
         else:
-            rating = float(np.random.choice([7.0, 8.0, 9.0, 10.0]))
-            
-        rows.append({
-            "uniqueID": 200000 + i,
-            "drugName": drugs[cond_idx],
-            "condition": conditions[cond_idx],
-            "review": f'"{sample_texts[i % len(sample_texts)]}"',
-            "rating": rating,
-            "date": "March 15, 2018",
-            "usefulCount": int(np.random.randint(0, 50)),
-            "sentiment": map_sentiment_3class(rating)
-        })
-        
-    return pd.DataFrame(rows)
+            return 2
+
+    df["sentiment"] = df["rating"].apply(_to_3class)
+    return df
+
 
 @pytest.fixture(scope="session")
-def mock_fitted_pipeline(mock_drug_reviews_df):
+def mock_train_df(mock_df):
+    """First 40 rows — used as training split."""
+    return mock_df.iloc[:40].copy().reset_index(drop=True)
+
+
+@pytest.fixture(scope="session")
+def mock_test_df(mock_df):
+    """Last 10 rows — used as test split."""
+    return mock_df.iloc[40:].copy().reset_index(drop=True)
+
+
+@pytest.fixture(scope="session")
+def mock_train_csv(mock_train_df):
     """
-    Creates a pre-fitted vectorizer + LogisticRegression model on mock data.
+    Write the 40-row training DataFrame to a temp CSV file.
+    Yields the file path; file is deleted after the session ends.
     """
-    vectorizer = TfidfVectorizer(max_features=500, stop_words="english")
-    X = vectorizer.fit_transform(mock_drug_reviews_df["review"])
-    y = mock_drug_reviews_df["sentiment"].values
-    
-    model = LogisticRegression(max_iter=200, random_state=42)
-    model.fit(X, y)
-    
-    return {
-        "vectorizer": vectorizer,
-        "model": model,
-        "labels": {0: "Negative", 1: "Neutral", 2: "Positive"},
-        "num_classes": 3
-    }
+    with tempfile.NamedTemporaryFile(
+        mode="w",
+        suffix=".csv",
+        delete=False,
+        encoding="utf-8",
+    ) as f:
+        mock_train_df.to_csv(f, index=False)
+        path = f.name
+
+    yield path
+
+    if os.path.exists(path):
+        os.remove(path)
+
+
+@pytest.fixture(scope="session")
+def mock_test_csv(mock_test_df):
+    """
+    Write the 10-row test DataFrame to a temp CSV file.
+    Yields the file path; file is deleted after the session ends.
+    """
+    with tempfile.NamedTemporaryFile(
+        mode="w",
+        suffix=".csv",
+        delete=False,
+        encoding="utf-8",
+    ) as f:
+        mock_test_df.to_csv(f, index=False)
+        path = f.name
+
+    yield path
+
+    if os.path.exists(path):
+        os.remove(path)
+
+
+@pytest.fixture(scope="session")
+def tmp_model_dir():
+    """Temporary directory for saving/loading model artifacts."""
+    with tempfile.TemporaryDirectory() as d:
+        yield d
