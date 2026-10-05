@@ -6,6 +6,7 @@ from sklearn.metrics import (
     accuracy_score,
     classification_report,
     confusion_matrix,
+    f1_score,
     roc_auc_score,
 )
 
@@ -35,9 +36,20 @@ class BaseSentimentModel:
         logging.info("Model training complete.")
 
     def evaluate(self, X_test, y_test, threshold=0.5):
+        unique_classes = sorted(set(y_test))
+        is_multiclass = len(unique_classes) > 2
+
         if hasattr(self.model, "predict_proba"):
-            y_proba = self.model.predict_proba(X_test)[:, 1]
-            y_pred = (y_proba >= threshold).astype(int)
+            probabilities = self.model.predict_proba(X_test)
+
+            if is_multiclass:
+                # Multiclass: argmax over all class probabilities
+                y_pred = probabilities.argmax(axis=1)
+                y_proba = None
+            else:
+                # Binary: apply threshold on positive class
+                y_proba = probabilities[:, 1]
+                y_pred = (y_proba >= threshold).astype(int)
         else:
             y_proba = None
             y_pred = self.model.predict(X_test)
@@ -47,7 +59,16 @@ class BaseSentimentModel:
             accuracy_score(y_test, y_pred),
         )
 
-        if y_proba is not None:
+        # Macro F1 — works for both binary and multiclass
+        macro_f1 = f1_score(
+            y_test,
+            y_pred,
+            average="macro",
+            zero_division=0,
+        )
+        print("Macro F1:", macro_f1)
+
+        if not is_multiclass and y_proba is not None:
             if len(set(y_test)) > 1:
                 print(
                     "ROC-AUC:",
@@ -254,6 +275,12 @@ def predict_single_review(
         [text]
     )
 
+    _label_names = {
+        0: "Negative",
+        1: "Neutral",
+        2: "Positive",
+    }
+
     if hasattr(
         model,
         "predict_proba",
@@ -262,42 +289,65 @@ def predict_single_review(
             model.predict_proba(X)[0]
         )
 
-        if len(probabilities) < 2:
+        num_classes = len(probabilities)
+
+        if num_classes < 2:
             raise ValueError(
                 "Model did not return probabilities "
-                "for both sentiment classes."
+                "for at least two sentiment classes."
             )
 
-        negative_probability = float(
-            probabilities[0]
+        if num_classes == 2:
+            # --------------------------------------------------
+            # Binary mode: apply threshold on positive class
+            # --------------------------------------------------
+            negative_probability = float(probabilities[0])
+            positive_probability = float(probabilities[1])
+
+            prediction = int(
+                positive_probability >= threshold
+            )
+
+            confidence = (
+                positive_probability
+                if prediction == 1
+                else negative_probability
+            )
+
+            return {
+                "sentiment": _label_names.get(prediction, str(prediction)),
+                "prediction": prediction,
+                "confidence": confidence,
+                "probabilities": {
+                    "Negative": negative_probability,
+                    "Positive": positive_probability,
+                },
+            }
+
+        # ------------------------------------------------------
+        # Multiclass mode (3+ classes): argmax over all classes
+        # Classes are taken from model.classes_ when available,
+        # otherwise assumed to be 0-indexed integers.
+        # ------------------------------------------------------
+        classes = (
+            list(model.classes_)
+            if hasattr(model, "classes_")
+            else list(range(num_classes))
         )
 
-        positive_probability = float(
-            probabilities[1]
-        )
+        prediction = int(classes[int(probabilities.argmax())])
+        confidence = float(probabilities.max())
 
-        prediction = int(
-            positive_probability >= threshold
-        )
-
-        confidence = (
-            positive_probability
-            if prediction == 1
-            else negative_probability
-        )
+        prob_dict = {
+            _label_names.get(int(cls), str(cls)): float(prob)
+            for cls, prob in zip(classes, probabilities)
+        }
 
         return {
-            "sentiment": (
-                "Positive"
-                if prediction == 1
-                else "Negative"
-            ),
+            "sentiment": _label_names.get(prediction, str(prediction)),
             "prediction": prediction,
             "confidence": confidence,
-            "probabilities": {
-                "negative": negative_probability,
-                "positive": positive_probability,
-            },
+            "probabilities": prob_dict,
         }
 
     prediction = int(
@@ -305,11 +355,7 @@ def predict_single_review(
     )
 
     return {
-        "sentiment": (
-            "Positive"
-            if prediction == 1
-            else "Negative"
-        ),
+        "sentiment": _label_names.get(prediction, str(prediction)),
         "prediction": prediction,
         "confidence": None,
         "probabilities": None,
