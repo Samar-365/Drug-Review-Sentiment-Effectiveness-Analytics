@@ -5,9 +5,11 @@ from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.ensemble import GradientBoostingClassifier
 from sklearn.metrics import roc_auc_score, accuracy_score, confusion_matrix, classification_report
 
-# Load data
-df_train = pd.read_csv('data/train/train_raw.csv')
-df_test = pd.read_csv('data/test/drugsComTest_raw.csv')
+import config
+
+# Load data — paths from config.py
+df_train = pd.read_csv(config.DATA_TRAIN_PATH)
+df_test = pd.read_csv(config.DATA_TEST_PATH)
 
 # Combine train and test for consistent vectorization
 df = pd.concat([df_train, df_test], ignore_index=True)
