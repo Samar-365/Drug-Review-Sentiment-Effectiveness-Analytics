@@ -33,8 +33,7 @@ setup_logging("streamlit_app.log")
 
 st.set_page_config(
     page_title="Drug Review Sentiment & Effectiveness Analytics",
-    page_icon="💊",
-    layout="wide",
+        layout="wide",
 )
 
 
@@ -118,34 +117,43 @@ st.markdown(
     }
 
     .subtitle {
-        color: #6b7280;
+        color: #94a3b8;
         font-size: 1rem;
         margin-bottom: 20px;
     }
 
     .demo-banner {
-        padding: 15px 18px;
+        padding: 14px 18px;
         border-radius: 10px;
-        background-color: #eff6ff;
-        border: 1px solid #93c5fd;
+        background: rgba(59, 130, 246, 0.15);
+        border: 1px solid rgba(59, 130, 246, 0.4);
+        color: #e2e8f0;
         margin-bottom: 20px;
+        line-height: 1.5;
+        font-size: 0.95rem;
+    }
+
+    .demo-banner strong {
+        color: #60a5fa;
+        font-size: 1.05rem;
     }
 
     .analyzer-card {
-        padding: 20px;
+        padding: 18px 20px;
         border-radius: 12px;
-        border: 1px solid #e5e7eb;
-        background-color: #f8fafc;
+        border: 1px solid rgba(148, 163, 184, 0.25);
+        background: rgba(148, 163, 184, 0.08);
         min-height: 120px;
     }
 
     .card-title {
         font-size: 1.1rem;
         font-weight: 600;
+        color: #f1f5f9;
     }
 
     .card-text {
-        color: #6b7280;
+        color: #94a3b8;
         margin-top: 8px;
     }
 
@@ -161,7 +169,7 @@ st.markdown(
 
 st.markdown(
     '<div class="main-title">'
-    '💊 Drug Review Sentiment & Effectiveness Analytics'
+    'Drug Review Sentiment & Effectiveness Analytics'
     '</div>',
     unsafe_allow_html=True,
 )
@@ -184,7 +192,7 @@ st.markdown(
 with st.sidebar:
 
     st.header(
-        "⚙️ Dashboard Settings"
+        "Dashboard Settings"
     )
 
     st.subheader(
@@ -220,7 +228,7 @@ with st.sidebar:
     st.markdown("---")
 
     st.subheader(
-        "💾 Persisted Models"
+        "Persisted Models"
     )
 
     for model_name in MODEL_PATHS:
@@ -350,7 +358,7 @@ if demo_mode:
     st.markdown(
         """
         <div class="demo-banner">
-            ℹ️ <strong>Demo Mode Active</strong><br>
+            <strong>Demo Mode Active</strong><br>
             The dashboard is currently using the bundled
             sample dataset.
             Upload your own Training and Test CSV files
@@ -367,8 +375,8 @@ if demo_mode:
 
 tab1, tab2 = st.tabs(
     [
-        "📊 Dataset Analytics & Model Leaderboard",
-        "🔬 Live Review Analyzer",
+        "Dataset Analytics & Model Leaderboard",
+        "Live Review Analyzer",
     ]
 )
 
@@ -381,7 +389,7 @@ tab1, tab2 = st.tabs(
 with tab1:
 
     st.header(
-        "📊 Dataset Analytics & Model Leaderboard"
+        "Dataset Analytics & Model Leaderboard"
     )
 
     # --------------------------------------------------------
@@ -394,7 +402,7 @@ with tab1:
     ):
 
         st.info(
-            "📂 No dataset loaded yet."
+            "No dataset loaded yet."
         )
 
         st.markdown(
@@ -414,7 +422,7 @@ with tab1:
         st.markdown("---")
 
         st.subheader(
-            "🚀 Dashboard Features"
+            "Dashboard Features"
         )
 
         col1, col2, col3 = st.columns(3)
@@ -422,7 +430,7 @@ with tab1:
         with col1:
             st.markdown(
                 """
-                ### 📊 Dataset Analytics
+                ### Dataset Analytics
 
                 View review counts, drug statistics,
                 sentiment distribution, trends,
@@ -433,7 +441,7 @@ with tab1:
         with col2:
             st.markdown(
                 """
-                ### 🤖 Model Leaderboard
+                ### Model Leaderboard
 
                 Compare sentiment models using
                 Accuracy, ROC-AUC, and F1-score.
@@ -443,7 +451,7 @@ with tab1:
         with col3:
             st.markdown(
                 """
-                ### 🔬 Live Review Analyzer
+                ### Live Review Analyzer
 
                 Enter a review, select a persisted model,
                 and analyze the review.
@@ -560,7 +568,7 @@ with tab1:
             # ------------------------------------------------
 
             st.subheader(
-                "📌 Dataset Overview"
+                "Dataset Overview"
             )
 
             col1, col2, col3, col4 = (
@@ -617,7 +625,7 @@ with tab1:
             # ------------------------------------------------
 
             st.subheader(
-                "🤖 Model Performance Leaderboard"
+                "Model Performance Leaderboard"
             )
 
             st.caption(
@@ -627,7 +635,7 @@ with tab1:
             )
 
             run_evaluation = st.button(
-                "▶ Run Model Comparison",
+                "Run Model Comparison",
                 key="run_model_comparison",
             )
 
@@ -1004,7 +1012,7 @@ with tab1:
                         )
 
                         st.success(
-                            "🏆 Best Performing Model: "
+                            "Best Performing Model: "
                             f"**{best_row['Model']}**"
                         )
 
@@ -1015,7 +1023,7 @@ with tab1:
                         st.markdown("---")
 
                         st.subheader(
-                            "📈 Dataset Insights"
+                            "Dataset Insights"
                         )
 
                         (
@@ -1106,7 +1114,7 @@ with tab1:
                         )
 
                         st.subheader(
-                            "🔲 Confusion Matrix"
+                            "Confusion Matrix"
                         )
 
                         cm = confusion_matrix(
@@ -1151,7 +1159,7 @@ with tab1:
                             st.markdown("---")
 
                             st.subheader(
-                                "⭐ Top-Rated Drugs"
+                                "Top-Rated Drugs"
                             )
 
                             rating_data = (
@@ -1220,7 +1228,7 @@ with tab1:
 with tab2:
 
     st.header(
-        "🔬 Live Review Analyzer"
+        "Live Review Analyzer"
     )
 
     st.caption(
@@ -1235,7 +1243,7 @@ with tab2:
     # --------------------------------------------------------
 
     review_text = st.text_area(
-        "📝 Enter Drug Review",
+        "Enter Drug Review",
         placeholder=(
             "Example: This medicine worked very well for me "
             "and I experienced significant improvement."
@@ -1252,7 +1260,7 @@ with tab2:
     # --------------------------------------------------------
 
     selected_model = st.selectbox(
-        "🤖 Select Sentiment Model",
+        "Select Sentiment Model",
         list(
             MODEL_PATHS.keys()
         ),
@@ -1272,7 +1280,7 @@ with tab2:
     ):
 
         st.caption(
-            f"✅ {selected_model} persisted pipeline is ready."
+            f"{selected_model} persisted pipeline is ready."
         )
 
     else:
@@ -1287,7 +1295,7 @@ with tab2:
     # --------------------------------------------------------
 
     analyze_clicked = st.button(
-        "🔍 Analyze Sentiment",
+        "Analyze Sentiment",
         type="primary",
         width="stretch",
     )
@@ -1301,7 +1309,7 @@ with tab2:
         if not review_text.strip():
 
             st.warning(
-                "⚠️ Please enter a review "
+                "Please enter a review "
                 "before analyzing."
             )
 
@@ -1362,7 +1370,7 @@ with tab2:
                 )
 
                 st.markdown(
-                    "### 📊 Analysis Result"
+                    "### Analysis Result"
                 )
 
                 (
@@ -1377,25 +1385,21 @@ with tab2:
 
                 with result1:
 
-                    if (
-                        result[
-                            "sentiment"
-                        ]
-                        == "Positive"
-                    ):
-
+                    sentiment_val = result["sentiment"]
+                    if sentiment_val == "Positive":
                         st.success(
-                            "😊 Sentiment\n\n"
-                            f"### "
-                            f"{result['sentiment']}"
+                            "Sentiment\n\n"
+                            f"### {sentiment_val}"
                         )
-
+                    elif sentiment_val == "Neutral":
+                        st.warning(
+                            "Sentiment\n\n"
+                            f"### {sentiment_val}"
+                        )
                     else:
-
                         st.error(
-                            "😞 Sentiment\n\n"
-                            f"### "
-                            f"{result['sentiment']}"
+                            "Sentiment\n\n"
+                            f"### {sentiment_val}"
                         )
 
                 # --------------------------------------------
@@ -1416,7 +1420,7 @@ with tab2:
                     ):
 
                         st.metric(
-                            "🎯 Confidence",
+                            "Confidence",
                             (
                                 f"{confidence * 100:.2f}%"
                             ),
@@ -1425,7 +1429,7 @@ with tab2:
                     else:
 
                         st.metric(
-                            "🎯 Confidence",
+                            "Confidence",
                             "N/A",
                         )
 
@@ -1436,7 +1440,7 @@ with tab2:
                 with result3:
 
                     st.metric(
-                        "🤖 Selected Model",
+                        "Selected Model",
                         selected_model,
                     )
 
@@ -1453,24 +1457,14 @@ with tab2:
                 if probabilities:
 
                     st.markdown(
-                        "### 📊 Class Probabilities"
+                        "### Class Probabilities"
                     )
 
                     probability_df = (
                         pd.DataFrame(
                             {
-                                "Sentiment": [
-                                    "Negative",
-                                    "Positive",
-                                ],
-                                "Probability": [
-                                    probabilities[
-                                        "negative"
-                                    ],
-                                    probabilities[
-                                        "positive"
-                                    ],
-                                ],
+                                "Sentiment": list(probabilities.keys()),
+                                "Probability": [float(p) for p in probabilities.values()],
                             }
                         )
                     )
@@ -1484,7 +1478,7 @@ with tab2:
 
                         st.dataframe(
                             probability_df,
-                            width="stretch",
+                            use_container_width=True,
                             hide_index=True,
                         )
 
@@ -1540,7 +1534,7 @@ with tab2:
         # ----------------------------------------------------
 
         st.markdown(
-            "### 📋 Analysis Preview"
+            "### Analysis Preview"
         )
 
         (
@@ -1555,7 +1549,7 @@ with tab2:
                 """
                 <div class="analyzer-card">
                     <div class="card-title">
-                        😊 Sentiment
+                        Sentiment
                     </div>
                     <div class="card-text">
                         Sentiment result
@@ -1571,7 +1565,7 @@ with tab2:
                 """
                 <div class="analyzer-card">
                     <div class="card-title">
-                        🎯 Confidence
+                        Confidence
                     </div>
                     <div class="card-text">
                         Confidence score
@@ -1587,7 +1581,7 @@ with tab2:
                 """
                 <div class="analyzer-card">
                     <div class="card-title">
-                        📊 Class Probabilities
+                        Class Probabilities
                     </div>
                     <div class="card-text">
                         Prediction probabilities
