@@ -4,6 +4,30 @@ import pandas as pd
 from sklearn.feature_extraction.text import TfidfVectorizer
 
 
+# ------------------------------------------------------------
+# 3-Class sentiment label mapping
+#
+# rating 1–3  -> Negative (0)
+# rating 4–6  -> Neutral  (1)
+# rating 7–10 -> Positive (2)
+# ------------------------------------------------------------
+
+def _rating_to_3class(rating):
+    if rating <= 3:
+        return 0  # Negative
+    elif rating <= 6:
+        return 1  # Neutral
+    else:
+        return 2  # Positive
+
+
+SENTIMENT_LABELS = {
+    0: "Negative",
+    1: "Neutral",
+    2: "Positive",
+}
+
+
 class SentimentDataLoader:
 
     def __init__(
@@ -74,15 +98,16 @@ class SentimentDataLoader:
 
 
                 # --------------------------------------------
-                # Binary sentiment
+                # 3-Class sentiment
                 #
-                # rating > 5  -> Positive (1)
-                # rating <= 5 -> Negative (0)
+                # rating 1–3  -> Negative (0)
+                # rating 4–6  -> Neutral  (1)
+                # rating 7–10 -> Positive (2)
                 # --------------------------------------------
 
-                df["sentiment"] = (
-                    df["rating"] > 5
-                ).astype(int)
+                df["sentiment"] = df["rating"].apply(
+                    _rating_to_3class
+                )
 
 
             logging.info(

@@ -1,5 +1,10 @@
 # To add a new cell, type '# %%'
 # To add a new markdown cell, type '# %% [markdown]'
+# NOTE: This script uses Apache Spark and reads data from S3.
+# For local execution, replace S3 paths with paths from config.py:
+#   import config
+#   config.DATA_TRAIN_PATH  -> local train CSV
+#   config.DATA_TEST_PATH   -> local test CSV
 # %%
 #Importing pyspark session
 import pyspark
